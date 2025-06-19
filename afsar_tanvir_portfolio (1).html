@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afsar Tanvir - Mobile Developer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 60px;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #495057;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 15px;
+            border-top: 5px solid #667eea;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-title {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: #e74c3c;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
+
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .achievement-item {
+            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .achievement-item h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                gap: 15px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffeaa7 0%, #fab1a0 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #e17055;
+        }
+
+        .highlight h3 {
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="profile-img">AT</div>
+            <h1>Afsar Tanvir</h1>
+            <div class="subtitle">Junior Mobile App Developer</div>
+            <p style="max-width: 600px; margin: 20px auto; color: #666;">
+                Passionate competitive programmer transitioning to mobile development. Bringing strong problem-solving skills and algorithmic expertise to create innovative mobile applications.
+            </p>
+            <div class="contact-info">
+                <a href="tel:+8801731027805" class="contact-item">
+                    📱 +8801731027805
+                </a>
+                <a href="mailto:afsartanvir805@gmail.com" class="contact-item">
+                    ✉️ afsartanvir805@gmail.com
+                </a>
+                <a href="#" class="contact-item">
+                    📍 Moulvibazar, Bangladesh
+                </a>
+                <a href="https://linkedin.com" class="contact-item">
+                    💼 LinkedIn
+                </a>
+                <a href="https://github.com" class="contact-item">
+                    💻 GitHub
+                </a>
+            </div>
+        </div>
+
+        <!-- Why Liilab Section -->
+        <div class="section">
+            <div class="highlight">
+                <h3>🎯 Why I'm Perfect for Liilab's Junior Mobile Developer Role</h3>
+                <p>As a fresh graduate with strong algorithmic foundations and hands-on experience with Android development, I bring the perfect combination of technical skills and eagerness to learn that Liilab is looking for. My competitive programming background has honed my problem-solving abilities, making me well-equipped to tackle complex mobile development challenges.</p>
+            </div>
+        </div>
+
+        <!-- Technical Skills -->
+        <div class="section">
+            <h2>🚀 Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Mobile Development</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Android</span>
+                        <span class="skill-tag">Android Studio</span>
+                        <span class="skill-tag">Java</span>
+                        <span class="skill-tag">Mobile UI/UX</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend & Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">.NET Core</span>
+                        <span class="skill-tag">ASP.NET MVC</span>
+                        <span class="skill-tag">REST APIs</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Database & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">Git/GitHub</span>
+                        <span class="skill-tag">Visual Studio</span>
+                        <span class="skill-tag">VS Code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem Solving Stats -->
+        <div class="section">
+            <h2>🏆 Problem Solving Excellence</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">1800+</span>
+                    <span class="stat-label">Total Problems Solved</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1476</span>
+                    <span class="stat-label">Codeforces Max Rating</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">1744</span>
+                    <span class="stat-label">CodeChef Max Rating</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3★</span>
+                    <span class="stat-label">CodeChef Coder</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+            <h2>💼 Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-title">📱 Employee Admin API</div>
+                    <p><strong>Recent Project</strong> • Full-stack web application</p>
+                    <p>Developed a comprehensive Employee Management API using ASP.NET Core with Clean Architecture principles. Features CRUD operations, Entity Framework integration, and RESTful API design.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ASP.NET Core</span>
+                        <span class="tech-tag">Entity Framework</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">Clean Architecture</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">📋 Task Management System</div>
+                    <p><strong>Team Project</strong> • Ongoing Learnathon Program</p>
+                    <p>Collaborating with a team of 3 developers to build a comprehensive task management system using ASP.NET Core MVC, focusing on Clean Architecture and SOLID principles.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">ASP.NET MVC</span>
+                        <span class="tech-tag">Team Collaboration</span>
+                        <span class="tech-tag">SOLID Principles</span>
+                        <span class="tech-tag">Clean Architecture</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-title">🎯 Competitive Programming Solutions</div>
+                    <p><strong>Ongoing</strong> • Multiple Platforms</p>
+                    <p>Maintained repositories with 1800+ algorithmic solutions across Codeforces, CodeChef, AtCoder, and other platforms, demonstrating strong problem-solving and optimization skills.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Algorithms</span>
+                        <span class="tech-tag">Data Structures</span>
+                        <span class="tech-tag">Optimization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <div class="section">
+            <h2>🏅 Key Achievements</h2>
+            <div class="achievements">
+                <div class="achievement-item">
+                    <h4>🥇 DUET IUPC 2025</h4>
+                    <p>Secured Rank 89 in competitive programming contest</p>
+                </div>
+                <div class="achievement-item">
+                    <h4>🏆 MU IUPC 2024</h4>
+                    <p>Achieved Rank 14 in Sylhet Division</p>
+                </div>
+                <div class="achievement-item">
+                    <h4>📊 NCPC 2024</h4>
+                    <p>Participated with Rank 97 in National Competition</p>
+                </div>
+                <div class="achievement-item">
+                    <h4>⭐ Codeforces Specialist</h4>
+                    <p>Specialist rating with 1600+ problems solved</p>
+                </div>
+                <div class="achievement-item">
+                    <h4>🎓 Academic Excellence</h4>
+                    <p>Maintaining 3.67/4.0 CGPA in CSE</p>
+                </div>
+                <div class="achievement-item">
+                    <h4>💻 Multi-Platform Coder</h4>
+                    <p>Active on 8+ competitive programming platforms</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <h2>🎓 Education</h2>
+            <div style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 25px; border-radius: 15px; border-left: 5px solid #667eea;">
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">Bachelor of Science in Computer Science & Engineering</h3>
+                <p><strong>Sylhet Engineering College</strong> • Jan 2020 - 2025</p>
+                <p><strong>CGPA:</strong> 3.67/4.0</p>
+                <p style="margin-top: 10px; color: #666;">Focused on software engineering, algorithms, data structures, and mobile application development.</p>
+            </div>
+        </div>
+
+        <!-- Why Choose Me -->
+        <div class="section">
+            <h2>✨ Why Choose Me for This Role</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div style="background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; padding: 20px; border-radius: 15px;">
+                    <h4>🧠 Strong Problem-Solving Skills</h4>
+                    <p>1800+ algorithmic problems solved demonstrate exceptional logical thinking and optimization abilities.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #55a3ff, #003d82); color: white; padding: 20px; border-radius: 15px;">
+                    <h4>📱 Mobile Development Ready</h4>
+                    <p>Hands-on experience with Android development and Java programming, ready to dive deeper into mobile technologies.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #fd79a8, #e84393); color: white; padding: 20px; border-radius: 15px;">
+                    <h4>🤝 Team Collaboration</h4>
+                    <p>Currently working in a team of 3 on Task Management System, demonstrating strong teamwork and communication skills.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #fdcb6e, #e17055); color: white; padding: 20px; border-radius: 15px;">
+                    <h4>📈 Quick Learner</h4>
+                    <p>Proven ability to quickly adapt to new technologies and frameworks, as shown by diverse skill set acquisition.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="cta-section">
+            <h2>🚀 Ready to Contribute to Liilab's Success!</h2>
+            <p style="font-size: 1.1rem; margin: 20px 0;">
+                I'm excited about the opportunity to bring my algorithmic expertise and fresh perspective to mobile app development at Liilab. Let's build amazing mobile experiences together!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.stat-card, .project-card, .achievement-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
