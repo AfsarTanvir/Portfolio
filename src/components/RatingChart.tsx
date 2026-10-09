@@ -1,6 +1,7 @@
 import { useMemo, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { codechefHistory, codeforcesHistory } from '../data/academics';
+import { CircleMark } from './ui/HandDrawn';
 
 const W = 720;
 const H = 240;
@@ -20,6 +21,8 @@ export type RatingSeries = {
   peakTitle: string;
   lowWord: 'low' | 'start';
   note: string;
+  /** Handwritten note circled at the lowest point. */
+  annotation?: string;
 };
 
 export const ratingSeries: RatingSeries[] = [
@@ -37,7 +40,8 @@ export const ratingSeries: RatingSeries[] = [
     ],
     peakTitle: 'Specialist',
     lowWord: 'low',
-    note: 'Fell to 632 in November 2022, then climbed back to Specialist two years later.',
+    note: 'I dropped to 632 in November 2022. It took two more years to reach Specialist.',
+    annotation: 'the low point',
   },
   {
     key: 'codechef',
@@ -53,7 +57,7 @@ export const ratingSeries: RatingSeries[] = [
     ],
     peakTitle: '3★',
     lowWord: 'start',
-    note: 'Best contest result: 99th in Starters 122 (Division 3).',
+    note: 'My best result here was 99th place in Starters 122 (Division 3).',
   },
 ];
 
@@ -120,131 +124,148 @@ export function RatingChart({ series, active = true }: { series: RatingSeries; a
           {series.lowWord} {low.v} → peak <span className="text-accent">{peak.v}</span>
         </span>
       </figcaption>
-      <svg
-        ref={ref}
-        viewBox={`0 0 ${W} ${H}`}
-        className="h-auto w-full"
-        role="img"
-        aria-label={`${series.label} rating from ${chart.first} to ${chart.last}: ${series.lowWord} ${low.v}, peak ${peak.v}.`}
-      >
-        <defs>
-          <linearGradient id={fillId} x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.25" />
-            <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        {series.bands.map((b, i) => {
-          const from = i === 0 ? series.yMin : series.bands[i - 1]!.to;
-          return (
-            <g key={b.label}>
-              <rect
-                x={PAD.left}
-                width={W - PAD.left - PAD.right}
-                y={y(b.to)}
-                height={y(from) - y(b.to)}
-                fill={b.color}
-              />
-              <text
-                x={PAD.left + 8}
-                y={y(b.to) + 14}
-                className="fill-[var(--faint)] font-mono text-[10px]"
-              >
-                {b.label}
-              </text>
-            </g>
-          );
-        })}
-        {series.yTicks.map((v) => (
-          <text
-            key={v}
-            x={PAD.left - 8}
-            y={y(v) + 3}
-            textAnchor="end"
-            className="fill-[var(--faint)] font-mono text-[10px]"
-          >
-            {v}
-          </text>
-        ))}
-        {ticks.map((tick) => (
-          <text
-            key={`${tick.label}-${tick.x}`}
-            x={tick.x}
-            y={H - 8}
-            textAnchor="middle"
-            className="fill-[var(--faint)] font-mono text-[10px]"
-          >
-            {tick.label}
-          </text>
-        ))}
-        <motion.path
-          d={area}
-          fill={`url(#${fillId})`}
-          initial={{ opacity: 0 }}
-          animate={draw ? { opacity: 1 } : undefined}
-          transition={{ duration: 1, delay: 1.2 }}
-        />
-        <motion.path
-          d={path}
-          fill="none"
-          stroke="var(--accent)"
-          strokeWidth={2}
-          strokeLinejoin="round"
-          strokeLinecap="round"
-          initial={{ pathLength: 0 }}
-          animate={draw ? { pathLength: 1 } : undefined}
-          transition={{ duration: 2, ease: [0.65, 0, 0.35, 1] }}
-        />
-        {points.map(([px, py], i) => (
-          <motion.circle
-            key={i}
-            cx={px}
-            cy={py}
-            r={1.8}
-            fill="var(--accent)"
-            initial={{ opacity: 0 }}
-            animate={draw ? { opacity: 0.7 } : undefined}
-            transition={{ delay: 0.2 + (i / points.length) * 1.8 }}
-          />
-        ))}
-        <motion.g
-          initial={{ opacity: 0 }}
-          animate={draw ? { opacity: 1 } : undefined}
-          transition={{ delay: 2 }}
+      <div className="relative">
+        <svg
+          ref={ref}
+          viewBox={`0 0 ${W} ${H}`}
+          className="h-auto w-full"
+          role="img"
+          aria-label={`${series.label} rating from ${chart.first} to ${chart.last}: ${series.lowWord} ${low.v}, peak ${peak.v}.`}
         >
-          <circle
-            cx={peak.x}
-            cy={peak.y}
-            r={5}
-            fill="var(--bg)"
+          <defs>
+            <linearGradient id={fillId} x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stopColor="var(--accent)" stopOpacity="0.25" />
+              <stop offset="100%" stopColor="var(--accent)" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          {series.bands.map((b, i) => {
+            const from = i === 0 ? series.yMin : series.bands[i - 1]!.to;
+            return (
+              <g key={b.label}>
+                <rect
+                  x={PAD.left}
+                  width={W - PAD.left - PAD.right}
+                  y={y(b.to)}
+                  height={y(from) - y(b.to)}
+                  fill={b.color}
+                />
+                <text
+                  x={PAD.left + 8}
+                  y={y(b.to) + 14}
+                  className="fill-[var(--faint)] font-mono text-[10px]"
+                >
+                  {b.label}
+                </text>
+              </g>
+            );
+          })}
+          {series.yTicks.map((v) => (
+            <text
+              key={v}
+              x={PAD.left - 8}
+              y={y(v) + 3}
+              textAnchor="end"
+              className="fill-[var(--faint)] font-mono text-[10px]"
+            >
+              {v}
+            </text>
+          ))}
+          {ticks.map((tick) => (
+            <text
+              key={`${tick.label}-${tick.x}`}
+              x={tick.x}
+              y={H - 8}
+              textAnchor="middle"
+              className="fill-[var(--faint)] font-mono text-[10px]"
+            >
+              {tick.label}
+            </text>
+          ))}
+          <motion.path
+            d={area}
+            fill={`url(#${fillId})`}
+            initial={{ opacity: 0 }}
+            animate={draw ? { opacity: 1 } : undefined}
+            transition={{ duration: 1, delay: 1.2 }}
+          />
+          <motion.path
+            d={path}
+            fill="none"
             stroke="var(--accent)"
             strokeWidth={2}
+            strokeLinejoin="round"
+            strokeLinecap="round"
+            initial={{ pathLength: 0 }}
+            animate={draw ? { pathLength: 1 } : undefined}
+            transition={{ duration: 2, ease: [0.65, 0, 0.35, 1] }}
           />
-          <text
-            x={peak.x - 8}
-            y={peak.y - 10}
-            textAnchor="end"
-            className="fill-[var(--text)] font-mono text-[11px]"
+          {points.map(([px, py], i) => (
+            <motion.circle
+              key={i}
+              cx={px}
+              cy={py}
+              r={1.8}
+              fill="var(--accent)"
+              initial={{ opacity: 0 }}
+              animate={draw ? { opacity: 0.7 } : undefined}
+              transition={{ delay: 0.2 + (i / points.length) * 1.8 }}
+            />
+          ))}
+          <motion.g
+            initial={{ opacity: 0 }}
+            animate={draw ? { opacity: 1 } : undefined}
+            transition={{ delay: 2 }}
           >
-            {peak.v} · {series.peakTitle}
-          </text>
-          <circle
-            cx={low.x}
-            cy={low.y}
-            r={4}
-            fill="var(--bg)"
-            stroke="var(--faint)"
-            strokeWidth={1.5}
-          />
-          <text
-            x={low.x + (low.x < W / 2 ? 9 : -9)}
-            y={low.y + 4}
-            textAnchor={low.x < W / 2 ? 'start' : 'end'}
-            className="fill-[var(--faint)] font-mono text-[10px]"
+            <circle
+              cx={peak.x}
+              cy={peak.y}
+              r={5}
+              fill="var(--bg)"
+              stroke="var(--accent)"
+              strokeWidth={2}
+            />
+            <text
+              x={peak.x - 8}
+              y={peak.y - 10}
+              textAnchor="end"
+              className="fill-[var(--text)] font-mono text-[11px]"
+            >
+              {peak.v} · {series.peakTitle}
+            </text>
+            <circle
+              cx={low.x}
+              cy={low.y}
+              r={4}
+              fill="var(--bg)"
+              stroke="var(--faint)"
+              strokeWidth={1.5}
+            />
+            <text
+              x={low.x + (low.x < W / 2 ? 9 : -9)}
+              y={low.y + 4}
+              textAnchor={low.x < W / 2 ? 'start' : 'end'}
+              className="fill-[var(--faint)] font-mono text-[10px]"
+            >
+              {low.v}
+            </text>
+          </motion.g>
+        </svg>
+        {series.annotation && (
+          <div
+            aria-hidden
+            className="pointer-events-none absolute"
+            style={{ left: `${(low.x / W) * 100}%`, top: `${(low.y / H) * 100}%` }}
           >
-            {low.v}
-          </text>
-        </motion.g>
-      </svg>
+            <CircleMark
+              className="absolute h-10 w-16 -translate-x-1/2 -translate-y-1/2"
+              delay={2.2}
+            />
+            <span className="hand absolute -top-6 left-9 -rotate-6 text-lg whitespace-nowrap sm:text-xl">
+              {series.annotation}
+            </span>
+          </div>
+        )}
+      </div>
       <p className="mt-3 text-xs leading-relaxed text-muted">{series.note}</p>
     </figure>
   );

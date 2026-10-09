@@ -27,13 +27,13 @@ export function RatingFlip({ side, onSide }: { side: number; onSide: (side: numb
                 onClick={() => onSide(i)}
                 className={cn(
                   'relative isolate rounded-full px-3.5 py-1 text-sm transition-colors',
-                  side === i ? 'text-accent-ink' : 'text-muted hover:text-text'
+                  side === i ? 'text-bg' : 'text-muted hover:text-text'
                 )}
               >
                 {side === i && (
                   <motion.span
                     layoutId="rating-tab-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-accent"
+                    className="absolute inset-0 -z-10 rounded-full bg-text"
                     transition={{ type: 'spring', stiffness: 400, damping: 34 }}
                   />
                 )}
@@ -51,7 +51,7 @@ export function RatingFlip({ side, onSide }: { side: number; onSide: (side: numb
             size={14}
             className="transition-transform duration-500 group-hover:rotate-180"
           />
-          <span className="hidden sm:inline">Flip, or drag the card</span>
+          <span className="hidden sm:inline">flip it, or drag the card</span>
           <span className="sm:hidden">Flip</span>
         </button>
       </div>
