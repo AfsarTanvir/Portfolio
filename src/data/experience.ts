@@ -20,9 +20,9 @@ export const experience: Experience[] = [
     summary:
       'Building EzyCommunity, a multi-agency, multi-tenant platform where agencies run many independent communities. I work across the community API (AdonisJS) and the Next.js app, and have shipped 550+ commits since February 2026.',
     highlights: [
-      'Implemented a content-moderation workflow around a new moderator permission in the RBAC system: pending-post and pending-edit review queues, soft deletes, and community-scoped queries that close cross-tenant data leaks.',
+      'Implemented a content-moderation workflow around a new moderator permission in the RBAC system: pending-post and pending-edit review queues, soft deletes, and community-scoped queries that enforce tenant isolation.',
       'Reworked the live home and channel feeds: a "new posts" pill that never inserts posts unasked, plus infinite-scroll fixes that removed layout shift and per-render row rebuilds.',
-      'Added cursor pagination to comments and fixed Redis channel-cache invalidation bugs that served stale data.',
+      'Added cursor pagination to comments and improved Redis channel-cache invalidation.',
       'Built the website-builder settings area (fonts, colour variables, custom CSS and JS screens) and contributed to Stripe-backed checkout for paid channels.',
     ],
     stack: ['AdonisJS', 'TypeScript', 'Next.js', 'React', 'MySQL', 'MongoDB', 'Redis', 'Stripe'],

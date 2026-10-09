@@ -54,8 +54,8 @@ export function About() {
         }
       />
 
-      <section className="container-page grid gap-12 lg:grid-cols-[0.8fr_1.4fr] lg:gap-20">
-        <Reveal className="lg:sticky lg:top-28 lg:self-start">
+      <section className="container-page grid gap-12 lg:grid-cols-[20rem_1fr] lg:gap-20">
+        <Reveal className="mx-auto w-full max-w-xs lg:sticky lg:top-28 lg:mx-0 lg:self-start">
           <div className="card overflow-hidden p-2">
             <img
               src={asset(profile.photo)}
@@ -63,7 +63,7 @@ export function About() {
               width={461}
               height={579}
               loading="lazy"
-              className="aspect-[4/5] w-full rounded-[0.9rem] object-cover object-top"
+              className="aspect-[5/6] w-full rounded-[0.9rem] object-cover object-top"
             />
           </div>
           <p className="mt-4 font-mono text-xs text-faint">{profile.location} · UTC+6</p>
@@ -100,8 +100,8 @@ export function About() {
               Production work keeps pulling me toward the layers underneath the features: caching,
               data isolation, scheduling, failure handling. So I build tools to understand them,
               like an API mock server with a careful Redis layer and a job scheduler in Go that has
-              to stay correct after a crash. That curiosity is also why I’m applying for an{' '}
-              <span className="text-text">MSc in Computer Science</span> in the UK or Europe.
+              to stay correct after a crash. That curiosity is also why I plan to pursue an{' '}
+              <span className="text-text">MSc in Computer Science</span>.
             </p>
           </Reveal>
         </div>

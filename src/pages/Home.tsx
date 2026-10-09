@@ -170,7 +170,7 @@ function Hero() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden" />
               <span className="relative inline-flex size-2 rounded-full bg-accent" />
             </span>
-            {profile.availability}
+            {profile.status}
           </p>
 
           <h1 className="mt-7 display text-[clamp(3.5rem,11vw,7.5rem)]">
@@ -222,7 +222,7 @@ function Hero() {
           initial={{ opacity: 0, scale: 0.96, rotate: -2 }}
           animate={{ opacity: 1, scale: 1, rotate: 0 }}
           transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="relative mx-auto w-full max-w-sm lg:max-w-none"
+          className="relative mx-auto w-full max-w-[16rem] sm:max-w-[18rem] lg:mr-6 lg:max-w-[20rem]"
         >
           <div className="card relative overflow-hidden p-2">
             <img
@@ -231,13 +231,13 @@ function Hero() {
               width={461}
               height={579}
               fetchPriority="high"
-              className="aspect-[4/5] w-full rounded-[0.9rem] object-cover object-top grayscale-[15%]"
+              className="aspect-[5/6] w-full rounded-[0.9rem] object-cover object-top grayscale-[15%]"
             />
-            <div className="absolute inset-x-2 bottom-2 rounded-b-[0.9rem] bg-gradient-to-t from-black/70 to-transparent p-5 pt-16 text-white">
+            <div className="absolute inset-x-2 bottom-2 rounded-b-[0.9rem] bg-gradient-to-t from-black/70 to-transparent p-4 pt-12 text-white">
               <p className="font-mono text-[0.7rem] tracking-wider text-white/70 uppercase">
-                Currently
+                Based in
               </p>
-              <p className="mt-1 font-medium">Full Stack Developer at AppifyLab</p>
+              <p className="mt-1 font-medium">{profile.location}</p>
             </div>
           </div>
           <motion.div
@@ -255,7 +255,7 @@ function Hero() {
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.95, duration: 0.6 }}
-            className="card absolute bottom-20 -left-3 px-4 py-3 shadow-xl shadow-black/10 sm:-left-8"
+            className="card absolute bottom-[5.5rem] -left-6 px-4 py-3 shadow-xl shadow-black/10 sm:bottom-28 sm:-left-10"
           >
             <p className="font-mono text-[0.7rem] text-faint">B.Sc. CSE · 2025</p>
             <p className="text-sm font-semibold">
@@ -272,7 +272,7 @@ function Paths() {
   const paths = [
     {
       icon: Briefcase,
-      kicker: 'For hiring teams',
+      kicker: 'Industry',
       title: 'Engineering track',
       body: 'Production work at AppifyLab, case studies with real trade-offs, and a one-page résumé.',
       links: [
@@ -283,7 +283,7 @@ function Paths() {
     },
     {
       icon: GraduationCap,
-      kicker: 'For admissions & supervisors',
+      kicker: 'Academia',
       title: 'Academic track',
       body: 'Degree and CGPA, the questions I want to study, my competitive-programming record, and an academic CV.',
       links: [

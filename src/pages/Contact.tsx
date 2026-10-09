@@ -7,18 +7,18 @@ import { Reveal } from '../components/ui/Reveal';
 import { SocialIcon } from '../components/ui/Icons';
 import { asset } from '../lib/utils';
 
-const openTo = [
+const topics = [
   {
-    title: 'Backend & full-stack roles',
-    body: 'Product teams working on APIs, data and reliability.',
+    title: 'Engineering',
+    body: 'Backend architecture, APIs, caching and data modelling, and lessons from building multi-tenant systems.',
   },
   {
-    title: 'MSc programmes & supervisors',
-    body: 'Distributed, data-intensive or software-engineering projects in the UK and Europe.',
+    title: 'Research & graduate study',
+    body: 'Distributed and data-intensive systems, software engineering, and ideas for dissertation projects.',
   },
   {
-    title: 'Developer-tool collaborations',
-    body: 'API mocking, scheduling, testing tools: happy to compare notes or contribute.',
+    title: 'Developer tools',
+    body: 'API mocking, scheduling and testing tools. Happy to compare notes or contribute.',
   },
 ];
 
@@ -115,7 +115,7 @@ export function Contact() {
                   {
                     href: profile.cv.academic,
                     label: 'Academic CV',
-                    note: 'For MSc applications · PDF',
+                    note: 'For graduate admissions · PDF',
                   },
                 ].map((d) => (
                   <a
@@ -145,10 +145,10 @@ export function Contact() {
 
         <div className="mt-24">
           <Reveal>
-            <p className="eyebrow">Open to</p>
+            <p className="eyebrow">Happy to talk about</p>
           </Reveal>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
-            {openTo.map((o, i) => (
+            {topics.map((o, i) => (
               <Reveal key={o.title} delay={i * 0.06}>
                 <div className="h-full border-t border-line-strong pt-5">
                   <h2 className="font-semibold tracking-tight">{o.title}</h2>

@@ -7,8 +7,8 @@ export const profile = {
   headline: 'Backend-focused full-stack engineer',
   location: 'Moulvibazar, Bangladesh',
   email: 'afsartanvir805@gmail.com',
-  availability:
-    'Open to backend & full-stack roles · Applying for MSc Computer Science (UK & Europe)',
+  /** Short status shown in the hero pill. Keep it factual: no job-seeking signals. */
+  status: 'Full Stack Developer at AppifyLab',
   photo: 'images/afsar-tanvir.webp',
   intro:
     'I build reliable backends and the products on top of them. By day I ship features on EzyCommunity, a multi-tenant community platform at AppifyLab. In my own time I build developer tools: an API mock server, and a job scheduler written in Go.',
@@ -68,7 +68,7 @@ export const now = {
     'Building local-scheduler, a self-hosted job scheduler in Go with SQLite.',
     'Hardening MockFlow: CI, production packaging and import/export round-trips.',
     'Studying system design and distributed systems, and writing it all down in my engineering knowledge base.',
-    'Preparing MSc applications for the UK and Europe.',
+    'Preparing for graduate study in Computer Science.',
   ],
 };
 

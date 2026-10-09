@@ -19,8 +19,8 @@ export function Footer() {
               <ArrowUpRight className="size-8 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
             </a>
             <p className="mt-4 text-muted">
-              Hiring for a backend or full-stack role, or supervising MSc projects in distributed or
-              data-intensive systems? I would love to hear from you.
+              Always happy to talk about backend engineering, developer tools, or research in
+              distributed and data-intensive systems.
             </p>
           </div>
           <ul className="flex flex-wrap gap-2">

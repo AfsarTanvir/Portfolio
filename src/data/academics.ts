@@ -1,6 +1,6 @@
 export const studyGoal = {
-  heading: 'MSc in Computer Science, UK & Europe',
-  body: 'I am applying for a master’s in Computer Science, Advanced Computer Science, Software Engineering or Distributed Systems. I am looking for programmes with a substantial dissertation or project component, ideally in the UK, and I am glad to consider strong programmes elsewhere in Europe.',
+  heading: 'Graduate study in Computer Science',
+  body: 'I plan to pursue a master’s in Computer Science, focusing on distributed systems, data-intensive systems and software engineering, ideally in a programme with a substantial dissertation or research project.',
 };
 
 /** Short motivation shown on /academics. Edit freely; it is the seed of a personal statement. */

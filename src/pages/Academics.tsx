@@ -36,7 +36,7 @@ export function Academics() {
           <ButtonLink href={profile.cv.academic}>
             <FileText size={16} /> Academic CV
           </ButtonLink>
-          <ButtonLink href={`mailto:${profile.email}?subject=MSc%20enquiry`} variant="ghost">
+          <ButtonLink href={`mailto:${profile.email}?subject=Academic%20enquiry`} variant="ghost">
             <Mail size={16} /> Contact me
           </ButtonLink>
         </div>

@@ -7,7 +7,7 @@ const pages: RouteMeta[] = [
     path: '',
     title: 'Afsar Tanvir · Software Engineer',
     description:
-      'Backend-focused full-stack engineer at AppifyLab, builder of developer tools, Codeforces Specialist, and MSc Computer Science applicant.',
+      'Backend-focused full-stack engineer at AppifyLab and builder of developer tools. Codeforces Specialist with interests in distributed and data-intensive systems.',
   },
   {
     path: 'about',
@@ -37,7 +37,7 @@ const pages: RouteMeta[] = [
     path: 'contact',
     title: 'Contact · Afsar Tanvir',
     description:
-      'Get in touch about backend and full-stack roles, collaborations, or MSc supervision.',
+      'Get in touch about engineering, developer tools, collaboration or graduate research.',
   },
 ];
 
