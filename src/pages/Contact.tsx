@@ -1,38 +1,45 @@
-import { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
-import { ArrowUpRight, Check, Copy, FileText } from 'lucide-react'
-import { profile, socials } from '../data/profile'
-import { PageHero } from '../components/ui/Section'
-import { Reveal } from '../components/ui/Reveal'
-import { SocialIcon } from '../components/ui/Icons'
-import { asset } from '../lib/utils'
+import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { ArrowUpRight, Check, Copy, FileText } from 'lucide-react';
+import { profile, socials } from '../data/profile';
+import { PageHero } from '../components/ui/Section';
+import { Reveal } from '../components/ui/Reveal';
+import { SocialIcon } from '../components/ui/Icons';
+import { asset } from '../lib/utils';
 
 const openTo = [
-  { title: 'Backend & full-stack roles', body: 'Product teams working on APIs, data and reliability.' },
-  { title: 'MSc programmes & supervisors', body: 'Distributed, data-intensive or software-engineering projects in the UK and Europe.' },
-  { title: 'Developer-tool collaborations', body: 'API mocking, scheduling, testing tools: happy to compare notes or contribute.' },
-]
+  {
+    title: 'Backend & full-stack roles',
+    body: 'Product teams working on APIs, data and reliability.',
+  },
+  {
+    title: 'MSc programmes & supervisors',
+    body: 'Distributed, data-intensive or software-engineering projects in the UK and Europe.',
+  },
+  {
+    title: 'Developer-tool collaborations',
+    body: 'API mocking, scheduling, testing tools: happy to compare notes or contribute.',
+  },
+];
 
 export function Contact() {
-  const [copied, setCopied] = useState(false)
-  const time = useLocalTime('Asia/Dhaka')
+  const [copied, setCopied] = useState(false);
+  const time = useLocalTime('Asia/Dhaka');
 
   async function copyEmail() {
     try {
-      await navigator.clipboard.writeText(profile.email)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 1800)
+      await navigator.clipboard.writeText(profile.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1800);
     } catch {
-      window.location.href = `mailto:${profile.email}`
+      window.location.href = `mailto:${profile.email}`;
     }
   }
 
   return (
     <>
       <PageHero eyebrow="Contact" title={<>Let’s talk.</>}>
-        <p>
-          Email is the fastest way to reach me. It’s {time} in Bangladesh right now (UTC+6).
-        </p>
+        <p>Email is the fastest way to reach me. It’s {time} in Bangladesh right now (UTC+6).</p>
       </PageHero>
 
       <section className="container-page">
@@ -40,7 +47,10 @@ export function Contact() {
           <div className="card flex flex-col gap-6 p-7 sm:p-10 md:flex-row md:items-center md:justify-between">
             <div className="min-w-0">
               <p className="eyebrow">Email</p>
-              <a href={`mailto:${profile.email}`} className="mt-3 block display text-3xl break-all hover:text-accent sm:text-5xl">
+              <a
+                href={`mailto:${profile.email}`}
+                className="mt-3 block display text-3xl break-all hover:text-accent sm:text-5xl"
+              >
                 {profile.email}
               </a>
             </div>
@@ -72,7 +82,12 @@ export function Contact() {
                 .filter((s) => s.key !== 'email')
                 .map((s) => (
                   <li key={s.key} className="bg-bg">
-                    <a href={s.href} target="_blank" rel="noopener noreferrer" className="group flex h-full items-center justify-between gap-4 p-6 transition-colors hover:bg-surface">
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex h-full items-center justify-between gap-4 p-6 transition-colors hover:bg-surface"
+                    >
                       <span className="flex items-center gap-4">
                         <span className="grid size-11 place-items-center rounded-xl border border-line text-muted transition-colors group-hover:border-accent group-hover:text-accent">
                           <SocialIcon name={s.key} />
@@ -82,7 +97,10 @@ export function Contact() {
                           <span className="block font-mono text-xs text-faint">{s.handle}</span>
                         </span>
                       </span>
-                      <ArrowUpRight size={16} className="text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                      <ArrowUpRight
+                        size={16}
+                        className="text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                      />
                     </a>
                   </li>
                 ))}
@@ -94,9 +112,19 @@ export function Contact() {
               <div className="mt-5 space-y-3">
                 {[
                   { href: profile.cv.resume, label: 'Résumé', note: 'Industry · 1 page PDF' },
-                  { href: profile.cv.academic, label: 'Academic CV', note: 'For MSc applications · PDF' },
+                  {
+                    href: profile.cv.academic,
+                    label: 'Academic CV',
+                    note: 'For MSc applications · PDF',
+                  },
                 ].map((d) => (
-                  <a key={d.href} href={asset(d.href)} target="_blank" rel="noopener" className="group flex items-center justify-between rounded-xl border border-line p-4 transition-colors hover:border-accent">
+                  <a
+                    key={d.href}
+                    href={asset(d.href)}
+                    target="_blank"
+                    rel="noopener"
+                    className="group flex items-center justify-between rounded-xl border border-line p-4 transition-colors hover:border-accent"
+                  >
                     <span className="flex items-center gap-3">
                       <FileText size={18} className="text-accent" />
                       <span>
@@ -104,7 +132,10 @@ export function Contact() {
                         <span className="block text-xs text-muted">{d.note}</span>
                       </span>
                     </span>
-                    <ArrowUpRight size={16} className="text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                    <ArrowUpRight
+                      size={16}
+                      className="text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                    />
                   </a>
                 ))}
               </div>
@@ -129,15 +160,18 @@ export function Contact() {
         </div>
       </section>
     </>
-  )
+  );
 }
 
 function useLocalTime(timeZone: string) {
-  const format = () => new Intl.DateTimeFormat('en-GB', { timeZone, hour: '2-digit', minute: '2-digit' }).format(new Date())
-  const [time, setTime] = useState(format)
+  const format = () =>
+    new Intl.DateTimeFormat('en-GB', { timeZone, hour: '2-digit', minute: '2-digit' }).format(
+      new Date()
+    );
+  const [time, setTime] = useState(format);
   useEffect(() => {
-    const id = setInterval(() => setTime(format()), 30_000)
-    return () => clearInterval(id)
-  }, [timeZone])
-  return time
+    const id = setInterval(() => setTime(format()), 30_000);
+    return () => clearInterval(id);
+  }, [timeZone]);
+  return time;
 }

@@ -31,13 +31,13 @@ npm run preview   # serve dist/ locally
 
 All text lives in [`src/data/`](src/data). Pages read from these files, so you rarely need to touch components.
 
-| File | What it holds |
-|---|---|
-| `profile.ts` | Name, intro, availability line, links, headline stats, "Now" list, skills |
-| `experience.ts` | Jobs and the filterable "Journey" timeline on About |
-| `projects.ts` | Case studies (each becomes `/projects/<slug>`) and the archive table |
-| `academics.ts` | Education, study goal, interests, contests and Codeforces history |
-| `seo.ts` | Page titles and descriptions used for tabs and link previews |
+| File            | What it holds                                                             |
+| --------------- | ------------------------------------------------------------------------- |
+| `profile.ts`    | Name, intro, availability line, links, headline stats, "Now" list, skills |
+| `experience.ts` | Jobs and the filterable "Journey" timeline on About                       |
+| `projects.ts`   | Case studies (each becomes `/projects/<slug>`) and the archive table      |
+| `academics.ts`  | Education, study goal, interests, contests and Codeforces history         |
+| `seo.ts`        | Page titles and descriptions used for tabs and link previews              |
 
 Static files go in [`public/`](public): `images/` for the photo, `cv/` for the résumé PDFs and `og.png` for the social preview image.
 

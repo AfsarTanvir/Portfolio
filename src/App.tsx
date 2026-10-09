@@ -1,26 +1,26 @@
-import { useEffect } from 'react'
-import { Route, Routes, useLocation } from 'react-router'
-import { AnimatePresence, MotionConfig, motion } from 'motion/react'
-import { Header } from './components/layout/Header'
-import { Footer } from './components/layout/Footer'
-import { ScrollProgress } from './components/layout/ScrollProgress'
-import { PointerGlow } from './components/layout/PointerGlow'
-import { titleFor } from './data/seo'
-import { Home } from './pages/Home'
-import { About } from './pages/About'
-import { Experience } from './pages/Experience'
-import { Projects } from './pages/Projects'
-import { ProjectDetail } from './pages/ProjectDetail'
-import { Academics } from './pages/Academics'
-import { Contact } from './pages/Contact'
-import { NotFound } from './pages/NotFound'
+import { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router';
+import { AnimatePresence, MotionConfig, motion } from 'motion/react';
+import { Header } from './components/layout/Header';
+import { Footer } from './components/layout/Footer';
+import { ScrollProgress } from './components/layout/ScrollProgress';
+import { PointerGlow } from './components/layout/PointerGlow';
+import { titleFor } from './data/seo';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Experience } from './pages/Experience';
+import { Projects } from './pages/Projects';
+import { ProjectDetail } from './pages/ProjectDetail';
+import { Academics } from './pages/Academics';
+import { Contact } from './pages/Contact';
+import { NotFound } from './pages/NotFound';
 
 export function App() {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
-    document.title = titleFor(location.pathname)
-  }, [location.pathname])
+    document.title = titleFor(location.pathname);
+  }, [location.pathname]);
 
   return (
     // reducedMotion="user": when the OS asks for reduced motion, Motion drops
@@ -35,7 +35,11 @@ export function App() {
       <ScrollProgress />
       <PointerGlow />
       <Header />
-      <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scrollTo({ top: 0, behavior: 'instant' })}>
+      <AnimatePresence
+        mode="wait"
+        initial={false}
+        onExitComplete={() => window.scrollTo({ top: 0, behavior: 'instant' })}
+      >
         <motion.main
           id="main"
           key={location.pathname}
@@ -58,5 +62,5 @@ export function App() {
       </AnimatePresence>
       <Footer />
     </MotionConfig>
-  )
+  );
 }

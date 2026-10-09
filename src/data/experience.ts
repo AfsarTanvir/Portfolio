@@ -1,14 +1,14 @@
 export type Experience = {
-  role: string
-  org: string
-  orgUrl?: string
-  period: string
-  location?: string
-  summary: string
-  highlights: string[]
-  stack: string[]
-  links?: { label: string; href: string }[]
-}
+  role: string;
+  org: string;
+  orgUrl?: string;
+  period: string;
+  location?: string;
+  summary: string;
+  highlights: string[];
+  stack: string[];
+  links?: { label: string; href: string }[];
+};
 
 export const experience: Experience[] = [
   {
@@ -45,12 +45,16 @@ export const experience: Experience[] = [
         label: 'TaskForge.NET',
         href: 'https://github.com/Learnathon-By-Geeky-Solutions/brainstormers/tree/development/TaskForge.NET',
       },
-      { label: 'Certificate', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7336042619552047105/' },
+      {
+        label: 'Certificate',
+        href: 'https://www.linkedin.com/feed/update/urn:li:activity:7336042619552047105/',
+      },
     ],
   },
-]
+];
 
-export type JourneyTag = 'Industry' | 'Academic' | 'Competitive programming' | 'Leadership' | 'Building'
+export type JourneyTag =
+  'Industry' | 'Academic' | 'Competitive programming' | 'Leadership' | 'Building';
 
 export const journey: { date: string; title: string; detail: string; tag: JourneyTag }[] = [
   {
@@ -62,7 +66,8 @@ export const journey: { date: string; title: string; detail: string; tag: Journe
   {
     date: 'May 2026',
     title: 'Started MockFlow',
-    detail: 'A collaborative API mock server that grew from a 30-day MVP into a multi-team product.',
+    detail:
+      'A collaborative API mock server that grew from a 30-day MVP into a multi-team product.',
     tag: 'Building',
   },
   {
@@ -104,7 +109,8 @@ export const journey: { date: string; title: string; detail: string; tag: Journe
   {
     date: '2024 — 2025',
     title: 'Coordinator, SEC Programming Club',
-    detail: 'Ran selection contests and warm-up sessions, and managed team registration for inter-university contests.',
+    detail:
+      'Ran selection contests and warm-up sessions, and managed team registration for inter-university contests.',
     tag: 'Leadership',
   },
   {
@@ -119,4 +125,4 @@ export const journey: { date: string; title: string; detail: string; tag: Journe
     detail: 'Sylhet Engineering College.',
     tag: 'Academic',
   },
-]
+];

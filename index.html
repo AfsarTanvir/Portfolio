@@ -35,7 +35,11 @@
         "@type": "Person",
         "name": "Afsar Tanvir",
         "jobTitle": "Full Stack Developer",
-        "worksFor": { "@type": "Organization", "name": "AppifyLab", "url": "https://www.appifylab.com/" },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "AppifyLab",
+          "url": "https://www.appifylab.com/"
+        },
         "alumniOf": { "@type": "CollegeOrUniversity", "name": "Sylhet Engineering College" },
         "url": "https://afsartanvir.github.io/Portfolio/",
         "sameAs": [
@@ -49,20 +53,28 @@
     <script>
       // Apply the saved or system theme before first paint to avoid a flash.
       try {
-        var saved = localStorage.getItem('theme')
-        var theme = saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
-        document.documentElement.dataset.theme = theme
+        var saved = localStorage.getItem('theme');
+        var theme =
+          saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.dataset.theme = theme;
       } catch (e) {}
     </script>
   </head>
   <body>
     <div id="root"></div>
     <noscript>
-      <main style="font-family: system-ui, sans-serif; max-width: 40rem; margin: 4rem auto; padding: 0 1rem">
+      <main
+        style="
+          font-family: system-ui, sans-serif;
+          max-width: 40rem;
+          margin: 4rem auto;
+          padding: 0 1rem;
+        "
+      >
         <h1>Afsar Tanvir</h1>
         <p>
-          Backend-focused full-stack engineer at AppifyLab, builder of developer tools, Codeforces Specialist, and MSc
-          Computer Science applicant. Contact: afsartanvir805@gmail.com ·
+          Backend-focused full-stack engineer at AppifyLab, builder of developer tools, Codeforces
+          Specialist, and MSc Computer Science applicant. Contact: afsartanvir805@gmail.com ·
           <a href="https://github.com/AfsarTanvir">GitHub</a> ·
           <a href="https://www.linkedin.com/in/afsar-tanvir-81ab17270/">LinkedIn</a>
         </p>

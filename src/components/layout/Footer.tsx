@@ -1,8 +1,8 @@
-import { Link } from 'react-router'
-import { ArrowUpRight } from 'lucide-react'
-import { profile, socials } from '../../data/profile'
-import { SocialIcon } from '../ui/Icons'
-import { navItems } from './Header'
+import { Link } from 'react-router';
+import { ArrowUpRight } from 'lucide-react';
+import { profile, socials } from '../../data/profile';
+import { SocialIcon } from '../ui/Icons';
+import { navItems } from './Header';
 
 export function Footer() {
   return (
@@ -19,8 +19,8 @@ export function Footer() {
               <ArrowUpRight className="size-8 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
             </a>
             <p className="mt-4 text-muted">
-              Hiring for a backend or full-stack role, or supervising MSc projects in distributed or data-intensive
-              systems? I would love to hear from you.
+              Hiring for a backend or full-stack role, or supervising MSc projects in distributed or
+              data-intensive systems? I would love to hear from you.
             </p>
           </div>
           <ul className="flex flex-wrap gap-2">
@@ -57,5 +57,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

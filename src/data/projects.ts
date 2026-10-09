@@ -1,32 +1,33 @@
 // Project case studies. Each entry becomes a card on /projects and a page at /projects/<slug>.
 // Keep this file free of asset imports: vite.config.ts reads it to pre-render routes.
 
-export type ProjectCategory = 'Backend' | 'Full-stack' | 'Systems' | 'Developer tools' | 'Machine learning' | '.NET'
-export type ProjectVisual = 'mockflow' | 'scheduler' | 'audio' | 'taskboard' | 'predictor'
+export type ProjectCategory =
+  'Backend' | 'Full-stack' | 'Systems' | 'Developer tools' | 'Machine learning' | '.NET';
+export type ProjectVisual = 'mockflow' | 'scheduler' | 'audio' | 'taskboard' | 'predictor';
 
 export type Project = {
-  slug: string
-  name: string
-  tagline: string
-  period: string
-  role: string
-  status?: 'In progress' | 'Shipped'
-  categories: ProjectCategory[]
-  stack: string[]
-  visual: ProjectVisual
-  featured?: boolean
-  repo?: string
-  live?: string
-  extraLinks?: { label: string; href: string }[]
-  metrics?: { value: string; label: string }[]
-  problem: string
-  highlights: string[]
-  decisions?: { title: string; body: string }[]
+  slug: string;
+  name: string;
+  tagline: string;
+  period: string;
+  role: string;
+  status?: 'In progress' | 'Shipped';
+  categories: ProjectCategory[];
+  stack: string[];
+  visual: ProjectVisual;
+  featured?: boolean;
+  repo?: string;
+  live?: string;
+  extraLinks?: { label: string; href: string }[];
+  metrics?: { value: string; label: string }[];
+  problem: string;
+  highlights: string[];
+  decisions?: { title: string; body: string }[];
   /** Optional request/data flow, drawn as a diagram on the case-study page. */
-  flow?: { label: string; detail: string }[]
+  flow?: { label: string; detail: string }[];
   /** One-line note on how the project relates to an academic interest (shown on /academics). */
-  researchAngle?: string
-}
+  researchAngle?: string;
+};
 
 export const projects: Project[] = [
   {
@@ -37,7 +38,16 @@ export const projects: Project[] = [
     role: 'Solo: product, backend, frontend, tests',
     status: 'In progress',
     categories: ['Full-stack', 'Backend', 'Developer tools'],
-    stack: ['AdonisJS 6', 'TypeScript', 'Next.js', 'React', 'PostgreSQL', 'Redis', 'Tailwind CSS', 'Japa'],
+    stack: [
+      'AdonisJS 6',
+      'TypeScript',
+      'Next.js',
+      'React',
+      'PostgreSQL',
+      'Redis',
+      'Tailwind CSS',
+      'Japa',
+    ],
     visual: 'mockflow',
     featured: true,
     repo: 'https://github.com/AfsarTanvir/mockflow',
@@ -81,7 +91,8 @@ export const projects: Project[] = [
       { label: 'Render', detail: 'faker.js template and path params' },
       { label: 'Respond', detail: 'status, headers, optional delay' },
     ],
-    researchAngle: 'Caching and consistency in a multi-tenant system: stampedes, negative caching, invalidation by scope.',
+    researchAngle:
+      'Caching and consistency in a multi-tenant system: stampedes, negative caching, invalidation by scope.',
   },
   {
     slug: 'local-scheduler',
@@ -130,12 +141,14 @@ export const projects: Project[] = [
       { label: 'Runner', detail: 'one goroutine per run, with timeout' },
       { label: 'Result', detail: 'HTTP response or exit code, recorded' },
     ],
-    researchAngle: 'Execution guarantees under failure: what "at most once" means when a scheduler can crash mid-run.',
+    researchAngle:
+      'Execution guarantees under failure: what "at most once" means when a scheduler can crash mid-run.',
   },
   {
     slug: 'audio-visualizer',
     name: 'Audio Visualizer',
-    tagline: 'Upload a track and watch it move: real-time frequency bars and waveforms in the browser.',
+    tagline:
+      'Upload a track and watch it move: real-time frequency bars and waveforms in the browser.',
     period: 'Mar — May 2026',
     role: 'Solo',
     status: 'Shipped',
@@ -165,7 +178,10 @@ export const projects: Project[] = [
     visual: 'taskboard',
     repo: 'https://github.com/Learnathon-By-Geeky-Solutions/brainstormers/tree/development/TaskForge.NET',
     extraLinks: [
-      { label: 'Certificate', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7336042619552047105/' },
+      {
+        label: 'Certificate',
+        href: 'https://www.linkedin.com/feed/update/urn:li:activity:7336042619552047105/',
+      },
     ],
     problem:
       'Learn professional .NET development the way teams actually work: layered architecture, code review, and shared ownership of one codebase.',
@@ -187,7 +203,8 @@ export const projects: Project[] = [
     stack: ['Python', 'TensorFlow / Keras', 'LSTM', 'Flask', 'Tailwind CSS'],
     visual: 'predictor',
     repo: 'https://github.com/AfsarTanvir/Next-Word-Predictor-LSTM',
-    problem: 'My first end-to-end NLP model: from raw text to a model behind a small web interface.',
+    problem:
+      'My first end-to-end NLP model: from raw text to a model behind a small web interface.',
     highlights: [
       'Text pipeline with tokenisation, n-gram sequence generation and padding.',
       'LSTM network in TensorFlow/Keras, evaluated with top-5 accuracy as well as top-1.',
@@ -195,89 +212,96 @@ export const projects: Project[] = [
     ],
     researchAngle: 'An earlier exploration of sequence models and NLP.',
   },
-]
+];
 
 /** Smaller repositories, shown as a compact archive table. */
-export const archive: { year: string; name: string; note: string; stack: string; href: string }[] = [
-  {
-    year: '2026',
-    name: 'Engineering knowledge base',
-    note: 'My notes on backend, databases, caching, networking and system design',
-    stack: 'Markdown',
-    href: 'https://github.com/AfsarTanvir/engineering-knowledge-base',
-  },
-  {
-    year: '2026',
-    name: 'Animation',
-    note: 'A structured study of CSS transitions, transforms and keyframes',
-    stack: 'HTML · CSS',
-    href: 'https://github.com/AfsarTanvir/Animation',
-  },
-  { year: '2026', name: 'DotNet-with-AI', note: '.NET experiments', stack: 'C#', href: 'https://github.com/AfsarTanvir/DotNet-with-AI' },
-  {
-    year: '2025',
-    name: 'AdonisJS Basic',
-    note: 'Learning AdonisJS from first principles',
-    stack: 'TypeScript',
-    href: 'https://github.com/AfsarTanvir/AdonisJS_Basic',
-  },
-  {
-    year: '2025',
-    name: 'Kanban Board',
-    note: 'Kanban board built while learning React',
-    stack: 'React · TypeScript',
-    href: 'https://github.com/AfsarTanvir/KanbanBoard-Using-React',
-  },
-  {
-    year: '2025',
-    name: 'React Auth',
-    note: 'Authentication and authorisation flows in React',
-    stack: 'React · TypeScript',
-    href: 'https://github.com/AfsarTanvir/React-Authentication-and-Authorization',
-  },
-  {
-    year: '2025',
-    name: 'Dynamic Form',
-    note: 'Dynamic forms in React',
-    stack: 'React · TypeScript',
-    href: 'https://github.com/AfsarTanvir/Dynamic-Form',
-  },
-  {
-    year: '2025',
-    name: 'Templates for CP',
-    note: 'My competitive-programming library',
-    stack: 'C++',
-    href: 'https://github.com/AfsarTanvir/Templates-for-CP',
-  },
-  {
-    year: '2025',
-    name: 'Social Media',
-    note: 'Social media app built while learning ASP.NET Core',
-    stack: 'C# · ASP.NET Core',
-    href: 'https://github.com/AfsarTanvir/Social-Media',
-  },
-  {
-    year: '2025',
-    name: 'Bulky Book',
-    note: 'Book management web app (CRUD, MVC, Razor)',
-    stack: 'C# · ASP.NET Core MVC',
-    href: 'https://github.com/AfsarTanvir/BookManagementSystem',
-  },
-  {
-    year: '2025',
-    name: 'Library & Hotel Management',
-    note: 'Classic management systems built while learning .NET',
-    stack: 'C#',
-    href: 'https://github.com/AfsarTanvir/LibraryManagementSystem',
-  },
-  {
-    year: '2024',
-    name: 'Digital Image Processing',
-    note: 'Coursework notebooks',
-    stack: 'Python · Jupyter',
-    href: 'https://github.com/AfsarTanvir/DIP',
-  },
-]
+export const archive: { year: string; name: string; note: string; stack: string; href: string }[] =
+  [
+    {
+      year: '2026',
+      name: 'Engineering knowledge base',
+      note: 'My notes on backend, databases, caching, networking and system design',
+      stack: 'Markdown',
+      href: 'https://github.com/AfsarTanvir/engineering-knowledge-base',
+    },
+    {
+      year: '2026',
+      name: 'Animation',
+      note: 'A structured study of CSS transitions, transforms and keyframes',
+      stack: 'HTML · CSS',
+      href: 'https://github.com/AfsarTanvir/Animation',
+    },
+    {
+      year: '2026',
+      name: 'DotNet-with-AI',
+      note: '.NET experiments',
+      stack: 'C#',
+      href: 'https://github.com/AfsarTanvir/DotNet-with-AI',
+    },
+    {
+      year: '2025',
+      name: 'AdonisJS Basic',
+      note: 'Learning AdonisJS from first principles',
+      stack: 'TypeScript',
+      href: 'https://github.com/AfsarTanvir/AdonisJS_Basic',
+    },
+    {
+      year: '2025',
+      name: 'Kanban Board',
+      note: 'Kanban board built while learning React',
+      stack: 'React · TypeScript',
+      href: 'https://github.com/AfsarTanvir/KanbanBoard-Using-React',
+    },
+    {
+      year: '2025',
+      name: 'React Auth',
+      note: 'Authentication and authorisation flows in React',
+      stack: 'React · TypeScript',
+      href: 'https://github.com/AfsarTanvir/React-Authentication-and-Authorization',
+    },
+    {
+      year: '2025',
+      name: 'Dynamic Form',
+      note: 'Dynamic forms in React',
+      stack: 'React · TypeScript',
+      href: 'https://github.com/AfsarTanvir/Dynamic-Form',
+    },
+    {
+      year: '2025',
+      name: 'Templates for CP',
+      note: 'My competitive-programming library',
+      stack: 'C++',
+      href: 'https://github.com/AfsarTanvir/Templates-for-CP',
+    },
+    {
+      year: '2025',
+      name: 'Social Media',
+      note: 'Social media app built while learning ASP.NET Core',
+      stack: 'C# · ASP.NET Core',
+      href: 'https://github.com/AfsarTanvir/Social-Media',
+    },
+    {
+      year: '2025',
+      name: 'Bulky Book',
+      note: 'Book management web app (CRUD, MVC, Razor)',
+      stack: 'C# · ASP.NET Core MVC',
+      href: 'https://github.com/AfsarTanvir/BookManagementSystem',
+    },
+    {
+      year: '2025',
+      name: 'Library & Hotel Management',
+      note: 'Classic management systems built while learning .NET',
+      stack: 'C#',
+      href: 'https://github.com/AfsarTanvir/LibraryManagementSystem',
+    },
+    {
+      year: '2024',
+      name: 'Digital Image Processing',
+      note: 'Coursework notebooks',
+      stack: 'Python · Jupyter',
+      href: 'https://github.com/AfsarTanvir/DIP',
+    },
+  ];
 
 export const projectCategories: ProjectCategory[] = [
   'Backend',
@@ -286,4 +310,4 @@ export const projectCategories: ProjectCategory[] = [
   'Developer tools',
   'Machine learning',
   '.NET',
-]
+];

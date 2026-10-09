@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react'
-import { useLocation } from 'react-router'
-import { motion, useInView } from 'motion/react'
-import { ArrowUpRight, FileText, Mail } from 'lucide-react'
+import { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router';
+import { motion, useInView } from 'motion/react';
+import { ArrowUpRight, FileText, Mail } from 'lucide-react';
 import {
   contests,
   earlierExploration,
@@ -11,19 +11,26 @@ import {
   motivation,
   ratings,
   studyGoal,
-} from '../data/academics'
-import { profile } from '../data/profile'
-import { PageHero, SectionHeading } from '../components/ui/Section'
-import { Reveal } from '../components/ui/Reveal'
-import { ButtonLink, SmartLink } from '../components/ui/SmartLink'
-import { RatingChart } from '../components/RatingChart'
+} from '../data/academics';
+import { profile } from '../data/profile';
+import { PageHero, SectionHeading } from '../components/ui/Section';
+import { Reveal } from '../components/ui/Reveal';
+import { ButtonLink, SmartLink } from '../components/ui/SmartLink';
+import { RatingChart } from '../components/RatingChart';
 
 export function Academics() {
-  useScrollToHash()
+  useScrollToHash();
 
   return (
     <>
-      <PageHero eyebrow="Academics" title={<>Academic profile <em className="text-muted">& what I want to study</em></>}>
+      <PageHero
+        eyebrow="Academics"
+        title={
+          <>
+            Academic profile <em className="text-muted">& what I want to study</em>
+          </>
+        }
+      >
         <p>{studyGoal.body}</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <ButtonLink href={profile.cv.academic}>
@@ -54,9 +61,14 @@ export function Academics() {
         </Reveal>
         <Reveal delay={0.08}>
           <div className="card relative h-full overflow-hidden p-7 sm:p-9">
-            <div aria-hidden className="absolute -right-20 -bottom-24 size-64 rounded-full bg-accent/10 blur-3xl" />
+            <div
+              aria-hidden
+              className="absolute -right-20 -bottom-24 size-64 rounded-full bg-accent/10 blur-3xl"
+            />
             <p className="eyebrow">Why an MSc, and why now</p>
-            <blockquote className="relative mt-4 display text-2xl leading-snug sm:text-[1.7rem]">“{motivation}”</blockquote>
+            <blockquote className="relative mt-4 display text-2xl leading-snug sm:text-[1.7rem]">
+              “{motivation}”
+            </blockquote>
             <p className="relative mt-5 font-mono text-xs text-faint">{studyGoal.heading}</p>
           </div>
         </Reveal>
@@ -80,15 +92,25 @@ export function Academics() {
                 <p className="font-mono text-xs text-accent">0{i + 1}</p>
                 <h3 className="mt-3 text-xl font-semibold tracking-tight">{it.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted">{it.summary}</p>
-                <p className="mt-5 border-l-2 border-accent pl-4 display text-xl leading-snug italic">{it.question}</p>
+                <p className="mt-5 border-l-2 border-accent pl-4 display text-xl leading-snug italic">
+                  {it.question}
+                </p>
                 <div className="mt-auto pt-6">
-                  <p className="font-mono text-[0.7rem] tracking-wider text-faint uppercase">Evidence</p>
+                  <p className="font-mono text-[0.7rem] tracking-wider text-faint uppercase">
+                    Evidence
+                  </p>
                   <ul className="mt-2 space-y-1.5 text-sm">
                     {it.evidence.map((e) => (
                       <li key={e.label}>
-                        <SmartLink href={e.href} className="group inline-flex items-center gap-1 text-text hover:text-accent">
+                        <SmartLink
+                          href={e.href}
+                          className="group inline-flex items-center gap-1 text-text hover:text-accent"
+                        >
                           {e.label}
-                          <ArrowUpRight size={13} className="text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                          <ArrowUpRight
+                            size={13}
+                            className="text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                          />
                         </SmartLink>
                       </li>
                     ))}
@@ -99,12 +121,18 @@ export function Academics() {
           ))}
         </div>
         <Reveal className="mt-5">
-          <SmartLink href={earlierExploration.href} className="card group flex flex-col gap-2 p-6 transition-colors hover:border-line-strong sm:flex-row sm:items-center sm:justify-between">
+          <SmartLink
+            href={earlierExploration.href}
+            className="card group flex flex-col gap-2 p-6 transition-colors hover:border-line-strong sm:flex-row sm:items-center sm:justify-between"
+          >
             <span>
               <span className="font-semibold tracking-tight">{earlierExploration.title}</span>
               <span className="mt-1 block text-sm text-muted">{earlierExploration.body}</span>
             </span>
-            <ArrowUpRight size={18} className="shrink-0 text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+            <ArrowUpRight
+              size={18}
+              className="shrink-0 text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+            />
           </SmartLink>
         </Reveal>
       </section>
@@ -131,7 +159,12 @@ export function Academics() {
                   {r.href && (
                     <>
                       {' · '}
-                      <a href={r.href} target="_blank" rel="noopener noreferrer" className="text-text hover:text-accent">
+                      <a
+                        href={r.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-text hover:text-accent"
+                      >
                         {r.handle}
                       </a>
                     </>
@@ -161,7 +194,10 @@ export function Academics() {
                   </span>
                   <span className="inline-flex items-center gap-2 pl-12 text-accent sm:pl-0">
                     {c.result}
-                    <ArrowUpRight size={15} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    <ArrowUpRight
+                      size={15}
+                      className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    />
                   </span>
                 </a>
               </li>
@@ -172,7 +208,10 @@ export function Academics() {
 
       {/* Leadership */}
       <section className="container-page mt-32">
-        <SectionHeading eyebrow="Leadership & service" title="Giving back to the club that taught me" />
+        <SectionHeading
+          eyebrow="Leadership & service"
+          title="Giving back to the club that taught me"
+        />
         {leadership.map((l) => (
           <Reveal key={l.org}>
             <div className="card flex flex-col gap-3 p-7 sm:flex-row sm:items-start sm:justify-between">
@@ -188,15 +227,21 @@ export function Academics() {
         ))}
       </section>
     </>
-  )
+  );
 }
 
 function CgpaRing({ value, scale }: { value: number; scale: number }) {
-  const ref = useRef<SVGSVGElement>(null)
-  const inView = useInView(ref, { once: true, amount: 0.6 })
+  const ref = useRef<SVGSVGElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.6 });
   return (
     <div className="relative mx-auto size-36 shrink-0 sm:mx-0">
-      <svg ref={ref} viewBox="0 0 120 120" className="size-full -rotate-90" role="img" aria-label={`CGPA ${value} out of ${scale}`}>
+      <svg
+        ref={ref}
+        viewBox="0 0 120 120"
+        className="size-full -rotate-90"
+        role="img"
+        aria-label={`CGPA ${value} out of ${scale}`}
+      >
         <circle cx="60" cy="60" r="52" fill="none" stroke="var(--line)" strokeWidth="8" />
         <motion.circle
           cx="60"
@@ -218,15 +263,18 @@ function CgpaRing({ value, scale }: { value: number; scale: number }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 /** Scroll to #hash after the page transition (e.g. /academics#interests). */
 function useScrollToHash() {
-  const { hash } = useLocation()
+  const { hash } = useLocation();
   useEffect(() => {
-    if (!hash) return
-    const id = setTimeout(() => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' }), 120)
-    return () => clearTimeout(id)
-  }, [hash])
+    if (!hash) return;
+    const id = setTimeout(
+      () => document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' }),
+      120
+    );
+    return () => clearTimeout(id);
+  }, [hash]);
 }

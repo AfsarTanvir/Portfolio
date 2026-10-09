@@ -1,45 +1,51 @@
-import { useEffect, useState, type MouseEvent } from 'react'
-import { flushSync } from 'react-dom'
-import { Moon, Sun } from 'lucide-react'
+import { useEffect, useState, type MouseEvent } from 'react';
+import { flushSync } from 'react-dom';
+import { Moon, Sun } from 'lucide-react';
 
-type Theme = 'light' | 'dark'
+type Theme = 'light' | 'dark';
 
 function currentTheme(): Theme {
-  return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
+  return document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme>('dark')
+  const [theme, setTheme] = useState<Theme>('dark');
 
-  useEffect(() => setTheme(currentTheme()), [])
+  useEffect(() => setTheme(currentTheme()), []);
 
   function apply(next: Theme) {
-    document.documentElement.dataset.theme = next
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', next === 'dark' ? '#0c0d10' : '#f6f4ef')
+    document.documentElement.dataset.theme = next;
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute('content', next === 'dark' ? '#0c0d10' : '#f6f4ef');
     try {
-      localStorage.setItem('theme', next)
+      localStorage.setItem('theme', next);
     } catch {
       // Storage can be blocked (private mode); the theme still applies for this visit.
     }
-    setTheme(next)
+    setTheme(next);
   }
 
   function toggle(event: MouseEvent<HTMLButtonElement>) {
-    const next: Theme = theme === 'dark' ? 'light' : 'dark'
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!document.startViewTransition || reduce) return apply(next)
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!document.startViewTransition || reduce) return apply(next);
 
     // Circular reveal from the button, via the View Transitions API.
-    const x = event.clientX || window.innerWidth - 40
-    const y = event.clientY || 40
-    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y))
-    const transition = document.startViewTransition(() => flushSync(() => apply(next)))
+    const x = event.clientX || window.innerWidth - 40;
+    const y = event.clientY || 40;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const transition = document.startViewTransition(() => flushSync(() => apply(next)));
     transition.ready.then(() => {
       document.documentElement.animate(
         { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
-        { duration: 450, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' },
-      )
-    })
+        {
+          duration: 450,
+          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          pseudoElement: '::view-transition-new(root)',
+        }
+      );
+    });
   }
 
   return (
@@ -51,5 +57,5 @@ export function ThemeToggle() {
     >
       {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
     </button>
-  )
+  );
 }

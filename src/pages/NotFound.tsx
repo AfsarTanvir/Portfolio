@@ -1,6 +1,6 @@
-import { ArrowLeft } from 'lucide-react'
-import { ButtonLink } from '../components/ui/SmartLink'
-import { stagger } from '../lib/utils'
+import { ArrowLeft } from 'lucide-react';
+import { ButtonLink } from '../components/ui/SmartLink';
+import { stagger } from '../lib/utils';
 
 export function NotFound() {
   return (
@@ -22,5 +22,5 @@ export function NotFound() {
         </div>
       </div>
     </section>
-  )
+  );
 }

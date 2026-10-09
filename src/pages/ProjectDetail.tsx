@@ -1,29 +1,34 @@
-import type { ReactNode } from 'react'
-import { Link, useParams } from 'react-router'
-import { motion } from 'motion/react'
-import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from 'lucide-react'
-import { projects, type Project } from '../data/projects'
-import { ProjectVisual } from '../components/ProjectVisual'
-import { Reveal } from '../components/ui/Reveal'
-import { Tag } from '../components/ui/Section'
-import { GitHubIcon } from '../components/ui/Icons'
-import { stagger } from '../lib/utils'
-import { NotFound } from './NotFound'
+import type { ReactNode } from 'react';
+import { Link, useParams } from 'react-router';
+import { motion } from 'motion/react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from 'lucide-react';
+import { projects, type Project } from '../data/projects';
+import { ProjectVisual } from '../components/ProjectVisual';
+import { Reveal } from '../components/ui/Reveal';
+import { Tag } from '../components/ui/Section';
+import { GitHubIcon } from '../components/ui/Icons';
+import { stagger } from '../lib/utils';
+import { NotFound } from './NotFound';
 
 export function ProjectDetail() {
-  const { slug } = useParams()
-  const index = projects.findIndex((p) => p.slug === slug)
-  const project = projects[index]
-  if (!project) return <NotFound />
+  const { slug } = useParams();
+  const index = projects.findIndex((p) => p.slug === slug);
+  const project = projects[index];
+  if (!project) return <NotFound />;
 
-  const prev = projects[(index - 1 + projects.length) % projects.length]!
-  const next = projects[(index + 1) % projects.length]!
+  const prev = projects[(index - 1 + projects.length) % projects.length]!;
+  const next = projects[(index + 1) % projects.length]!;
 
   return (
     <article>
       <header className="container-page pt-10 sm:pt-14">
-        <Link to="/projects" data-animate className="group inline-flex items-center gap-2 text-sm text-muted hover:text-text">
-          <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" /> All projects
+        <Link
+          to="/projects"
+          data-animate
+          className="group inline-flex items-center gap-2 text-sm text-muted hover:text-text"
+        >
+          <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" /> All
+          projects
         </Link>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-end">
@@ -34,7 +39,11 @@ export function ProjectDetail() {
             <h1 data-animate style={stagger(2)} className="mt-4 display text-6xl sm:text-8xl">
               {project.name}
             </h1>
-            <p data-animate style={stagger(3)} className="mt-5 max-w-xl display text-2xl text-muted italic sm:text-3xl">
+            <p
+              data-animate
+              style={stagger(3)}
+              className="mt-5 max-w-xl display text-2xl text-muted italic sm:text-3xl"
+            >
               {project.tagline}
             </p>
           </div>
@@ -44,17 +53,33 @@ export function ProjectDetail() {
             <Meta label="Role" value={project.role} wide />
             <div className="col-span-2 flex flex-wrap gap-2 pt-1">
               {project.repo && (
-                <a href={project.repo} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm hover:border-accent hover:text-accent">
+                <a
+                  href={project.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm hover:border-accent hover:text-accent"
+                >
                   <GitHubIcon size={15} /> Source
                 </a>
               )}
               {project.live && (
-                <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-ink hover:brightness-110">
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-ink hover:brightness-110"
+                >
                   <ExternalLink size={15} /> Live demo
                 </a>
               )}
               {project.extraLinks?.map((l) => (
-                <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm hover:border-accent hover:text-accent">
+                <a
+                  key={l.href}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-line-strong px-4 py-2 text-sm hover:border-accent hover:text-accent"
+                >
                   {l.label} <ArrowUpRight size={14} />
                 </a>
               ))}
@@ -113,7 +138,9 @@ export function ProjectDetail() {
             <ol className="max-w-2xl space-y-5">
               {project.highlights.map((h, i) => (
                 <Reveal as="li" key={h} delay={i * 0.04} className="flex gap-5">
-                  <span className="font-mono text-xs leading-7 text-accent">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="font-mono text-xs leading-7 text-accent">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
                   <p className="leading-relaxed text-muted">{h}</p>
                 </Reveal>
               ))}
@@ -152,7 +179,7 @@ export function ProjectDetail() {
         <PagerLink project={next} direction="next" />
       </nav>
     </article>
-  )
+  );
 }
 
 function Meta({ label, value, wide }: { label: string; value: string; wide?: boolean }) {
@@ -161,7 +188,7 @@ function Meta({ label, value, wide }: { label: string; value: string; wide?: boo
       <dt className="font-mono text-xs tracking-wider text-faint uppercase">{label}</dt>
       <dd className="mt-1 text-text">{value}</dd>
     </div>
-  )
+  );
 }
 
 function Block({ title, children }: { title: string; children: ReactNode }) {
@@ -172,7 +199,7 @@ function Block({ title, children }: { title: string; children: ReactNode }) {
       </Reveal>
       {children}
     </section>
-  )
+  );
 }
 
 function Flow({ steps }: { steps: { label: string; detail: string }[] }) {
@@ -186,7 +213,10 @@ function Flow({ steps }: { steps: { label: string; detail: string }[] }) {
             <p className="mt-1 text-xs leading-relaxed text-muted">{s.detail}</p>
           </div>
           {i < steps.length - 1 && (
-            <span aria-hidden className="absolute top-1/2 right-0 hidden h-px w-6 overflow-hidden bg-line md:block">
+            <span
+              aria-hidden
+              className="absolute top-1/2 right-0 hidden h-px w-6 overflow-hidden bg-line md:block"
+            >
               <motion.span
                 className="absolute inset-y-0 w-3 bg-accent"
                 animate={{ x: ['-100%', '200%'] }}
@@ -197,23 +227,27 @@ function Flow({ steps }: { steps: { label: string; detail: string }[] }) {
         </Reveal>
       ))}
     </ol>
-  )
+  );
 }
 
 function PagerLink({ project, direction }: { project: Project; direction: 'prev' | 'next' }) {
-  const Icon = direction === 'prev' ? ArrowLeft : ArrowRight
+  const Icon = direction === 'prev' ? ArrowLeft : ArrowRight;
   return (
     <Link
       to={`/projects/${project.slug}`}
       className={`spotlight card group flex flex-col gap-2 p-6 transition-colors hover:border-line-strong ${direction === 'next' ? 'sm:items-end sm:text-right' : ''}`}
     >
       <span className="inline-flex items-center gap-2 font-mono text-xs text-faint">
-        {direction === 'prev' && <Icon size={14} className="transition-transform group-hover:-translate-x-0.5" />}
+        {direction === 'prev' && (
+          <Icon size={14} className="transition-transform group-hover:-translate-x-0.5" />
+        )}
         {direction === 'prev' ? 'Previous' : 'Next'}
-        {direction === 'next' && <Icon size={14} className="transition-transform group-hover:translate-x-0.5" />}
+        {direction === 'next' && (
+          <Icon size={14} className="transition-transform group-hover:translate-x-0.5" />
+        )}
       </span>
       <span className="display text-3xl group-hover:text-accent">{project.name}</span>
       <span className="text-sm text-muted">{project.tagline}</span>
     </Link>
-  )
+  );
 }

@@ -1,16 +1,16 @@
-import type { ReactNode } from 'react'
-import { motion } from 'motion/react'
+import type { ReactNode } from 'react';
+import { motion } from 'motion/react';
 
 type Props = {
-  children: ReactNode
-  delay?: number
-  className?: string
-  as?: 'div' | 'li' | 'section' | 'article'
-}
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+  as?: 'div' | 'li' | 'section' | 'article';
+};
 
 /** Fades content up once when it scrolls into view. */
 export function Reveal({ children, delay = 0, className, as = 'div' }: Props) {
-  const Tag = motion[as]
+  const Tag = motion[as];
   return (
     <Tag
       className={className}
@@ -21,5 +21,5 @@ export function Reveal({ children, delay = 0, className, as = 'div' }: Props) {
     >
       {children}
     </Tag>
-  )
+  );
 }

@@ -14,5 +14,5 @@ export function Marquee({ items }: { items: string[] }) {
         ))}
       </div>
     </div>
-  )
+  );
 }

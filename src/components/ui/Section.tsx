@@ -1,18 +1,23 @@
-import type { ReactNode } from 'react'
-import { cn, stagger } from '../../lib/utils'
-import { Reveal } from './Reveal'
+import type { ReactNode } from 'react';
+import { cn, stagger } from '../../lib/utils';
+import { Reveal } from './Reveal';
 
 type HeadingProps = {
-  eyebrow: string
-  title: ReactNode
-  description?: ReactNode
-  action?: ReactNode
-  className?: string
-}
+  eyebrow: string;
+  title: ReactNode;
+  description?: ReactNode;
+  action?: ReactNode;
+  className?: string;
+};
 
 export function SectionHeading({ eyebrow, title, description, action, className }: HeadingProps) {
   return (
-    <Reveal className={cn('mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between', className)}>
+    <Reveal
+      className={cn(
+        'mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between',
+        className
+      )}
+    >
       <div className="max-w-2xl">
         <p className="eyebrow">{eyebrow}</p>
         <h2 className="mt-3 display text-4xl sm:text-5xl">{title}</h2>
@@ -20,11 +25,19 @@ export function SectionHeading({ eyebrow, title, description, action, className 
       </div>
       {action}
     </Reveal>
-  )
+  );
 }
 
 /** Large page intro used at the top of every inner page. */
-export function PageHero({ eyebrow, title, children }: { eyebrow: string; title: ReactNode; children?: ReactNode }) {
+export function PageHero({
+  eyebrow,
+  title,
+  children,
+}: {
+  eyebrow: string;
+  title: ReactNode;
+  children?: ReactNode;
+}) {
   return (
     <section className="relative overflow-hidden">
       <div aria-hidden className="bg-grid absolute inset-0 -z-10 opacity-60" />
@@ -36,13 +49,17 @@ export function PageHero({ eyebrow, title, children }: { eyebrow: string; title:
           {title}
         </h1>
         {children && (
-          <div data-animate style={stagger(2)} className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+          <div
+            data-animate
+            style={stagger(2)}
+            className="mt-6 max-w-2xl text-lg leading-relaxed text-muted"
+          >
             {children}
           </div>
         )}
       </div>
     </section>
-  )
+  );
 }
 
 export function Tag({ children, active }: { children: ReactNode; active?: boolean }) {
@@ -50,10 +67,10 @@ export function Tag({ children, active }: { children: ReactNode; active?: boolea
     <span
       className={cn(
         'inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-[0.7rem] tracking-tight',
-        active ? 'border-accent/40 bg-accent-soft text-accent' : 'border-line text-muted',
+        active ? 'border-accent/40 bg-accent-soft text-accent' : 'border-line text-muted'
       )}
     >
       {children}
     </span>
-  )
+  );
 }

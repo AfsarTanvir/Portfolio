@@ -1,6 +1,6 @@
-import { projects } from './projects.ts'
+import { projects } from './projects.ts';
 
-export type RouteMeta = { path: string; title: string; description: string }
+export type RouteMeta = { path: string; title: string; description: string };
 
 const pages: RouteMeta[] = [
   {
@@ -12,17 +12,20 @@ const pages: RouteMeta[] = [
   {
     path: 'about',
     title: 'About · Afsar Tanvir',
-    description: 'From competitive programming to production systems: my story, how I work, and my journey so far.',
+    description:
+      'From competitive programming to production systems: my story, how I work, and my journey so far.',
   },
   {
     path: 'experience',
     title: 'Experience · Afsar Tanvir',
-    description: 'Full Stack Developer at AppifyLab (EzyCommunity) and Learnathon .NET trainee. Skills and résumé.',
+    description:
+      'Full Stack Developer at AppifyLab (EzyCommunity) and Learnathon .NET trainee. Skills and résumé.',
   },
   {
     path: 'projects',
     title: 'Projects · Afsar Tanvir',
-    description: 'MockFlow, local-scheduler, Audio Visualizer and more: case studies with the engineering decisions behind them.',
+    description:
+      'MockFlow, local-scheduler, Audio Visualizer and more: case studies with the engineering decisions behind them.',
   },
   {
     path: 'academics',
@@ -33,9 +36,10 @@ const pages: RouteMeta[] = [
   {
     path: 'contact',
     title: 'Contact · Afsar Tanvir',
-    description: 'Get in touch about backend and full-stack roles, collaborations, or MSc supervision.',
+    description:
+      'Get in touch about backend and full-stack roles, collaborations, or MSc supervision.',
   },
-]
+];
 
 export const routeMeta: RouteMeta[] = [
   ...pages,
@@ -44,10 +48,10 @@ export const routeMeta: RouteMeta[] = [
     title: `${p.name} · Afsar Tanvir`,
     description: p.tagline,
   })),
-]
+];
 
 /** Title for client-side navigation, so the tab title follows the route. */
 export function titleFor(pathname: string) {
-  const key = pathname.replace(/^\/+|\/+$/g, '')
-  return routeMeta.find((r) => r.path === key)?.title ?? 'Afsar Tanvir'
+  const key = pathname.replace(/^\/+|\/+$/g, '');
+  return routeMeta.find((r) => r.path === key)?.title ?? 'Afsar Tanvir';
 }
