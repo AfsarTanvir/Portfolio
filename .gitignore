@@ -1,0 +1,14 @@
+# Private working files (CV sources, notes) — never published
+docs/
+
+# Dependencies and build output
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Editor / OS
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.log
