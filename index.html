@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
       content="Backend-focused full-stack engineer at AppifyLab and builder of developer tools. Codeforces Specialist with interests in distributed and data-intensive systems."
     />
     <meta name="author" content="Afsar Tanvir" />
-    <meta name="theme-color" content="#0c0d10" />
+    <meta name="theme-color" content="#f3f0e8" />
     <link rel="canonical" href="https://afsartanvir.github.io/Portfolio/" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
 
@@ -55,8 +55,10 @@
       try {
         var saved = localStorage.getItem('theme');
         var theme =
-          saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         document.documentElement.dataset.theme = theme;
+        if (theme === 'dark')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#12110f');
       } catch (e) {}
     </script>
   </head>

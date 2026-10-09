@@ -42,9 +42,9 @@ export function ButtonLink({ variant = 'primary', className, children, ...rest }
     <SmartLink
       className={cn(
         'group inline-flex items-center gap-2 rounded-full py-2.5 text-sm font-medium transition-[background-color,color,border-color,transform] duration-200 active:scale-[0.98]',
-        variant === 'primary' && 'bg-accent px-5 text-accent-ink hover:brightness-110',
+        variant === 'primary' && 'bg-text px-5 text-bg hover:bg-accent hover:text-accent-ink',
         variant === 'ghost' &&
-          'border border-line-strong px-5 text-text hover:border-accent hover:text-accent',
+          'border border-line-strong px-5 text-text hover:border-text hover:bg-surface',
         variant === 'quiet' && 'px-1 text-muted hover:text-accent',
         className
       )}

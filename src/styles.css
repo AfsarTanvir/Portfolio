@@ -1,41 +1,42 @@
 @import 'tailwindcss';
 
-/* ---------- Design tokens ---------- */
+/* ---------- Design tokens ----------
+   Paper and ink, with a red-pen accent used sparingly (links, marks, notes). */
 :root,
-:root[data-theme='dark'] {
-  color-scheme: dark;
-  --bg: #0c0d10;
-  --bg-soft: #111318;
-  --surface: #15181e;
-  --surface-2: #1b1f26;
-  --line: rgb(255 255 255 / 0.08);
-  --line-strong: rgb(255 255 255 / 0.16);
-  --text: #edebe5;
-  --muted: #a1a3ab;
-  --faint: #6f727c;
-  --accent: #3dd6b5;
-  --accent-soft: rgb(61 214 181 / 0.12);
-  --accent-ink: #04201b;
-  --spot: rgb(61 214 181 / 0.07);
-  --grain-opacity: 0.05;
-}
-
 :root[data-theme='light'] {
   color-scheme: light;
-  --bg: #f6f4ef;
-  --bg-soft: #efece5;
-  --surface: #ffffff;
-  --surface-2: #f9f8f5;
-  --line: rgb(22 23 27 / 0.1);
-  --line-strong: rgb(22 23 27 / 0.2);
-  --text: #16171b;
-  --muted: #555862;
-  --faint: #8a8c94;
-  --accent: #0b7a68;
-  --accent-soft: rgb(11 122 104 / 0.1);
-  --accent-ink: #ffffff;
-  --spot: rgb(11 122 104 / 0.06);
-  --grain-opacity: 0.035;
+  --bg: #f3f0e8;
+  --bg-soft: #ebe7dc;
+  --surface: #faf8f3;
+  --surface-2: #efebe1;
+  --line: rgb(28 25 20 / 0.12);
+  --line-strong: rgb(28 25 20 / 0.24);
+  --text: #1c1914;
+  --muted: #5a554b;
+  --faint: #8a8476;
+  --accent: #c2410c;
+  --accent-soft: rgb(194 65 12 / 0.1);
+  --accent-ink: #fff7ed;
+  --shadow: 0 1px 2px rgb(28 25 20 / 0.06), 0 8px 24px -12px rgb(28 25 20 / 0.18);
+  --grain-opacity: 0.045;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #12110f;
+  --bg-soft: #181613;
+  --surface: #1c1a17;
+  --surface-2: #25221e;
+  --line: rgb(240 234 222 / 0.09);
+  --line-strong: rgb(240 234 222 / 0.2);
+  --text: #efeae0;
+  --muted: #aaa396;
+  --faint: #7b7568;
+  --accent: #f4895f;
+  --accent-soft: rgb(244 137 95 / 0.12);
+  --accent-ink: #1f0d05;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -12px rgb(0 0 0 / 0.6);
+  --grain-opacity: 0.06;
 }
 
 @theme inline {
@@ -52,9 +53,10 @@
   --color-accent-soft: var(--accent-soft);
   --color-accent-ink: var(--accent-ink);
 
-  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans Variable', ui-sans-serif, system-ui, sans-serif;
   --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
-  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-hand: 'Caveat Variable', 'Segoe Print', cursive;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -76,7 +78,6 @@
     background: var(--bg);
     color: var(--text);
     font-family: var(--font-sans);
-    font-feature-settings: 'cv11', 'ss01', 'ss03';
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     overflow-x: hidden;
@@ -85,7 +86,7 @@
       color 0.3s ease;
   }
 
-  /* Film grain: one tiny inline SVG, no image request. */
+  /* Paper grain: one tiny inline SVG, no image request. */
   body::before {
     content: '';
     position: fixed;
@@ -104,11 +105,7 @@
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: 6px;
-  }
-
-  a {
-    text-underline-offset: 0.2em;
+    border-radius: 4px;
   }
 }
 
@@ -119,23 +116,22 @@
 
 @media (prefers-reduced-motion: no-preference) {
   [data-animate] {
-    animation: enter 0.6s var(--ease-out-quint) both;
-    animation-delay: calc(var(--stagger) * 90ms + 60ms);
+    animation: enter 0.7s var(--ease-out-quint) both;
+    animation-delay: calc(var(--stagger) * 90ms + 80ms);
   }
 }
 
 @keyframes enter {
   from {
     opacity: 0;
-    transform: translateY(10px);
-    filter: blur(4px);
+    transform: translateY(12px);
   }
 }
 
 /* ---------- Utilities ---------- */
 @utility container-page {
   width: 100%;
-  max-width: 72rem;
+  max-width: 70rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
   @media (width >= 48rem) {
@@ -143,25 +139,33 @@
   }
 }
 
+/* Small section label: "01 / Projects". */
 @utility eyebrow {
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--accent);
+  letter-spacing: 0.04em;
+  color: var(--faint);
 }
 
 @utility display {
   font-family: var(--font-serif);
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.02;
+  letter-spacing: -0.012em;
+  line-height: 1.04;
+}
+
+/* Handwritten margin note in red pen. */
+@utility hand {
+  font-family: var(--font-hand);
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1.1;
 }
 
 @utility card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 1.25rem;
+  border-radius: 0.75rem;
 }
 
 @utility link-underline {
@@ -169,50 +173,38 @@
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size 0.25s var(--ease-out-quint);
+  transition: background-size 0.3s var(--ease-out-quint);
   &:hover {
     background-size: 100% 1px;
   }
 }
 
-/* Faint grid used behind hero sections. */
+/* Inline text link inside prose. */
+@utility prose-link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease;
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+/* Faint grid, used inside project visuals only. */
 @utility bg-grid {
   background-image:
     linear-gradient(var(--line) 1px, transparent 1px),
     linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, black 30%, transparent 75%);
-}
-
-/* Spotlight card: a glow that follows the pointer (set --x/--y from JS). */
-.spotlight {
-  position: relative;
-  isolation: isolate;
-}
-.spotlight::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  background: radial-gradient(
-    420px circle at var(--x, 50%) var(--y, 50%),
-    var(--accent-soft),
-    transparent 65%
-  );
-}
-@media (hover: hover) and (pointer: fine) {
-  .spotlight:hover::after {
-    opacity: 1;
-  }
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 80%);
 }
 
 /* Dim siblings when one item in a list is hovered (desktop only). */
 @media (hover: hover) and (pointer: fine) {
   .dim-siblings:hover > * {
-    opacity: 0.5;
+    opacity: 0.45;
   }
   .dim-siblings:hover > *:hover {
     opacity: 1;
@@ -227,22 +219,4 @@
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
-}
-
-/* Infinite marquee */
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-.marquee-track {
-  animation: marquee 40s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
 }
