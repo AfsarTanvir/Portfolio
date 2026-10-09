@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router';
 import { motion, useInView } from 'motion/react';
 import { ArrowUpRight, FileText, Mail } from 'lucide-react';
@@ -16,10 +16,12 @@ import { profile } from '../data/profile';
 import { PageHero, SectionHeading } from '../components/ui/Section';
 import { Reveal } from '../components/ui/Reveal';
 import { ButtonLink, SmartLink } from '../components/ui/SmartLink';
-import { RatingChart } from '../components/RatingChart';
+import { RatingFlip } from '../components/RatingFlip';
+import { cn } from '../lib/utils';
 
 export function Academics() {
   useScrollToHash();
+  const [side, setSide] = useState(0);
 
   return (
     <>
@@ -146,35 +148,63 @@ export function Academics() {
               Five years of contests, <em className="text-muted">and a long climb back</em>
             </>
           }
-          description="Competitive programming is where I learned to reason about correctness and complexity under pressure. The rating line is real data from the Codeforces API."
+          description="Competitive programming is where I learned to reason about correctness and complexity under pressure. Both rating lines are real contest data from my public profiles."
         />
-        <div className="grid gap-5 lg:grid-cols-[1fr_2fr]">
+        <div className="grid gap-5 lg:grid-cols-[1fr_2fr] lg:items-end">
           <div className="grid gap-px overflow-hidden rounded-2xl border border-line bg-line">
-            {ratings.map((r, i) => (
-              <Reveal key={r.judge} delay={i * 0.06} className="bg-bg p-6">
-                <p className="font-mono text-xs text-faint">{r.judge}</p>
-                <p className="mt-1 display text-4xl">{r.value}</p>
-                <p className="mt-1 text-sm text-muted">
-                  {r.detail}
-                  {r.href && (
-                    <>
-                      {' · '}
-                      <a
-                        href={r.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-text hover:text-accent"
-                      >
-                        {r.handle}
-                      </a>
-                    </>
+            {ratings.map((r, i) => {
+              // The first two tiles (Codeforces, CodeChef) also switch the chart.
+              const switches = i < 2;
+              const active = switches && side === i;
+              return (
+                <Reveal
+                  key={r.judge}
+                  delay={i * 0.06}
+                  className={cn(
+                    'relative bg-bg p-6 transition-colors',
+                    switches && 'hover:bg-surface',
+                    active && 'bg-surface'
                   )}
-                </p>
-              </Reveal>
-            ))}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="rating-tile-marker"
+                      className="absolute inset-y-4 left-0 w-0.5 rounded-full bg-accent"
+                    />
+                  )}
+                  {switches && (
+                    <button
+                      type="button"
+                      onClick={() => setSide(i)}
+                      aria-pressed={active}
+                      aria-label={`Show ${r.judge} rating chart`}
+                      className="absolute inset-0"
+                    />
+                  )}
+                  <p className="font-mono text-xs text-faint">{r.judge}</p>
+                  <p className="mt-1 display text-4xl">{r.value}</p>
+                  <p className="mt-1 text-sm text-muted">
+                    {r.detail}
+                    {r.href && (
+                      <>
+                        {' · '}
+                        <a
+                          href={r.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="relative text-text hover:text-accent"
+                        >
+                          {r.handle}
+                        </a>
+                      </>
+                    )}
+                  </p>
+                </Reveal>
+              );
+            })}
           </div>
           <Reveal delay={0.1}>
-            <RatingChart />
+            <RatingFlip side={side} onSide={setSide} />
           </Reveal>
         </div>
 
