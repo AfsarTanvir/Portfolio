@@ -1,8 +1,8 @@
-import { Link } from 'react-router'
-import { ArrowUpRight } from 'lucide-react'
-import type { Project } from '../data/projects'
-import { ProjectVisual } from './ProjectVisual'
-import { Tag } from './ui/Section'
+import { Link } from 'react-router';
+import { ArrowUpRight } from 'lucide-react';
+import type { Project } from '../data/projects';
+import { ProjectVisual } from './ProjectVisual';
+import { Tag } from './ui/Section';
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
@@ -39,5 +39,5 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       </div>
     </Link>
-  )
+  );
 }

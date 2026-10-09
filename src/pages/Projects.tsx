@@ -1,23 +1,36 @@
-import { useState } from 'react'
-import { AnimatePresence, LayoutGroup, motion } from 'motion/react'
-import { ArrowUpRight } from 'lucide-react'
-import { archive, projectCategories, projects, type ProjectCategory } from '../data/projects'
-import { ProjectCard } from '../components/ProjectCard'
-import { PageHero, SectionHeading } from '../components/ui/Section'
-import { Reveal } from '../components/ui/Reveal'
-import { cn } from '../lib/utils'
+import { useState } from 'react';
+import { AnimatePresence, LayoutGroup, motion } from 'motion/react';
+import { ArrowUpRight } from 'lucide-react';
+import { archive, projectCategories, projects, type ProjectCategory } from '../data/projects';
+import { ProjectCard } from '../components/ProjectCard';
+import { PageHero, SectionHeading } from '../components/ui/Section';
+import { Reveal } from '../components/ui/Reveal';
+import { cn } from '../lib/utils';
 
-type Filter = 'All' | ProjectCategory
+type Filter = 'All' | ProjectCategory;
 
 export function Projects() {
-  const [filter, setFilter] = useState<Filter>('All')
-  const filters: Filter[] = ['All', ...projectCategories.filter((c) => projects.some((p) => p.categories.includes(c)))]
-  const shown = projects.filter((p) => filter === 'All' || p.categories.includes(filter))
+  const [filter, setFilter] = useState<Filter>('All');
+  const filters: Filter[] = [
+    'All',
+    ...projectCategories.filter((c) => projects.some((p) => p.categories.includes(c))),
+  ];
+  const shown = projects.filter((p) => filter === 'All' || p.categories.includes(filter));
 
   return (
     <>
-      <PageHero eyebrow="Projects" title={<>Things I’ve built, and <em className="text-muted">why they’re built that way</em></>}>
-        <p>Each case study covers the problem, what I built, and the engineering decisions I would defend in a review.</p>
+      <PageHero
+        eyebrow="Projects"
+        title={
+          <>
+            Things I’ve built, and <em className="text-muted">why they’re built that way</em>
+          </>
+        }
+      >
+        <p>
+          Each case study covers the problem, what I built, and the engineering decisions I would
+          defend in a review.
+        </p>
       </PageHero>
 
       <section className="container-page">
@@ -31,11 +44,17 @@ export function Projects() {
                 onClick={() => setFilter(f)}
                 className={cn(
                   'relative isolate rounded-full border px-3.5 py-1.5 text-sm transition-colors',
-                  filter === f ? 'border-transparent text-accent-ink' : 'border-line text-muted hover:text-text',
+                  filter === f
+                    ? 'border-transparent text-accent-ink'
+                    : 'border-line text-muted hover:text-text'
                 )}
               >
                 {filter === f && (
-                  <motion.span layoutId="project-pill" className="absolute inset-0 -z-10 rounded-full bg-accent" transition={{ type: 'spring', stiffness: 400, damping: 34 }} />
+                  <motion.span
+                    layoutId="project-pill"
+                    className="absolute inset-0 -z-10 rounded-full bg-accent"
+                    transition={{ type: 'spring', stiffness: 400, damping: 34 }}
+                  />
                 )}
                 {f}
               </button>
@@ -64,7 +83,11 @@ export function Projects() {
       </section>
 
       <section className="container-page mt-32">
-        <SectionHeading eyebrow="Archive" title="Smaller builds & learning repos" description="Where most of my learning happened: small, focused repositories." />
+        <SectionHeading
+          eyebrow="Archive"
+          title="Smaller builds & learning repos"
+          description="Where most of my learning happened: small, focused repositories."
+        />
         <Reveal>
           <table className="w-full text-left text-sm">
             <thead className="border-b border-line font-mono text-xs text-faint">
@@ -84,7 +107,9 @@ export function Projects() {
                   <td className="py-4 pr-4 align-top font-mono text-xs text-faint">{a.year}</td>
                   <td className="py-4 pr-4 align-top font-medium">{a.name}</td>
                   <td className="hidden py-4 pr-4 align-top text-muted md:table-cell">{a.note}</td>
-                  <td className="hidden py-4 pr-4 align-top font-mono text-xs text-muted sm:table-cell">{a.stack}</td>
+                  <td className="hidden py-4 pr-4 align-top font-mono text-xs text-muted sm:table-cell">
+                    {a.stack}
+                  </td>
                   <td className="py-4 text-right align-top">
                     <a
                       href={a.href}
@@ -103,5 +128,5 @@ export function Projects() {
         </Reveal>
       </section>
     </>
-  )
+  );
 }
