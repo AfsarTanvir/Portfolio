@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
-import { Link, NavLink, useLocation } from 'react-router'
-import { AnimatePresence, motion } from 'motion/react'
-import { ArrowUpRight, FileText, Menu, X } from 'lucide-react'
-import { ThemeToggle } from '../ui/ThemeToggle'
-import { profile } from '../../data/profile'
-import { asset, cn } from '../../lib/utils'
+import { useEffect, useRef, useState } from 'react';
+import { Link, NavLink, useLocation } from 'react-router';
+import { AnimatePresence, motion } from 'motion/react';
+import { ArrowUpRight, FileText, Menu, X } from 'lucide-react';
+import { ThemeToggle } from '../ui/ThemeToggle';
+import { profile } from '../../data/profile';
+import { asset, cn } from '../../lib/utils';
 
 export const navItems = [
   { to: '/about', label: 'About' },
@@ -12,92 +12,99 @@ export const navItems = [
   { to: '/projects', label: 'Projects' },
   { to: '/academics', label: 'Academics' },
   { to: '/contact', label: 'Contact' },
-]
+];
 
 const cvLinks = [
   { href: profile.cv.resume, label: 'Résumé', note: 'Industry · 1 page' },
   { href: profile.cv.academic, label: 'Academic CV', note: 'MSc applications' },
-]
+];
 
 export function Header() {
-  const { pathname } = useLocation()
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const { pathname } = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-  useEffect(() => setMenuOpen(false), [pathname])
+  useEffect(() => setMenuOpen(false), [pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-  }, [menuOpen])
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  }, [menuOpen]);
 
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300',
-        scrolled || menuOpen ? 'border-b border-line bg-bg/75 backdrop-blur-xl' : 'border-b border-transparent',
-      )}
-    >
-      <div className="container-page flex h-16 items-center justify-between gap-4">
-        <Link to="/" className="group flex items-center gap-2.5" aria-label="Afsar Tanvir, home">
-          <span className="grid size-8 place-items-center rounded-lg border border-line-strong font-serif text-lg italic leading-none transition-colors group-hover:border-accent group-hover:text-accent">
-            at
-          </span>
-          <span className="hidden text-sm font-medium tracking-tight sm:inline">{profile.name}</span>
-        </Link>
+    <>
+      <header
+        className={cn(
+          'sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300',
+          scrolled || menuOpen
+            ? 'border-b border-line bg-bg/75 backdrop-blur-xl'
+            : 'border-b border-transparent'
+        )}
+      >
+        <div className="container-page flex h-16 items-center justify-between gap-4">
+          <Link to="/" className="group flex items-center gap-2.5" aria-label="Afsar Tanvir, home">
+            <span className="grid size-8 place-items-center rounded-lg border border-line-strong font-serif text-lg italic leading-none transition-colors group-hover:border-accent group-hover:text-accent">
+              at
+            </span>
+            <span className="hidden text-sm font-medium tracking-tight sm:inline">
+              {profile.name}
+            </span>
+          </Link>
 
-        <nav aria-label="Main" className="hidden md:block">
-          <ul className="flex items-center gap-1 rounded-full border border-line bg-surface/60 p-1 backdrop-blur">
-            {navItems.map((item) => (
-              <li key={item.to}>
-                <NavLink
-                  to={item.to}
-                  className={({ isActive }) =>
-                    cn(
-                      'relative isolate block rounded-full px-3.5 py-1.5 text-sm transition-colors',
-                      isActive ? 'text-text' : 'text-muted hover:text-text',
-                    )
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      {isActive && (
-                        <motion.span
-                          layoutId="nav-pill"
-                          className="absolute inset-0 -z-10 rounded-full bg-surface-2 ring-1 ring-line-strong"
-                          transition={{ type: 'spring', stiffness: 420, damping: 34 }}
-                        />
-                      )}
-                      {item.label}
-                    </>
-                  )}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          <nav aria-label="Main" className="hidden md:block">
+            <ul className="flex items-center gap-1 rounded-full border border-line bg-surface/60 p-1 backdrop-blur">
+              {navItems.map((item) => (
+                <li key={item.to}>
+                  <NavLink
+                    to={item.to}
+                    className={({ isActive }) =>
+                      cn(
+                        'relative isolate block rounded-full px-3.5 py-1.5 text-sm transition-colors',
+                        isActive ? 'text-text' : 'text-muted hover:text-text'
+                      )
+                    }
+                  >
+                    {({ isActive }) => (
+                      <>
+                        {isActive && (
+                          <motion.span
+                            layoutId="nav-pill"
+                            className="absolute inset-0 -z-10 rounded-full bg-surface-2 ring-1 ring-line-strong"
+                            transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                          />
+                        )}
+                        {item.label}
+                      </>
+                    )}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <div className="flex items-center gap-1">
-          <ThemeToggle />
-          <CvMenu />
-          <button
-            type="button"
-            className="grid size-9 place-items-center rounded-full text-muted hover:bg-surface-2 hover:text-text md:hidden"
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v) => !v)}
-          >
-            {menuOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
+            <CvMenu />
+            <button
+              type="button"
+              className="grid size-9 place-items-center rounded-full text-muted hover:bg-surface-2 hover:text-text md:hidden"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen((v) => !v)}
+            >
+              {menuOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
+          </div>
         </div>
-      </div>
+      </header>
 
+      {/* Outside <header>: its backdrop-filter would otherwise trap this fixed overlay inside the header box. */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
@@ -119,9 +126,12 @@ export function Header() {
                 >
                   <NavLink
                     to={item.to}
-                    end
+                    end={item.to === '/'}
                     className={({ isActive }) =>
-                      cn('flex items-baseline justify-between py-4 display text-4xl', isActive ? 'text-accent' : 'text-text')
+                      cn(
+                        'flex items-baseline justify-between py-4 display text-4xl',
+                        isActive ? 'text-accent' : 'text-text'
+                      )
                     }
                   >
                     {item.label}
@@ -132,7 +142,13 @@ export function Header() {
             </ul>
             <div className="mt-8 grid grid-cols-2 gap-3">
               {cvLinks.map((cv) => (
-                <a key={cv.href} href={asset(cv.href)} target="_blank" rel="noopener" className="card p-4">
+                <a
+                  key={cv.href}
+                  href={asset(cv.href)}
+                  target="_blank"
+                  rel="noopener"
+                  className="card p-4"
+                >
                   <FileText size={18} className="text-accent" />
                   <p className="mt-3 text-sm font-medium">{cv.label}</p>
                   <p className="text-xs text-muted">{cv.note}</p>
@@ -142,27 +158,27 @@ export function Header() {
           </motion.nav>
         )}
       </AnimatePresence>
-    </header>
-  )
+    </>
+  );
 }
 
 function CvMenu() {
-  const [open, setOpen] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!open) return
+    if (!open) return;
     const onDown = (e: PointerEvent) => {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false)
-    }
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
-    document.addEventListener('pointerdown', onDown)
-    document.addEventListener('keydown', onKey)
+      if (!ref.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
+    document.addEventListener('pointerdown', onDown);
+    document.addEventListener('keydown', onKey);
     return () => {
-      document.removeEventListener('pointerdown', onDown)
-      document.removeEventListener('keydown', onKey)
-    }
-  }, [open])
+      document.removeEventListener('pointerdown', onDown);
+      document.removeEventListener('keydown', onKey);
+    };
+  }, [open]);
 
   return (
     <div ref={ref} className="relative hidden sm:block">
@@ -199,12 +215,15 @@ function CvMenu() {
                   <span className="block text-sm font-medium">{cv.label}</span>
                   <span className="block text-xs text-muted">{cv.note}</span>
                 </span>
-                <ArrowUpRight size={16} className="text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+                <ArrowUpRight
+                  size={16}
+                  className="text-faint transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
+                />
               </a>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

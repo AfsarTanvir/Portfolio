@@ -1,22 +1,22 @@
-import { Link } from 'react-router'
-import { motion } from 'motion/react'
-import { ArrowRight, ArrowUpRight, Briefcase, FileText, GraduationCap } from 'lucide-react'
-import { now, profile, skills, stats } from '../data/profile'
-import { experience } from '../data/experience'
-import { projects } from '../data/projects'
-import { education, leadership } from '../data/academics'
-import { ProjectCard } from '../components/ProjectCard'
-import { Counter } from '../components/ui/Counter'
-import { Reveal } from '../components/ui/Reveal'
-import { SectionHeading } from '../components/ui/Section'
-import { ButtonLink, SmartLink } from '../components/ui/SmartLink'
-import { Marquee } from '../components/Marquee'
-import { asset, stagger } from '../lib/utils'
+import { Link } from 'react-router';
+import { motion } from 'motion/react';
+import { ArrowRight, ArrowUpRight, Briefcase, FileText, GraduationCap } from 'lucide-react';
+import { now, profile, skills, stats } from '../data/profile';
+import { experience } from '../data/experience';
+import { projects } from '../data/projects';
+import { education, leadership } from '../data/academics';
+import { ProjectCard } from '../components/ProjectCard';
+import { Counter } from '../components/ui/Counter';
+import { Reveal } from '../components/ui/Reveal';
+import { SectionHeading } from '../components/ui/Section';
+import { ButtonLink, SmartLink } from '../components/ui/SmartLink';
+import { Marquee } from '../components/Marquee';
+import { asset, stagger } from '../lib/utils';
 
-const words = profile.name.split(' ')
+const words = profile.name.split(' ');
 
 export function Home() {
-  const featured = projects.filter((p) => p.featured)
+  const featured = projects.filter((p) => p.featured);
   return (
     <>
       <Hero />
@@ -29,7 +29,11 @@ export function Home() {
             <Reveal key={s.label} delay={i * 0.06} className="bg-bg p-6 sm:p-8">
               <dt className="sr-only">{s.label}</dt>
               <dd className="display text-5xl sm:text-6xl">
-                <Counter value={s.value} suffix={s.suffix} decimals={'decimals' in s ? s.decimals : 0} />
+                <Counter
+                  value={s.value}
+                  suffix={s.suffix}
+                  decimals={'decimals' in s ? s.decimals : 0}
+                />
               </dd>
               <p className="mt-3 text-sm text-text">{s.label}</p>
               <p className="mt-1 font-mono text-xs text-faint">{s.note}</p>
@@ -50,7 +54,8 @@ export function Home() {
           description="Each one started from a real annoyance, and each one is tested, documented and honest about its trade-offs."
           action={
             <ButtonLink href="/projects" variant="ghost">
-              All projects <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+              All projects{' '}
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </ButtonLink>
           }
         />
@@ -75,7 +80,10 @@ export function Home() {
         <ol className="dim-siblings flex flex-col gap-3">
           {experience.map((e, i) => (
             <Reveal as="li" key={e.org} delay={i * 0.06}>
-              <Link to="/experience" className="spotlight card group block p-6 transition-colors hover:border-line-strong">
+              <Link
+                to="/experience"
+                className="spotlight card group block p-6 transition-colors hover:border-line-strong"
+              >
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="text-lg font-semibold tracking-tight">
                     {e.role} <span className="text-muted">· {e.org}</span>
@@ -87,7 +95,10 @@ export function Home() {
             </Reveal>
           ))}
           <Reveal as="li" delay={0.12}>
-            <Link to="/academics" className="spotlight card group block p-6 transition-colors hover:border-line-strong">
+            <Link
+              to="/academics"
+              className="spotlight card group block p-6 transition-colors hover:border-line-strong"
+            >
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <h3 className="text-lg font-semibold tracking-tight">
                   {leadership[0]!.role} <span className="text-muted">· {leadership[0]!.org}</span>
@@ -111,7 +122,10 @@ export function Home() {
       {/* Now */}
       <section className="container-page mt-32">
         <div className="card relative overflow-hidden p-8 sm:p-12">
-          <div aria-hidden className="absolute -top-32 -right-32 size-80 rounded-full bg-accent/10 blur-3xl" />
+          <div
+            aria-hidden
+            className="absolute -top-32 -right-32 size-80 rounded-full bg-accent/10 blur-3xl"
+          />
           <div className="relative grid gap-10 lg:grid-cols-[1fr_1.6fr]">
             <Reveal>
               <p className="eyebrow">Now</p>
@@ -120,7 +134,12 @@ export function Home() {
             </Reveal>
             <ul className="flex flex-col divide-y divide-line">
               {now.items.map((item, i) => (
-                <Reveal as="li" key={item} delay={i * 0.05} className="flex gap-4 py-4 first:pt-0 last:pb-0">
+                <Reveal
+                  as="li"
+                  key={item}
+                  delay={i * 0.05}
+                  className="flex gap-4 py-4 first:pt-0 last:pb-0"
+                >
                   <span className="font-mono text-xs leading-6 text-accent">0{i + 1}</span>
                   <span className="leading-relaxed text-muted">{item}</span>
                 </Reveal>
@@ -130,7 +149,7 @@ export function Home() {
         </div>
       </section>
     </>
-  )
+  );
 }
 
 function Hero() {
@@ -143,7 +162,10 @@ function Hero() {
       />
       <div className="container-page grid items-center gap-12 pt-14 pb-10 sm:pt-20 lg:grid-cols-[1.35fr_1fr] lg:gap-16 lg:pt-28">
         <div>
-          <p data-animate className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1 text-xs text-muted backdrop-blur">
+          <p
+            data-animate
+            className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/70 px-3 py-1 text-xs text-muted backdrop-blur"
+          >
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-accent opacity-60 motion-reduce:hidden" />
               <span className="relative inline-flex size-2 rounded-full bg-accent" />
@@ -154,7 +176,11 @@ function Hero() {
           <h1 className="mt-7 display text-[clamp(3.5rem,11vw,7.5rem)]">
             <span className="sr-only">{profile.name}</span>
             {words.map((w, i) => (
-              <span key={w} aria-hidden className="mr-[0.22em] inline-block overflow-hidden pb-[0.08em] align-bottom">
+              <span
+                key={w}
+                aria-hidden
+                className="mr-[0.22em] inline-block overflow-hidden pb-[0.08em] align-bottom"
+              >
                 <motion.span
                   className="inline-block"
                   initial={{ y: '105%' }}
@@ -167,7 +193,11 @@ function Hero() {
             ))}
           </h1>
 
-          <p data-animate style={stagger(3)} className="mt-4 max-w-xl display text-2xl text-muted italic sm:text-3xl">
+          <p
+            data-animate
+            style={stagger(3)}
+            className="mt-4 max-w-xl display text-2xl text-muted italic sm:text-3xl"
+          >
             {profile.headline}: reliable backends, and the tools teams use to build them.
           </p>
           <p data-animate style={stagger(4)} className="mt-6 max-w-xl leading-relaxed text-muted">
@@ -176,12 +206,13 @@ function Hero() {
 
           <div data-animate style={stagger(5)} className="mt-9 flex flex-wrap items-center gap-3">
             <ButtonLink href="/projects">
-              See my work <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
+              See my work{' '}
+              <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </ButtonLink>
             <ButtonLink href="/academics" variant="ghost">
               <GraduationCap size={16} /> Academic profile
             </ButtonLink>
-            <ButtonLink href={profile.cv.resume} variant="quiet" className="ml-1">
+            <ButtonLink href={profile.cv.resume} variant="quiet">
               <FileText size={16} /> Résumé (PDF)
             </ButtonLink>
           </div>
@@ -203,7 +234,9 @@ function Hero() {
               className="aspect-[4/5] w-full rounded-[0.9rem] object-cover object-top grayscale-[15%]"
             />
             <div className="absolute inset-x-2 bottom-2 rounded-b-[0.9rem] bg-gradient-to-t from-black/70 to-transparent p-5 pt-16 text-white">
-              <p className="font-mono text-[0.7rem] tracking-wider text-white/70 uppercase">Currently</p>
+              <p className="font-mono text-[0.7rem] tracking-wider text-white/70 uppercase">
+                Currently
+              </p>
               <p className="mt-1 font-medium">Full Stack Developer at AppifyLab</p>
             </div>
           </div>
@@ -232,7 +265,7 @@ function Hero() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
 
 function Paths() {
@@ -259,7 +292,7 @@ function Paths() {
         { href: profile.cv.academic, label: 'Academic CV' },
       ],
     },
-  ]
+  ];
   return (
     <section className="container-page mt-16" aria-label="Choose a track">
       <div className="grid gap-4 md:grid-cols-2">
@@ -276,9 +309,16 @@ function Paths() {
               <p className="mt-3 leading-relaxed text-muted">{p.body}</p>
               <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm">
                 {p.links.map((l) => (
-                  <SmartLink key={l.href} href={l.href} className="group/link inline-flex items-center gap-1 text-text hover:text-accent">
+                  <SmartLink
+                    key={l.href}
+                    href={l.href}
+                    className="group/link inline-flex items-center gap-1 text-text hover:text-accent"
+                  >
                     {l.label}
-                    <ArrowUpRight size={14} className="text-faint transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-accent" />
+                    <ArrowUpRight
+                      size={14}
+                      className="text-faint transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-accent"
+                    />
                   </SmartLink>
                 ))}
               </div>
@@ -287,5 +327,5 @@ function Paths() {
         ))}
       </div>
     </section>
-  )
+  );
 }
