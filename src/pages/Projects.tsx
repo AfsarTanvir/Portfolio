@@ -19,17 +19,10 @@ export function Projects() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Projects"
-        title={
-          <>
-            Things I’ve built, and <em className="text-muted">why they’re built that way</em>
-          </>
-        }
-      >
+      <PageHero label="Projects" title="Things I’ve" italic="built">
         <p>
-          Each case study covers the problem, what I built, and the engineering decisions I would
-          defend in a review.
+          The bigger ones each have their own page: why I built it, how it works, and a few
+          decisions I made along the way. Smaller practice repos are listed at the bottom.
         </p>
       </PageHero>
 
@@ -45,14 +38,14 @@ export function Projects() {
                 className={cn(
                   'relative isolate rounded-full border px-3.5 py-1.5 text-sm transition-colors',
                   filter === f
-                    ? 'border-transparent text-accent-ink'
+                    ? 'border-transparent text-bg'
                     : 'border-line text-muted hover:text-text'
                 )}
               >
                 {filter === f && (
                   <motion.span
                     layoutId="project-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-accent"
+                    className="absolute inset-0 -z-10 rounded-full bg-text"
                     transition={{ type: 'spring', stiffness: 400, damping: 34 }}
                   />
                 )}
@@ -61,7 +54,7 @@ export function Projects() {
             ))}
           </div>
 
-          <motion.div layout className="grid gap-5 md:grid-cols-2">
+          <motion.div layout className="grid gap-x-6 gap-y-10 pt-3 md:grid-cols-2">
             <AnimatePresence mode="popLayout" initial={false}>
               {shown.map((p, i) => (
                 <motion.div
@@ -84,9 +77,10 @@ export function Projects() {
 
       <section className="container-page mt-32">
         <SectionHeading
-          eyebrow="Archive"
-          title="Smaller builds & learning repos"
-          description="Where most of my learning happened: small, focused repositories."
+          label="Archive"
+          title="Smaller"
+          italic="repos"
+          description="Practice projects and experiments, mostly from when I was learning .NET and React."
         />
         <Reveal>
           <table className="w-full text-left text-sm">

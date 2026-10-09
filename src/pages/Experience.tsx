@@ -15,21 +15,14 @@ export function Experience() {
 
   return (
     <>
-      <PageHero
-        eyebrow="Experience"
-        title={
-          <>
-            Where I’ve worked, and <em className="text-muted">what I shipped</em>
-          </>
-        }
-      >
+      <PageHero label="Experience" title="Where I’ve" italic="worked" note="the résumé is shorter">
         <p>
-          Production features on a multi-tenant platform, preceded by a mentored team program. The
-          details are below, and the one-page résumé has the short version.
+          I’ve been at AppifyLab since September 2025. Before that I did the Learnathon program,
+          where three of us built a .NET project with mentors reviewing our code.
         </p>
         <div className="mt-6">
           <ButtonLink href={profile.cv.resume}>
-            <FileText size={16} /> Download résumé
+            <FileText size={16} /> Résumé (PDF)
           </ButtonLink>
         </div>
       </PageHero>
@@ -64,13 +57,13 @@ export function Experience() {
               </span>
               <Reveal className="md:pl-10">
                 <h2 className="text-2xl font-semibold tracking-tight">{e.role}</h2>
-                <p className="mt-1 text-muted">
+                <p className="mt-1 text-lg text-muted">
                   {e.orgUrl ? (
                     <a
                       href={e.orgUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="link-underline text-text hover:text-accent"
+                      className="prose-link"
                     >
                       {e.org}
                     </a>
@@ -82,7 +75,10 @@ export function Experience() {
                 <ul className="mt-5 max-w-2xl space-y-3">
                   {e.highlights.map((h) => (
                     <li key={h} className="flex gap-3 leading-relaxed text-muted">
-                      <span aria-hidden className="mt-2.5 h-px w-3 shrink-0 bg-accent" />
+                      <span
+                        aria-hidden
+                        className="mt-[0.7em] size-1.5 shrink-0 rounded-full bg-accent"
+                      />
                       <span>{h}</span>
                     </li>
                   ))}
@@ -118,13 +114,13 @@ export function Experience() {
       </section>
 
       <section className="container-page mt-32">
-        <SectionHeading eyebrow="Leadership" title="Beyond the job" />
+        <SectionHeading index="01" label="Outside work" title="The programming" italic="club" />
         {leadership.map((l) => (
           <Reveal key={l.org}>
-            <div className="card flex flex-col gap-3 p-7 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex flex-col gap-3 border-y border-line py-7 sm:flex-row sm:items-start sm:justify-between">
               <div className="max-w-2xl">
                 <h3 className="text-lg font-semibold tracking-tight">
-                  {l.role} <span className="text-muted">· {l.org}</span>
+                  {l.role} <span className="font-normal text-muted">of the {l.org}</span>
                 </h3>
                 <p className="mt-2 leading-relaxed text-muted">{l.detail}</p>
               </div>
@@ -135,18 +131,12 @@ export function Experience() {
       </section>
 
       <section className="container-page mt-32">
-        <SectionHeading
-          eyebrow="Skills"
-          title="Technical toolbox"
-          description="Grouped by how I use them, not by how long the list can get."
-        />
+        <SectionHeading index="02" label="Skills" title="What I work" italic="with" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((g, i) => (
             <Reveal key={g.group} delay={i * 0.05}>
-              <div className="spotlight card h-full p-6">
-                <h3 className="font-mono text-xs tracking-wider text-accent uppercase">
-                  {g.group}
-                </h3>
+              <div className="card h-full p-6">
+                <h3 className="font-mono text-xs text-faint">{g.group}</h3>
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {g.items.map((s) => (
                     <Tag key={s}>{s}</Tag>

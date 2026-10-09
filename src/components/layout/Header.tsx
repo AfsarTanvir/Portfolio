@@ -15,8 +15,8 @@ export const navItems = [
 ];
 
 const cvLinks = [
-  { href: profile.cv.resume, label: 'Résumé', note: 'Industry · 1 page' },
-  { href: profile.cv.academic, label: 'Academic CV', note: 'Graduate study' },
+  { href: profile.cv.resume, label: 'Résumé', note: 'One page' },
+  { href: profile.cv.academic, label: 'Academic CV', note: 'For universities' },
 ];
 
 export function Header() {
@@ -52,24 +52,23 @@ export function Header() {
           )}
         />
         <div className="container-page relative flex h-16 items-center justify-between gap-4">
-          <Link to="/" className="group flex items-center gap-2.5" aria-label="Afsar Tanvir, home">
-            <span className="grid size-8 place-items-center rounded-lg border border-line-strong font-serif text-lg italic leading-none transition-colors group-hover:border-accent group-hover:text-accent">
-              at
-            </span>
-            <span className="hidden text-sm font-medium tracking-tight sm:inline">
-              {profile.name}
-            </span>
+          <Link
+            to="/"
+            className="display text-2xl leading-none transition-colors hover:text-accent"
+            aria-label="Afsar Tanvir, home"
+          >
+            Afsar <span className="italic">Tanvir</span>
           </Link>
 
           <nav aria-label="Main" className="hidden md:block">
-            <ul className="flex items-center gap-1 rounded-full border border-line bg-surface/70 p-1">
+            <ul className="flex items-center gap-7">
               {navItems.map((item) => (
                 <li key={item.to}>
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
                       cn(
-                        'relative isolate block rounded-full px-3.5 py-1.5 text-sm transition-colors',
+                        'relative block py-1.5 text-sm transition-colors',
                         isActive ? 'text-text' : 'text-muted hover:text-text'
                       )
                     }
@@ -78,8 +77,8 @@ export function Header() {
                       <>
                         {isActive && (
                           <motion.span
-                            layoutId="nav-pill"
-                            className="absolute inset-0 -z-10 rounded-full bg-surface-2 ring-1 ring-line-strong"
+                            layoutId="nav-underline"
+                            className="absolute inset-x-0 -bottom-0.5 h-[2px] rounded-full bg-accent"
                             transition={{ type: 'spring', stiffness: 420, damping: 34 }}
                           />
                         )}
@@ -191,7 +190,7 @@ function CvMenu() {
         aria-haspopup="menu"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className="ml-1 inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3.5 py-1.5 text-sm transition-colors hover:border-accent hover:text-accent"
+        className="ml-1 inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3.5 py-1.5 text-sm transition-colors hover:border-text hover:bg-surface"
       >
         <FileText size={15} /> CV
       </button>

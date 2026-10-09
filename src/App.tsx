@@ -4,7 +4,6 @@ import { AnimatePresence, MotionConfig, motion } from 'motion/react';
 import { Header } from './components/layout/Header';
 import { Footer } from './components/layout/Footer';
 import { ScrollProgress } from './components/layout/ScrollProgress';
-import { PointerGlow } from './components/layout/PointerGlow';
 import { titleFor } from './data/seo';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
@@ -28,12 +27,11 @@ export function App() {
     <MotionConfig reducedMotion="user" transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-ink"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-text focus:px-4 focus:py-2 focus:text-bg"
       >
         Skip to content
       </a>
       <ScrollProgress />
-      <PointerGlow />
       <Header />
       <AnimatePresence
         mode="wait"
@@ -43,9 +41,9 @@ export function App() {
         <motion.main
           id="main"
           key={location.pathname}
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0, transition: { duration: 0.25, ease: [0.22, 1, 0.36, 1] } }}
-          exit={{ opacity: 0, y: -4, transition: { duration: 0.15, ease: 'easeIn' } }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, transition: { duration: 0.3, ease: 'easeOut' } }}
+          exit={{ opacity: 0, filter: 'blur(4px)', transition: { duration: 0.18, ease: 'easeIn' } }}
           className="relative z-10 min-h-[70vh]"
         >
           <Routes location={location}>

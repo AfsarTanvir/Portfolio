@@ -9,16 +9,16 @@ import { asset } from '../lib/utils';
 
 const topics = [
   {
-    title: 'Engineering',
-    body: 'Backend architecture, APIs, caching and data modelling, and lessons from building multi-tenant systems.',
+    title: 'Backend work',
+    body: 'APIs, caching, database design, and what I’ve learned working on an app with many tenants.',
   },
   {
-    title: 'Research & graduate study',
-    body: 'Distributed and data-intensive systems, software engineering, and ideas for dissertation projects.',
+    title: 'Study and research',
+    body: 'Distributed systems, data-heavy systems, software engineering, and ideas for a dissertation.',
   },
   {
     title: 'Developer tools',
-    body: 'API mocking, scheduling and testing tools. Happy to compare notes or contribute.',
+    body: 'Mock servers, schedulers and testing. Happy to swap notes or help out.',
   },
 ];
 
@@ -38,8 +38,8 @@ export function Contact() {
 
   return (
     <>
-      <PageHero eyebrow="Contact" title={<>Let’s talk.</>}>
-        <p>Email is the fastest way to reach me. It’s {time} in Bangladesh right now (UTC+6).</p>
+      <PageHero label="Contact" title="Say" italic="hi" note="no forms here, just email">
+        <p>Email is the fastest way to reach me. It’s {time} in Bangladesh right now.</p>
       </PageHero>
 
       <section className="container-page">
@@ -57,7 +57,7 @@ export function Contact() {
             <button
               type="button"
               onClick={copyEmail}
-              className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-line-strong px-5 py-2.5 text-sm transition-colors hover:border-accent hover:text-accent md:self-auto"
+              className="inline-flex shrink-0 items-center gap-2 self-start rounded-full border border-line-strong px-5 py-2.5 text-sm transition-colors hover:border-text hover:bg-surface-2 md:self-auto"
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -70,14 +70,14 @@ export function Contact() {
                   {copied ? <Check size={16} className="text-accent" /> : <Copy size={16} />}
                 </motion.span>
               </AnimatePresence>
-              <span aria-live="polite">{copied ? 'Copied' : 'Copy address'}</span>
+              <span aria-live="polite">{copied ? 'Copied!' : 'Copy'}</span>
             </button>
           </div>
         </Reveal>
 
         <div className="mt-5 grid gap-5 lg:grid-cols-[1.4fr_1fr]">
           <Reveal>
-            <ul className="grid h-full gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+            <ul className="grid h-full gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2">
               {socials
                 .filter((s) => s.key !== 'email')
                 .map((s) => (
@@ -89,7 +89,7 @@ export function Contact() {
                       className="group flex h-full items-center justify-between gap-4 p-6 transition-colors hover:bg-surface"
                     >
                       <span className="flex items-center gap-4">
-                        <span className="grid size-11 place-items-center rounded-xl border border-line text-muted transition-colors group-hover:border-accent group-hover:text-accent">
+                        <span className="grid size-11 place-items-center rounded-lg border border-line text-muted transition-colors group-hover:border-accent group-hover:text-accent">
                           <SocialIcon name={s.key} />
                         </span>
                         <span>
@@ -108,14 +108,14 @@ export function Contact() {
           </Reveal>
           <Reveal delay={0.08}>
             <div className="card h-full p-7">
-              <p className="eyebrow">Documents</p>
+              <p className="eyebrow">CVs</p>
               <div className="mt-5 space-y-3">
                 {[
-                  { href: profile.cv.resume, label: 'Résumé', note: 'Industry · 1 page PDF' },
+                  { href: profile.cv.resume, label: 'Résumé', note: 'One page, PDF' },
                   {
                     href: profile.cv.academic,
                     label: 'Academic CV',
-                    note: 'For graduate admissions · PDF',
+                    note: 'For universities, PDF',
                   },
                 ].map((d) => (
                   <a
@@ -123,7 +123,7 @@ export function Contact() {
                     href={asset(d.href)}
                     target="_blank"
                     rel="noopener"
-                    className="group flex items-center justify-between rounded-xl border border-line p-4 transition-colors hover:border-accent"
+                    className="group flex items-center justify-between rounded-lg border border-line p-4 transition-colors hover:border-line-strong hover:bg-surface-2"
                   >
                     <span className="flex items-center gap-3">
                       <FileText size={18} className="text-accent" />
@@ -145,7 +145,7 @@ export function Contact() {
 
         <div className="mt-24">
           <Reveal>
-            <p className="eyebrow">Happy to talk about</p>
+            <p className="eyebrow">Things I like talking about</p>
           </Reveal>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {topics.map((o, i) => (

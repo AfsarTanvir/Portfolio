@@ -15,15 +15,15 @@ export const experience: Experience[] = [
     role: 'Full Stack Developer',
     org: 'AppifyLab',
     orgUrl: 'https://www.appifylab.com/',
-    period: 'Sep 2025 — Present',
+    period: 'Sep 2025 to now',
     location: 'Bangladesh',
     summary:
-      'Building EzyCommunity, a multi-agency, multi-tenant platform where agencies run many independent communities. I work across the community API (AdonisJS) and the Next.js app, and have shipped 550+ commits since February 2026.',
+      'I work on EzyCommunity, a platform where agencies run lots of separate online communities. Most of my time goes into the AdonisJS API, and I work on the Next.js app as well. I’ve pushed over 550 commits since February 2026.',
     highlights: [
-      'Implemented a content-moderation workflow around a new moderator permission in the RBAC system: pending-post and pending-edit review queues, soft deletes, and community-scoped queries that enforce tenant isolation.',
-      'Reworked the live home and channel feeds: a "new posts" pill that never inserts posts unasked, plus infinite-scroll fixes that removed layout shift and per-render row rebuilds.',
-      'Added cursor pagination to comments and improved Redis channel-cache invalidation.',
-      'Built the website-builder settings area (fonts, colour variables, custom CSS and JS screens) and contributed to Stripe-backed checkout for paid channels.',
+      'Built the moderation flow: a new moderator permission, review queues for new posts and for edits, soft deletes, and queries that always stay inside the right community.',
+      'Reworked the live feed. New posts now wait behind a “new posts” button instead of jumping into the page, and infinite scroll no longer shifts around.',
+      'Added cursor pagination to comments and cleaned up how the Redis channel cache gets invalidated.',
+      'Built the settings screens for the website builder (fonts, colours, custom CSS and JS) and helped with Stripe checkout for paid channels.',
     ],
     stack: ['AdonisJS', 'TypeScript', 'Next.js', 'React', 'MySQL', 'MongoDB', 'Redis', 'Stripe'],
     links: [{ label: 'EzyCommunity', href: 'https://www.ezycommunity.com/' }],
@@ -31,15 +31,16 @@ export const experience: Experience[] = [
   {
     role: '.NET Developer Trainee',
     org: 'Learnathon by Geeky Solutions',
-    period: 'Dec 2024 — Apr 2025',
+    period: 'Dec 2024 to Apr 2025',
     summary:
-      'Selected for an intensive, mentored program. Our team of three ("Brainstormers") built TaskForge.NET with professional review practices.',
+      'A mentored program where small teams build a real project. Three of us, team “Brainstormers”, built TaskForge.NET together.',
     highlights: [
-      'Built a task-management system in ASP.NET Core MVC following Clean Architecture and SOLID: task CRUD, user assignment and status tracking.',
-      'Modelled persistence with Entity Framework Core on SQL Server.',
-      'Worked through pull requests and code review with two teammates and mentors.',
+      'A task manager in ASP.NET Core MVC, organised with Clean Architecture and SOLID.',
+      'You can create tasks, assign them, and move them through To Do, In Progress and Done.',
+      'SQL Server with Entity Framework Core for the data.',
+      'Every change went through a pull request and a review.',
     ],
-    stack: ['C#', 'ASP.NET Core MVC', 'EF Core', 'SQL Server', 'Clean Architecture'],
+    stack: ['C#', 'ASP.NET Core MVC', 'EF Core', 'SQL Server'],
     links: [
       {
         label: 'TaskForge.NET',
@@ -53,76 +54,80 @@ export const experience: Experience[] = [
   },
 ];
 
-export type JourneyTag =
-  'Industry' | 'Academic' | 'Competitive programming' | 'Leadership' | 'Building';
+export type JourneyTag = 'Work' | 'Projects' | 'University' | 'Contests' | 'Club';
 
 export const journey: { date: string; title: string; detail: string; tag: JourneyTag }[] = [
   {
     date: 'Oct 2026',
     title: 'Started local-scheduler',
-    detail: 'A self-hosted job scheduler in Go: one binary, embedded SQLite, crash recovery.',
-    tag: 'Building',
+    detail: 'A job scheduler in Go. One binary, SQLite inside, and it survives crashes.',
+    tag: 'Projects',
   },
   {
     date: 'May 2026',
     title: 'Started MockFlow',
-    detail:
-      'A collaborative API mock server that grew from a 30-day MVP into a multi-team product.',
-    tag: 'Building',
+    detail: 'Planned as a 30-day project. It kept going.',
+    tag: 'Projects',
   },
   {
     date: 'Sep 2025',
     title: 'Joined AppifyLab',
-    detail: 'Full Stack Developer on EzyCommunity, a multi-tenant community platform.',
-    tag: 'Industry',
+    detail: 'Full-stack developer on EzyCommunity.',
+    tag: 'Work',
   },
   {
     date: 'Jul 2025',
-    title: 'Graduated in Computer Science & Engineering',
-    detail: 'B.Sc. CSE from Sylhet Engineering College, CGPA 3.68 / 4.00.',
-    tag: 'Academic',
+    title: 'Finished my degree',
+    detail: 'B.Sc. in CSE from Sylhet Engineering College, CGPA 3.68 out of 4.',
+    tag: 'University',
   },
   {
     date: 'Jun 2025',
-    title: 'Next Word Predictor',
-    detail: 'An LSTM language model trained on custom and public text corpora.',
-    tag: 'Building',
+    title: 'Built a next-word predictor',
+    detail: 'My first real NLP project, an LSTM in Keras.',
+    tag: 'Projects',
   },
   {
     date: '2025',
-    title: 'DUET IUPC 2025: ranked 89th',
+    title: '89th at DUET IUPC',
     detail: 'Inter-university programming contest.',
-    tag: 'Competitive programming',
+    tag: 'Contests',
   },
   {
     date: 'Dec 2024',
-    title: 'Learnathon .NET track',
-    detail: 'Mentored ASP.NET Core development in a team of three.',
-    tag: 'Industry',
+    title: 'Learnathon',
+    detail: 'Built a .NET project in a team of three, with mentors reviewing our work.',
+    tag: 'Work',
   },
   {
     date: 'Nov 2024',
-    title: 'Reached 1476 on Codeforces',
-    detail: 'Specialist, after climbing back from 632 two years earlier.',
-    tag: 'Competitive programming',
+    title: 'Became a Specialist on Codeforces',
+    detail: 'Rating 1476, two years after dropping to 632.',
+    tag: 'Contests',
   },
   {
-    date: '2024 — 2025',
-    title: 'Coordinator, SEC Programming Club',
+    date: '2024 to 2025',
+    title: 'Club coordinator',
     detail:
-      'Ran selection contests and warm-up sessions, and managed team registration for inter-university contests.',
-    tag: 'Leadership',
+      'Coordinated the SEC Programming Club: selection contests, warm-up sessions and team registrations.',
+    tag: 'Club',
   },
   {
     date: '2024',
-    title: 'MU IUPC 2024: ranked 14th',
-    detail: 'Inter-university contest, Sylhet Division.',
-    tag: 'Competitive programming',
+    title: '14th at MU IUPC',
+    detail: 'Sylhet Division round.',
+    tag: 'Contests',
+  },
+  {
+    date: 'Feb 2020',
+    title: 'Made a Codeforces account',
+    detail: 'A few weeks after starting university.',
+    tag: 'Contests',
   },
   {
     date: 'Jan 2020',
-    title: 'Started B.Sc. in CSE',
-    detail: 'Sylhet Engineering College.',
-    tag: 'Academic',
+    title: 'Started university',
+    detail: 'Computer Science & Engineering at Sylhet Engineering College.',
+    tag: 'University',
   },
 ];

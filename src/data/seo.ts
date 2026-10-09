@@ -2,42 +2,39 @@ import { projects } from './projects.ts';
 
 export type RouteMeta = { path: string; title: string; description: string };
 
+export const homeDescription =
+  'Software engineer at AppifyLab in Bangladesh. I work mostly on the backend, build small tools for developers, and spent university doing competitive programming.';
+
 const pages: RouteMeta[] = [
-  {
-    path: '',
-    title: 'Afsar Tanvir · Software Engineer',
-    description:
-      'Backend-focused full-stack engineer at AppifyLab and builder of developer tools. Codeforces Specialist with interests in distributed and data-intensive systems.',
-  },
+  { path: '', title: 'Afsar Tanvir · Software engineer', description: homeDescription },
   {
     path: 'about',
     title: 'About · Afsar Tanvir',
     description:
-      'From competitive programming to production systems: my story, how I work, and my journey so far.',
+      'How I got into programming, how I like to work, and a timeline of the last few years.',
   },
   {
     path: 'experience',
     title: 'Experience · Afsar Tanvir',
     description:
-      'Full Stack Developer at AppifyLab (EzyCommunity) and Learnathon .NET trainee. Skills and résumé.',
+      'My work at AppifyLab and in the Learnathon .NET program, my skills, and my résumé.',
   },
   {
     path: 'projects',
     title: 'Projects · Afsar Tanvir',
     description:
-      'MockFlow, local-scheduler, Audio Visualizer and more: case studies with the engineering decisions behind them.',
+      'MockFlow, local-scheduler, Audio Visualizer and other things I’ve built, with notes on how they work.',
   },
   {
     path: 'academics',
     title: 'Academics · Afsar Tanvir',
     description:
-      'B.Sc. CSE (CGPA 3.68), academic interests in distributed and data-intensive systems, competitive programming record, and academic CV.',
+      'My degree, what I want to study next, my competitive programming record, and my academic CV.',
   },
   {
     path: 'contact',
     title: 'Contact · Afsar Tanvir',
-    description:
-      'Get in touch about engineering, developer tools, collaboration or graduate research.',
+    description: 'How to get in touch with me.',
   },
 ];
 

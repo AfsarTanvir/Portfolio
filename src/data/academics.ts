@@ -1,11 +1,11 @@
-export const studyGoal = {
-  heading: 'Graduate study in Computer Science',
-  body: 'I plan to pursue a master’s in Computer Science, focusing on distributed systems, data-intensive systems and software engineering, ideally in a programme with a substantial dissertation or research project.',
-};
+export const studyGoal =
+  'I want to do a master’s in Computer Science, in distributed systems, data-intensive systems or software engineering. I’m looking for a programme with a real dissertation or research project, not only coursework.';
 
-/** Short motivation shown on /academics. Edit freely; it is the seed of a personal statement. */
-export const motivation =
-  'Shipping a multi-tenant platform and building a scheduler from scratch showed me how much reliable software rests on ideas I only met briefly as an undergraduate: consistency, failure handling, caching and scheduling. I want an MSc to study them properly, and to finish with a dissertation project that is both rigorous and useful to real teams.';
+/** Shown on /academics under "Why a master’s". Edit freely; it can grow into a personal statement. */
+export const motivation = [
+  'At work I keep running into problems I only touched on at university: caching, consistency, permissions across tenants, and what happens when something fails halfway through.',
+  'Building a scheduler from scratch made it obvious how much I still don’t know about these things. I can make them work, but I want to understand them properly. That’s what I want a master’s for, and I’d like to spend my dissertation on one of them.',
+];
 
 export const education = {
   degree: 'B.Sc. in Computer Science & Engineering',
@@ -13,10 +13,10 @@ export const education = {
   // VERIFY: the college is affiliated with Shahjalal University of Science and Technology (SUST).
   affiliation: 'Affiliated with Shahjalal University of Science and Technology',
   place: 'Sylhet, Bangladesh',
-  period: 'Jan 2020 — Jul 2025',
+  period: 'Jan 2020 to Jul 2025',
   cgpa: 3.68,
   scale: 4.0,
-  note: 'Focus areas: algorithms and data structures, software engineering, databases, web development and machine learning.',
+  note: 'Most of my time went into algorithms and data structures, software engineering, databases, web development and a bit of machine learning.',
 };
 
 export type Interest = {
@@ -28,36 +28,34 @@ export type Interest = {
 
 export const interests: Interest[] = [
   {
-    title: 'Distributed & cloud systems',
+    title: 'Distributed systems',
     summary:
-      'Scheduling, failure handling and execution guarantees: how systems stay correct when processes crash, machines sleep or work is retried.',
+      'What happens when things fail: crashed processes, sleeping machines, retries, and jobs that might run twice.',
     question:
-      'What does “run exactly once” cost in a scheduler that can crash mid-run, and when is “at most once” the better contract?',
+      'How much does “run exactly once” really cost a scheduler, and when is “at most once” good enough?',
     evidence: [
       { label: 'local-scheduler', href: '/projects/local-scheduler' },
-      { label: 'EzyCommunity (multi-tenant platform)', href: '/experience' },
+      { label: 'My work on EzyCommunity', href: '/experience' },
     ],
   },
   {
     title: 'Data-intensive systems',
     summary:
-      'Databases and caching at the boundary of correctness and speed: keyset pagination, cache stampedes, invalidation by scope and multi-tenant isolation.',
+      'Databases and caches, and the places where speed and correctness pull in different directions.',
     question:
-      'When does a cache in a multi-tenant system stop paying for itself, and how should invalidation scopes be designed?',
+      'In an app with many tenants, when does a cache stop being worth it, and how do you decide what to invalidate?',
     evidence: [
-      { label: 'MockFlow caching layer', href: '/projects/mockflow' },
+      { label: 'MockFlow’s caching', href: '/projects/mockflow' },
       {
-        label: 'Engineering knowledge base',
+        label: 'My knowledge base',
         href: 'https://github.com/AfsarTanvir/engineering-knowledge-base',
       },
     ],
   },
   {
-    title: 'Software engineering & developer tools',
-    summary:
-      'Testability, API contracts and tools that remove waiting from teams: mocking, contract import/export and end-to-end testing from the outside.',
-    question:
-      'How can API mocks stay faithful to an evolving contract without becoming a second backend to maintain?',
+    title: 'Software engineering',
+    summary: 'Testing, API contracts, and tools that stop teams from waiting on each other.',
+    question: 'How do you keep a mock API honest when the real API keeps changing?',
     evidence: [
       { label: 'MockFlow', href: '/projects/mockflow' },
       { label: 'TaskForge.NET', href: '/projects/taskforge-net' },
@@ -66,8 +64,8 @@ export const interests: Interest[] = [
 ];
 
 export const earlierExploration = {
-  title: 'Earlier exploration: NLP',
-  body: 'An LSTM next-word predictor taught me the full ML loop, from text preprocessing to evaluation with top-k accuracy and temperature sampling.',
+  title: 'Before all this: a bit of NLP',
+  body: 'My first ML project was an LSTM that predicts the next word. It’s where I learned the basic loop of cleaning data, training and measuring.',
   href: '/projects/next-word-predictor',
 };
 
@@ -115,9 +113,9 @@ export const leadership = [
   {
     role: 'Coordinator',
     org: 'SEC Programming Club',
-    period: '2024 — 2025',
+    period: '2024 to 2025',
     detail:
-      'Organised internal selection contests and warm-up sessions, and managed team registration for inter-university programming contests.',
+      'I set up the internal selection contests, ran warm-up sessions before big contests, and handled team registration for inter-university contests.',
   },
 ];
 

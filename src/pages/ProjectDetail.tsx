@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, ExternalLink } from 'lucide-react'
 import { projects, type Project } from '../data/projects';
 import { ProjectVisual } from '../components/ProjectVisual';
 import { Reveal } from '../components/ui/Reveal';
+import { RevealText } from '../components/ui/RevealText';
 import { Tag } from '../components/ui/Section';
 import { GitHubIcon } from '../components/ui/Icons';
 import { stagger } from '../lib/utils';
@@ -36,9 +37,13 @@ export function ProjectDetail() {
             <p data-animate style={stagger(1)} className="eyebrow">
               {project.categories.join(' · ')}
             </p>
-            <h1 data-animate style={stagger(2)} className="mt-4 display text-6xl sm:text-8xl">
-              {project.name}
-            </h1>
+            <RevealText
+              as="h1"
+              trigger="mount"
+              delay={0.15}
+              text={project.name}
+              className="mt-4 display text-6xl sm:text-8xl"
+            />
             <p
               data-animate
               style={stagger(3)}
@@ -48,9 +53,12 @@ export function ProjectDetail() {
             </p>
           </div>
           <dl data-animate style={stagger(4)} className="grid grid-cols-2 gap-x-6 gap-y-5 text-sm">
-            <Meta label="Timeline" value={project.period} />
-            <Meta label="Status" value={project.status ?? 'Shipped'} />
-            <Meta label="Role" value={project.role} wide />
+            <Meta label="When" value={project.period} />
+            <Meta
+              label="Status"
+              value={project.status === 'In progress' ? 'Still working on it' : 'Done'}
+            />
+            <Meta label="Who" value={project.role} wide />
             <div className="col-span-2 flex flex-wrap gap-2 pt-1">
               {project.repo && (
                 <a
@@ -67,7 +75,7 @@ export function ProjectDetail() {
                   href={project.live}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-ink hover:brightness-110"
+                  className="inline-flex items-center gap-2 rounded-full bg-text px-4 py-2 text-sm font-medium text-bg hover:bg-accent hover:text-accent-ink"
                 >
                   <ExternalLink size={15} /> Live demo
                 </a>
@@ -114,7 +122,7 @@ export function ProjectDetail() {
       <div className="container-page mt-24 grid gap-16 lg:grid-cols-[14rem_1fr] lg:gap-20">
         <aside className="hidden lg:block">
           <div className="sticky top-28">
-            <p className="font-mono text-xs tracking-wider text-faint uppercase">Stack</p>
+            <p className="eyebrow">Built with</p>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {project.stack.map((s) => (
                 <Tag key={s}>{s}</Tag>
@@ -124,17 +132,17 @@ export function ProjectDetail() {
         </aside>
 
         <div className="min-w-0 space-y-20">
-          <Block title="The problem">
+          <Block title="Why I built it">
             <p className="max-w-2xl text-lg leading-relaxed text-muted">{project.problem}</p>
           </Block>
 
           {project.flow && (
-            <Block title="How a request flows">
+            <Block title="How it works">
               <Flow steps={project.flow} />
             </Block>
           )}
 
-          <Block title="What I built">
+          <Block title="What it does">
             <ol className="max-w-2xl space-y-5">
               {project.highlights.map((h, i) => (
                 <Reveal as="li" key={h} delay={i * 0.04} className="flex gap-5">
@@ -148,11 +156,11 @@ export function ProjectDetail() {
           </Block>
 
           {project.decisions && (
-            <Block title="Engineering decisions">
+            <Block title="A few decisions">
               <div className="grid gap-4 md:grid-cols-2">
                 {project.decisions.map((d, i) => (
                   <Reveal key={d.title} delay={i * 0.06}>
-                    <div className="spotlight card h-full p-6">
+                    <div className="card h-full p-6">
                       <h3 className="font-semibold tracking-tight">{d.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-muted">{d.body}</p>
                     </div>
@@ -163,7 +171,7 @@ export function ProjectDetail() {
           )}
 
           <div className="lg:hidden">
-            <Block title="Stack">
+            <Block title="Built with">
               <div className="flex flex-wrap gap-1.5">
                 {project.stack.map((s) => (
                   <Tag key={s}>{s}</Tag>
@@ -185,7 +193,7 @@ export function ProjectDetail() {
 function Meta({ label, value, wide }: { label: string; value: string; wide?: boolean }) {
   return (
     <div className={wide ? 'col-span-2' : undefined}>
-      <dt className="font-mono text-xs tracking-wider text-faint uppercase">{label}</dt>
+      <dt className="eyebrow">{label}</dt>
       <dd className="mt-1 text-text">{value}</dd>
     </div>
   );
@@ -194,9 +202,7 @@ function Meta({ label, value, wide }: { label: string; value: string; wide?: boo
 function Block({ title, children }: { title: string; children: ReactNode }) {
   return (
     <section>
-      <Reveal>
-        <h2 className="mb-6 display text-3xl sm:text-4xl">{title}</h2>
-      </Reveal>
+      <RevealText text={title} className="mb-6 display text-3xl sm:text-4xl" />
       {children}
     </section>
   );
@@ -235,7 +241,7 @@ function PagerLink({ project, direction }: { project: Project; direction: 'prev'
   return (
     <Link
       to={`/projects/${project.slug}`}
-      className={`spotlight card group flex flex-col gap-2 p-6 transition-colors hover:border-line-strong ${direction === 'next' ? 'sm:items-end sm:text-right' : ''}`}
+      className={`card group flex flex-col gap-2 p-6 transition-colors hover:border-line-strong ${direction === 'next' ? 'sm:items-end sm:text-right' : ''}`}
     >
       <span className="inline-flex items-center gap-2 font-mono text-xs text-faint">
         {direction === 'prev' && (

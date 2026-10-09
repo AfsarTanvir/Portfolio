@@ -11,7 +11,9 @@ export type Project = {
   tagline: string;
   period: string;
   role: string;
-  status?: 'In progress' | 'Shipped';
+  status?: 'In progress' | 'Done';
+  /** Short handwritten note shown on the card. */
+  note?: string;
   categories: ProjectCategory[];
   stack: string[];
   visual: ProjectVisual;
@@ -20,23 +22,23 @@ export type Project = {
   live?: string;
   extraLinks?: { label: string; href: string }[];
   metrics?: { value: string; label: string }[];
+  /** "Why I built it": a short paragraph. */
   problem: string;
   highlights: string[];
   decisions?: { title: string; body: string }[];
-  /** Optional request/data flow, drawn as a diagram on the case-study page. */
+  /** Optional request flow, drawn as a diagram on the case-study page. */
   flow?: { label: string; detail: string }[];
-  /** One-line note on how the project relates to an academic interest (shown on /academics). */
-  researchAngle?: string;
 };
 
 export const projects: Project[] = [
   {
     slug: 'mockflow',
     name: 'MockFlow',
-    tagline: 'A collaborative API mock server, so frontend teams never wait on the backend.',
-    period: 'May 2026 — Present',
-    role: 'Solo: product, backend, frontend, tests',
+    tagline: 'A mock API server for when the backend isn’t ready yet.',
+    period: 'May 2026 to now',
+    role: 'Just me: design, backend, frontend and tests',
     status: 'In progress',
+    note: 'biggest one so far',
     categories: ['Full-stack', 'Backend', 'Developer tools'],
     stack: [
       'AdonisJS 6',
@@ -52,106 +54,103 @@ export const projects: Project[] = [
     featured: true,
     repo: 'https://github.com/AfsarTanvir/mockflow',
     metrics: [
-      { value: '~250', label: 'unit + integration tests' },
+      { value: '~250', label: 'unit and integration tests' },
       { value: '24', label: 'merged pull requests' },
-      { value: '200+', label: 'commits in five months' },
+      { value: '200+', label: 'commits' },
     ],
     problem:
-      'Frontend and QA teams regularly block on unfinished APIs. MockFlow lets a team design endpoints, generate realistic responses and share a live mock URL, before the real backend exists.',
+      'Frontend work often gets stuck waiting for an API that doesn’t exist yet. With MockFlow you describe the endpoints, fill them with realistic fake data, and give the frontend a URL it can call today. It started in May 2026 as a 30-day project and kept growing.',
     highlights: [
-      'Mock engine that matches requests with path-to-regexp and orders candidates by route specificity, so /users/me wins over /users/:id.',
-      'Dynamic responses from faker.js templates and path parameters. Scenarios and rules switch responses, and randomised delays simulate slow networks.',
-      'OpenAPI 3.x and Postman v2.1 export, plus a two-phase import (preview, then apply) so nothing is overwritten by surprise.',
-      'Version history snapshots endpoints, scenarios and rules, and every restore saves an automatic backup first.',
-      'Workspaces: companies, teams, role-based access (owner, admin, member, viewer), team-owned projects, and a super-admin console with impersonation.',
-      'Redis on the hot path: single-flight to stop cache stampedes, negative caching, TTL jitter, and tag-based invalidation per project, team and company.',
+      'Requests are matched by route, and the most specific route wins, so /users/me beats /users/:id.',
+      'Responses can use faker.js templates and path parameters. You can switch between scenarios and add random delays to test slow networks.',
+      'Export to OpenAPI 3 or Postman. Import happens in two steps: you see a preview first, then apply it.',
+      'Version history. Every restore saves a backup first, in case you restore the wrong version.',
+      'Companies, teams and roles (owner, admin, member, viewer), plus an admin console that can log in as any user.',
+      'Redis caching on the mock path, with protection against cache stampedes, caching of “not found” results, and randomised expiry times.',
     ],
     decisions: [
       {
-        title: 'Strict layering',
-        body: 'Controller → Service → Query → Model across the whole API, so business rules can be tested without HTTP and queries live in one place.',
+        title: 'Thin controllers',
+        body: 'Every request goes controller → service → query → model. It’s more files, but I can test the business rules without going through HTTP.',
       },
       {
-        title: 'An additive migration for the riskiest change',
-        body: 'Moving project ownership to teams shipped as a nullable team_id, not the planned destructive migration, so every existing mock URL kept working.',
+        title: 'No destructive migration',
+        body: 'When projects moved from users to teams, I added a nullable team_id instead of rewriting the table. Every existing mock URL kept working.',
       },
       {
-        title: 'A dedicated security pass',
-        body: 'Rate-limited public auth routes, a 1 MB body cap, a race-safe last-admin check (closing a TOCTOU window), and password reset that no longer reveals whether an account exists.',
+        title: 'A security pass',
+        body: 'Rate limits on the public auth routes, a 1 MB request limit, a last-admin check that can’t race, and a password reset that doesn’t reveal whether an account exists.',
       },
       {
-        title: 'Verify before you document',
-        body: 'When the planning docs drifted from reality, I rewrote the roadmap from the code and git history and now record status, not intent.',
+        title: 'Docs that match the code',
+        body: 'My early plans drifted away from what I actually built, so I rewrote the roadmap from the git history and now only write down what exists.',
       },
     ],
     flow: [
-      { label: 'Request', detail: 'GET /users/42 on the mock URL' },
-      { label: 'Match', detail: 'path-to-regexp, most specific route wins' },
-      { label: 'Resolve', detail: 'active scenario and rules' },
-      { label: 'Render', detail: 'faker.js template and path params' },
+      { label: 'Request', detail: 'GET /users/42 hits the mock URL' },
+      { label: 'Match', detail: 'the most specific route wins' },
+      { label: 'Scenario', detail: 'pick the active scenario and rules' },
+      { label: 'Render', detail: 'fill faker.js templates and params' },
       { label: 'Respond', detail: 'status, headers, optional delay' },
     ],
-    researchAngle:
-      'Caching and consistency in a multi-tenant system: stampedes, negative caching, invalidation by scope.',
   },
   {
     slug: 'local-scheduler',
     name: 'local-scheduler',
-    tagline: 'A self-hosted job scheduler with an HTTP API. One binary, no dependencies.',
-    period: 'Oct 2026 — Present',
-    role: 'Solo',
+    tagline: 'A small job scheduler you run yourself and talk to over HTTP.',
+    period: 'Oct 2026 to now',
+    role: 'Just me',
     status: 'In progress',
+    note: 'newest',
     categories: ['Backend', 'Systems', 'Developer tools'],
     stack: ['Go', 'SQLite', 'Docker', 'OpenAPI 3'],
     visual: 'scheduler',
     featured: true,
     repo: 'https://github.com/AfsarTanvir/local-scheduler-',
     metrics: [
-      { value: '0', label: 'external services to install' },
-      { value: '3', label: 'operating systems supported' },
-      { value: 'kill -9', label: 'crash recovery tested end to end' },
+      { value: '1', label: 'binary, with SQLite built in' },
+      { value: '3', label: 'operating systems' },
+      { value: 'kill -9', label: 'is part of the test script' },
     ],
     problem:
-      'Cron is per-machine and silent, and hosted schedulers are heavy. I wanted a scheduler that any app, in any language, can drive over plain HTTP, and that stays correct when the machine sleeps, restarts or crashes.',
+      'Cron works, but it lives on one machine and says very little when something fails. I wanted a scheduler that any app could use over plain HTTP, that keeps a history of every run, and that behaves sensibly after a restart or a crash.',
     highlights: [
-      'Jobs run on a cron schedule (with time zones, @daily, @every 10m) or once at a set time. Each job either calls a URL or runs a shell command (opt-in).',
-      'A one-second loop starts due jobs in goroutines and moves nextRunAt forward. Run history is kept per job in embedded SQLite.',
-      'Explicit rules: runs never overlap, missed runs collapse into one catch-up run, and graceful shutdown gives running jobs 30 seconds to finish.',
-      'Crash recovery: on start-up, runs interrupted by kill -9 or power loss are marked failed and are not repeated.',
-      'One error shape for every endpoint, and a full OpenAPI 3 spec served by the binary itself.',
+      'Jobs run on a cron schedule (with time zones) or once at a set time. A job either calls a URL or runs a shell command.',
+      'A loop checks for due jobs every second and runs each one in its own goroutine. Every run is saved to SQLite.',
+      'If a job is still running when its next turn comes, that turn is skipped. Runs missed while the machine was asleep become one catch-up run.',
+      'Ctrl+C gives running jobs 30 seconds to finish. After a hard crash, half-finished runs are marked as failed instead of running twice.',
+      'The binary serves its own OpenAPI spec, and every error comes back in the same JSON shape.',
     ],
     decisions: [
       {
         title: 'Write the rules down',
-        body: 'Overlap, catch-up and shutdown behaviour each have a short decision record explaining the trade-off, so the semantics are deliberate and not accidental.',
+        body: 'Overlaps, catch-up runs and shutdown each have a short note in the repo explaining why they work the way they do.',
       },
       {
-        title: 'Test from the outside',
-        body: 'An end-to-end script starts the real binary beside a fake API and checks scheduling, failures, timeouts, pause/resume, restarts, graceful shutdown, recovery after kill -9, and memory use.',
+        title: 'Test it from the outside',
+        body: 'An end-to-end script starts the real binary next to a fake API, then restarts it, times jobs out, kills it with kill -9 and checks memory.',
       },
       {
-        title: 'Safe by default',
-        body: 'Shell jobs execute commands on the host, so they stay disabled unless ALLOW_SHELL_JOBS=true. Command output is capped while it runs.',
+        title: 'Shell jobs are off by default',
+        body: 'They run commands on your machine, so you have to switch them on yourself with ALLOW_SHELL_JOBS=true.',
       },
     ],
     flow: [
-      { label: 'HTTP API', detail: 'POST /jobs with a schedule or runAt' },
-      { label: 'Store', detail: 'SQLite: jobs and run history' },
-      { label: 'Scheduler', detail: 'every second: which jobs are due?' },
-      { label: 'Runner', detail: 'one goroutine per run, with timeout' },
-      { label: 'Result', detail: 'HTTP response or exit code, recorded' },
+      { label: 'API', detail: 'POST /jobs with a schedule or a time' },
+      { label: 'Store', detail: 'jobs and run history in SQLite' },
+      { label: 'Scheduler', detail: 'every second: what’s due?' },
+      { label: 'Runner', detail: 'one goroutine per run, with a timeout' },
+      { label: 'Result', detail: 'response or exit code, saved' },
     ],
-    researchAngle:
-      'Execution guarantees under failure: what "at most once" means when a scheduler can crash mid-run.',
   },
   {
     slug: 'audio-visualizer',
     name: 'Audio Visualizer',
-    tagline:
-      'Upload a track and watch it move: real-time frequency bars and waveforms in the browser.',
-    period: 'Mar — May 2026',
-    role: 'Solo',
-    status: 'Shipped',
+    tagline: 'Drop in a song and watch the frequencies move.',
+    period: 'Mar to May 2026',
+    role: 'Just me',
+    status: 'Done',
+    note: 'try the live demo',
     categories: ['Full-stack'],
     stack: ['AdonisJS 7', 'Next.js 16', 'React 19', 'MongoDB', 'Web Audio API'],
     visual: 'audio',
@@ -159,20 +158,20 @@ export const projects: Project[] = [
     repo: 'https://github.com/AfsarTanvir/Audio-Visualizer',
     live: 'https://audio-visualizer-jet-kappa.vercel.app',
     problem:
-      'A playground for the Web Audio API that is also a complete product: uploads, storage, streaming and playback, end to end.',
+      'I wanted to learn the Web Audio API, and I wanted to build the whole thing: upload, storage, streaming and playback, not just a canvas demo.',
     highlights: [
-      'Real-time frequency-bar and waveform rendering with the Web Audio API, for MP3, WAV, FLAC and other formats.',
-      'AdonisJS 7 backend with upload, streaming and delete endpoints, and upload records stored in MongoDB.',
-      'Next.js 16 and React 19 frontend with drag-and-drop upload, playback controls and an upload history.',
+      'Frequency bars and a waveform drawn in real time with the Web Audio API. MP3, WAV and FLAC all work.',
+      'An AdonisJS backend for uploading, streaming and deleting files, with upload records in MongoDB.',
+      'A Next.js 16 and React 19 front end with drag and drop, playback controls and a list of past uploads.',
     ],
   },
   {
     slug: 'taskforge-net',
     name: 'TaskForge.NET',
-    tagline: 'A team task manager built with Clean Architecture during the Learnathon program.',
-    period: 'Dec 2024 — Apr 2025',
-    role: 'Team of 3 with Rejwanul Haque and Enamul Hasan',
-    status: 'Shipped',
+    tagline: 'A team task manager we built in ASP.NET Core during Learnathon.',
+    period: 'Dec 2024 to Apr 2025',
+    role: 'Team of three, with Rejwanul Haque and Enamul Hasan',
+    status: 'Done',
     categories: ['Backend', '.NET'],
     stack: ['C#', 'ASP.NET Core MVC', 'EF Core', 'SQL Server'],
     visual: 'taskboard',
@@ -184,37 +183,35 @@ export const projects: Project[] = [
       },
     ],
     problem:
-      'Learn professional .NET development the way teams actually work: layered architecture, code review, and shared ownership of one codebase.',
+      'Learnathon was about working the way real teams do: one shared codebase, reviews on every change, and an architecture everyone can follow.',
     highlights: [
-      'Task creation, editing, deletion and assignment, with status tracking across To Do, In Progress and Done.',
-      'Clean Architecture with SOLID principles, keeping domain logic independent of the web and data layers.',
-      'Persistence with Entity Framework Core on SQL Server.',
-      'All work went through pull requests and code review with teammates and mentors.',
+      'Create, edit, assign and delete tasks, and move them through To Do, In Progress and Done.',
+      'Clean Architecture and SOLID, so the core logic doesn’t depend on the web or database layers.',
+      'SQL Server through Entity Framework Core.',
+      'Pull requests and code review for every change, with two teammates and our mentors.',
     ],
   },
   {
     slug: 'next-word-predictor',
     name: 'Next Word Predictor',
-    tagline: 'An LSTM language model that suggests the next word as you type.',
+    tagline: 'Type part of a sentence and it guesses the next word.',
     period: 'Jun 2025',
-    role: 'Solo',
-    status: 'Shipped',
+    role: 'Just me',
+    status: 'Done',
     categories: ['Machine learning'],
     stack: ['Python', 'TensorFlow / Keras', 'LSTM', 'Flask', 'Tailwind CSS'],
     visual: 'predictor',
     repo: 'https://github.com/AfsarTanvir/Next-Word-Predictor-LSTM',
-    problem:
-      'My first end-to-end NLP model: from raw text to a model behind a small web interface.',
+    problem: 'My first real NLP project, from raw text all the way to a model behind a web page.',
     highlights: [
-      'Text pipeline with tokenisation, n-gram sequence generation and padding.',
-      'LSTM network in TensorFlow/Keras, evaluated with top-5 accuracy as well as top-1.',
-      'Temperature sampling for more varied suggestions, served through Flask with a responsive Tailwind UI.',
+      'Tokenised the text, built n-gram sequences and padded them for training.',
+      'Trained an LSTM in TensorFlow/Keras and measured top-5 accuracy as well as top-1.',
+      'Temperature sampling to make the suggestions less repetitive, served with Flask and a simple Tailwind page.',
     ],
-    researchAngle: 'An earlier exploration of sequence models and NLP.',
   },
 ];
 
-/** Smaller repositories, shown as a compact archive table. */
+/** Smaller repositories, shown as a compact table. */
 export const archive: { year: string; name: string; note: string; stack: string; href: string }[] =
   [
     {
@@ -227,8 +224,8 @@ export const archive: { year: string; name: string; note: string; stack: string;
     {
       year: '2026',
       name: 'Animation',
-      note: 'A structured study of CSS transitions, transforms and keyframes',
-      stack: 'HTML · CSS',
+      note: 'Working through CSS transitions, transforms and keyframes',
+      stack: 'HTML, CSS',
       href: 'https://github.com/AfsarTanvir/Animation',
     },
     {
@@ -241,64 +238,64 @@ export const archive: { year: string; name: string; note: string; stack: string;
     {
       year: '2025',
       name: 'AdonisJS Basic',
-      note: 'Learning AdonisJS from first principles',
+      note: 'Learning AdonisJS from scratch',
       stack: 'TypeScript',
       href: 'https://github.com/AfsarTanvir/AdonisJS_Basic',
     },
     {
       year: '2025',
       name: 'Kanban Board',
-      note: 'Kanban board built while learning React',
-      stack: 'React · TypeScript',
+      note: 'A Kanban board, built while learning React',
+      stack: 'React, TypeScript',
       href: 'https://github.com/AfsarTanvir/KanbanBoard-Using-React',
     },
     {
       year: '2025',
       name: 'React Auth',
-      note: 'Authentication and authorisation flows in React',
-      stack: 'React · TypeScript',
+      note: 'Login and permissions in React',
+      stack: 'React, TypeScript',
       href: 'https://github.com/AfsarTanvir/React-Authentication-and-Authorization',
     },
     {
       year: '2025',
       name: 'Dynamic Form',
       note: 'Dynamic forms in React',
-      stack: 'React · TypeScript',
+      stack: 'React, TypeScript',
       href: 'https://github.com/AfsarTanvir/Dynamic-Form',
     },
     {
       year: '2025',
       name: 'Templates for CP',
-      note: 'My competitive-programming library',
+      note: 'The code I copy into contests',
       stack: 'C++',
       href: 'https://github.com/AfsarTanvir/Templates-for-CP',
     },
     {
       year: '2025',
       name: 'Social Media',
-      note: 'Social media app built while learning ASP.NET Core',
-      stack: 'C# · ASP.NET Core',
+      note: 'A social media app, built while learning ASP.NET Core',
+      stack: 'C#, ASP.NET Core',
       href: 'https://github.com/AfsarTanvir/Social-Media',
     },
     {
       year: '2025',
       name: 'Bulky Book',
-      note: 'Book management web app (CRUD, MVC, Razor)',
-      stack: 'C# · ASP.NET Core MVC',
+      note: 'A book management app with MVC, Razor pages and Bootstrap',
+      stack: 'C#, ASP.NET Core MVC',
       href: 'https://github.com/AfsarTanvir/BookManagementSystem',
     },
     {
       year: '2025',
-      name: 'Library & Hotel Management',
-      note: 'Classic management systems built while learning .NET',
+      name: 'Library and Hotel Management',
+      note: 'Classic practice projects from learning .NET',
       stack: 'C#',
       href: 'https://github.com/AfsarTanvir/LibraryManagementSystem',
     },
     {
       year: '2024',
       name: 'Digital Image Processing',
-      note: 'Coursework notebooks',
-      stack: 'Python · Jupyter',
+      note: 'Course notebooks',
+      stack: 'Python, Jupyter',
       href: 'https://github.com/AfsarTanvir/DIP',
     },
   ];

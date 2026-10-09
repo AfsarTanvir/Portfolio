@@ -1,17 +1,14 @@
-// Single source of truth for personal details. Edit here; every page reads from it.
-// The phone number is deliberately not on the site — it appears only inside the CV PDFs.
+// Personal details. Every page reads from here, so edit text here first.
+// The phone number is deliberately not on the site; it is only inside the CV PDFs.
 
 export const profile = {
   name: 'Afsar Tanvir',
-  role: 'Software Engineer',
-  headline: 'Backend-focused full-stack engineer',
+  role: 'Software engineer',
   location: 'Moulvibazar, Bangladesh',
   email: 'afsartanvir805@gmail.com',
-  /** Short status shown in the hero pill. Keep it factual: no job-seeking signals. */
-  status: 'Full Stack Developer at AppifyLab',
+  /** Small line above the name. Keep it factual, with no job-seeking signals. */
+  status: 'Software engineer at AppifyLab',
   photo: 'images/afsar-tanvir.webp',
-  intro:
-    'I build reliable backends and the products on top of them. By day I ship features on EzyCommunity, a multi-tenant community platform at AppifyLab. In my own time I build developer tools: an API mock server, and a job scheduler written in Go.',
   cv: {
     resume: 'cv/Afsar_Tanvir_Resume.pdf',
     academic: 'cv/Afsar_Tanvir_Academic_CV.pdf',
@@ -49,39 +46,31 @@ export const socials: { key: SocialKey; label: string; handle: string; href: str
 ];
 
 export const stats = [
-  { value: 550, suffix: '+', label: 'production commits at AppifyLab', note: 'since Feb 2026' },
-  { value: 1800, suffix: '+', label: 'algorithmic problems solved', note: 'across online judges' },
-  {
-    value: 1476,
-    suffix: '',
-    label: 'max Codeforces rating',
-    note: 'Specialist · 80 rated contests',
-  },
-  { value: 3.68, suffix: '', label: 'CGPA out of 4.00', note: 'B.Sc. CSE, 2025', decimals: 2 },
+  { value: 550, suffix: '+', label: 'commits to EzyCommunity', note: 'since February 2026' },
+  { value: 1800, suffix: '+', label: 'problems solved', note: 'on online judges' },
+  { value: 1476, suffix: '', label: 'best Codeforces rating', note: 'Specialist' },
+  { value: 3.68, suffix: '', label: 'CGPA out of 4', note: 'B.Sc. in CSE, 2025', decimals: 2 },
 ] as const;
 
-/** "What I'm doing now" — update every month or two. */
+/** "Now" section on the home page. Update it every month or two. */
 export const now = {
   updated: 'October 2026',
   items: [
-    'Shipping moderation, feed and checkout features on EzyCommunity at AppifyLab.',
-    'Building local-scheduler, a self-hosted job scheduler in Go with SQLite.',
-    'Hardening MockFlow: CI, production packaging and import/export round-trips.',
-    'Studying system design and distributed systems, and writing it all down in my engineering knowledge base.',
-    'Preparing for graduate study in Computer Science.',
+    { label: 'At work', text: 'moderation tools, the live feed and checkout for EzyCommunity.' },
+    { label: 'Side project', text: 'local-scheduler, a small job scheduler written in Go.' },
+    {
+      label: 'Also',
+      text: 'getting MockFlow ready for real users: CI, Docker, better import and export.',
+    },
+    { label: 'Reading', text: 'distributed systems, and writing notes as I go.' },
+    { label: 'Next', text: 'applying for a master’s in Computer Science.' },
   ],
 };
 
 export const skills: { group: string; items: string[] }[] = [
   { group: 'Languages', items: ['TypeScript', 'JavaScript', 'Go', 'C#', 'C++', 'Python', 'SQL'] },
-  {
-    group: 'Backend',
-    items: ['AdonisJS', 'Node.js', 'ASP.NET Core', 'REST API design', 'OpenAPI'],
-  },
+  { group: 'Backend', items: ['AdonisJS', 'Node.js', 'ASP.NET Core', 'REST APIs', 'OpenAPI'] },
   { group: 'Frontend', items: ['Next.js', 'React', 'Tailwind CSS', 'shadcn/ui'] },
-  { group: 'Data', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'SQLite'] },
-  {
-    group: 'Practice',
-    items: ['Git & code review', 'Docker', 'Linux', 'Automated testing', 'Clean Architecture'],
-  },
+  { group: 'Databases', items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'SQLite'] },
+  { group: 'Tools', items: ['Git', 'Docker', 'Linux', 'Japa', 'Go test'] },
 ];
