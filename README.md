@@ -12,9 +12,9 @@ The site has two reading paths:
 ## Stack
 
 - React 19, TypeScript, Vite, React Router
-- Motion (Framer Motion) for page transitions, scroll reveals, layout animations and the self-drawing rating chart
-- Tailwind CSS v4 with CSS-variable design tokens (light and dark themes)
-- Fonts are self-hosted through Fontsource: Instrument Serif, Inter and JetBrains Mono
+- Motion (Framer Motion) for page transitions, word-by-word heading reveals, hand-drawn marks, card tilt and the flipping rating charts
+- Tailwind CSS v4 with CSS-variable design tokens: a paper-and-ink light theme and a warm dark theme
+- Fonts are self-hosted through Fontsource: Instrument Serif, IBM Plex Sans, IBM Plex Mono and Caveat (for the handwritten notes)
 
 Animations respect `prefers-reduced-motion`. Project visuals are drawn in code, so cards download no images.
 
