@@ -16,7 +16,7 @@ export const navItems = [
 
 const cvLinks = [
   { href: profile.cv.resume, label: 'Résumé', note: 'Industry · 1 page' },
-  { href: profile.cv.academic, label: 'Academic CV', note: 'MSc applications' },
+  { href: profile.cv.academic, label: 'Academic CV', note: 'Graduate study' },
 ];
 
 export function Header() {
@@ -25,7 +25,9 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    // Hysteresis: different on/off thresholds so momentum scrolling near the top
+    // can't toggle the background back and forth.
+    const onScroll = () => setScrolled((was) => (was ? window.scrollY > 4 : window.scrollY > 24));
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -39,15 +41,17 @@ export function Header() {
 
   return (
     <>
-      <header
-        className={cn(
-          'sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300',
-          scrolled || menuOpen
-            ? 'border-b border-line bg-bg/75 backdrop-blur-xl'
-            : 'border-b border-transparent'
-        )}
-      >
-        <div className="container-page flex h-16 items-center justify-between gap-4">
+      <header className="sticky top-0 z-50">
+        {/* The blur lives on its own layer and only its opacity animates. Animating
+            backdrop-filter itself makes Chrome flash while the blur radius changes. */}
+        <div
+          aria-hidden
+          className={cn(
+            'absolute inset-0 border-b border-line bg-bg/80 backdrop-blur-xl transition-opacity duration-300',
+            scrolled || menuOpen ? 'opacity-100' : 'opacity-0'
+          )}
+        />
+        <div className="container-page relative flex h-16 items-center justify-between gap-4">
           <Link to="/" className="group flex items-center gap-2.5" aria-label="Afsar Tanvir, home">
             <span className="grid size-8 place-items-center rounded-lg border border-line-strong font-serif text-lg italic leading-none transition-colors group-hover:border-accent group-hover:text-accent">
               at
@@ -58,7 +62,7 @@ export function Header() {
           </Link>
 
           <nav aria-label="Main" className="hidden md:block">
-            <ul className="flex items-center gap-1 rounded-full border border-line bg-surface/60 p-1 backdrop-blur">
+            <ul className="flex items-center gap-1 rounded-full border border-line bg-surface/70 p-1">
               {navItems.map((item) => (
                 <li key={item.to}>
                   <NavLink
@@ -104,7 +108,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* Outside <header>: its backdrop-filter would otherwise trap this fixed overlay inside the header box. */}
+      {/* Outside <header>: a filter or transform on the header would trap this fixed overlay inside it. */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
