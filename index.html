@@ -1,570 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afsar Tanvir · Software Engineer</title>
+    <meta
+      name="description"
+      content="Backend-focused full-stack engineer at AppifyLab, builder of developer tools, Codeforces Specialist, and MSc Computer Science applicant."
+    />
+    <meta name="author" content="Afsar Tanvir" />
+    <meta name="theme-color" content="#0c0d10" />
+    <link rel="canonical" href="https://afsartanvir.github.io/Portfolio/" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afsar Tanvir - Software Developer Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Afsar Tanvir" />
+    <meta property="og:title" content="Afsar Tanvir · Software Engineer" />
+    <meta
+      property="og:description"
+      content="Backend-focused full-stack engineer at AppifyLab, builder of developer tools, Codeforces Specialist, and MSc Computer Science applicant."
+    />
+    <meta property="og:url" content="https://afsartanvir.github.io/Portfolio/" />
+    <meta property="og:image" content="https://afsartanvir.github.io/Portfolio/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Afsar Tanvir · Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Backend-focused full-stack engineer at AppifyLab, builder of developer tools, Codeforces Specialist, and MSc Computer Science applicant."
+    />
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 60px;
-            color: white;
-            font-weight: bold;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-
-        .subtitle {
-            font-size: 1.3rem;
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #555;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-item:hover {
-            color: #667eea;
-        }
-
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            color: #2c3e50;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 20px;
-            border-radius: 15px;
-            border-left: 5px solid #667eea;
-        }
-
-        .skill-category h3 {
-            color: #495057;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        .skill-tag {
-            background: #667eea;
-            color: white;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            transform: translateY(0);
-            transition: transform 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .project-card {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            padding: 25px;
-            border-radius: 15px;
-            border-top: 5px solid #667eea;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-title {
-            color: #2c3e50;
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 15px;
-        }
-
-        .tech-tag {
-            background: #e74c3c;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-        }
-
-        .achievements {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .achievement-item {
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            padding: 20px;
-            border-radius: 12px;
-            border-left: 4px solid #27ae60;
-        }
-
-        .achievement-item h4 {
-            color: #2c3e50;
-            margin-bottom: 8px;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-align: center;
-            padding: 40px;
-            border-radius: 20px;
-            margin-top: 30px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: transform 0.3s;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            .contact-info {
-                gap: 15px;
-            }
-
-            .section {
-                padding: 20px;
-            }
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, #ffeaa7 0%, #fab1a0 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border-left: 5px solid #e17055;
-        }
-
-        .highlight h3 {
-            color: #2d3436;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-
-<body>
-    <div class="container">
-        <!-- Header Section -->
-        <div class="header">
-            <div class="profile-new-img">
-                <img class="profile-img" src="images\profile.JPG" alt="My Profile Picture">
-            </div>
-            <h1>Afsar Tanvir</h1>
-            <div class="subtitle">Software Developer & Problem Solver</div>
-            <p style="max-width: 600px; margin: 20px auto; color: #666;">
-                Recent Computer Science graduate with 4 months of hands-on experience in .NET development. Strong
-                algorithmic foundation with 1800+ problems solved and proven expertise in clean architecture, SOLID
-                principles, and team collaboration.
-            </p>
-            <div class="contact-info">
-                <a href="tel:+8801731027805" class="contact-item">
-                    📱 +8801731027805
-                </a>
-                <a href="mailto:afsartanvir805@gmail.com" class="contact-item">
-                    ✉️ afsartanvir805@gmail.com
-                </a>
-                <a href="#" class="contact-item">
-                    📍 Moulvibazar, Bangladesh
-                </a>
-                <a href="https://www.linkedin.com/in/afsar-tanvir-81ab17270/" class="contact-item">
-                    💼 LinkedIn
-                </a>
-                <a href="https://github.com/AfsarTanvir" class="contact-item">
-                    💻 GitHub
-                </a>
-            </div>
-        </div>
-
-        <!-- Professional Experience -->
-        <div class="section">
-            <h2>💼 Professional Experience</h2>
-            <div class="experience-card">
-                <h3>🚀 .NET Developer Trainee - Learnathon Program</h3>
-                <div class="duration">4 Months (Recent)</div>
-                <p>Intensive training program focused on modern .NET development practices and professional software
-                    development skills.</p>
-                <ul style="margin-top: 15px; padding-left: 20px; color: #666;">
-                    <li>Gained hands-on experience with <strong>ASP.NET Core</strong> and <strong>MVC
-                            architecture</strong></li>
-                    <li>Implemented <strong>Clean Architecture</strong> principles and <strong>SOLID principles</strong>
-                        in real projects</li>
-                    <li>Collaborated in a team of 3 developers using <strong>GitHub</strong> for version control</li>
-                    <li>Developed REST APIs and integrated with SQL Server databases</li>
-                    <li>Applied industry best practices for code organization and maintainability</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Technical Skills -->
-        <div class="section">
-            <h2>🚀 Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Backend Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">ASP.NET Core</span>
-                        <span class="skill-tag">ASP.NET MVC</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">Clean Architecture</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">C#</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Database & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SQL Server</span>
-                        <span class="skill-tag">Entity Framework</span>
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">Visual Studio</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Software Principles</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SOLID Principles</span>
-                        <span class="skill-tag">Clean Code</span>
-                        <span class="skill-tag">Team Collaboration</span>
-                        <span class="skill-tag">Agile Development</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Problem Solving Stats -->
-        <div class="section">
-            <h2>🏆 Problem Solving Excellence</h2>
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-number">1800+</span>
-                    <span class="stat-label">Problems Solved</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">1476</span>
-                    <span class="stat-label">Codeforces Rating</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">1744</span>
-                    <span class="stat-label">CodeChef Rating</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">3.68</span>
-                    <span class="stat-label">CGPA / 4.0</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Projects -->
-        <div class="section">
-            <h2>💼 Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-title">📋 Task Management System</div>
-                    <p><strong>Team Project - Learnathon Program</strong></p>
-                    <p>Collaborative development of a comprehensive task management system with team of 3 developers
-                        (Rejwanul Haque, Enamul Hasan). Implemented task creation, editing, deletion, user assignment,
-                        and status tracking (To Do, In Progress, Done) following Clean Architecture and SOLID
-                        principles.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">ASP.NET Core MVC</span>
-                        <span class="tech-tag">Clean Architecture</span>
-                        <span class="tech-tag">SOLID Principles</span>
-                        <span class="tech-tag">Team Collaboration</span>
-                        <span class="tech-tag">GitHub</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-title">📚 Bulky Book Web Application</div>
-                    <p><strong>Individual Project - ASP.NET Core</strong></p>
-                    <p>Built a CRUD-based book management web application following MVC architectural pattern.
-                        Implemented core functionalities including book listing, category management, and admin
-                        operations. Applied Razor Pages for dynamic UI rendering and Bootstrap for responsive design.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-tag">ASP.NET Core MVC</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">Razor Pages</span>
-                        <span class="tech-tag">Bootstrap</span>
-                        <span class="tech-tag">CRUD Operations</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-title">🤖 Next Word Predictor</div>
-                    <p><strong>Machine Learning Project - Python</strong></p>
-                    <p>Developed a sequence-based next word prediction model using LSTM neural networks. Collected and
-                        pre-processed large text data using tokenization, padding, and sequence generation. Achieved
-                        accurate next-word predictions on custom and public text corpora with dynamic text generation
-                        logic.</p>
-                    <div class="project-tech">
-                        <span class="tech-tag">Python</span>
-                        <span class="tech-tag">LSTM</span>
-                        <span class="tech-tag">Neural Networks</span>
-                        <span class="tech-tag">Text Processing</span>
-                        <span class="tech-tag">Machine Learning</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Achievements -->
-        <div class="section">
-            <h2>🏅 Key Achievements</h2>
-            <div class="achievements">
-                <div class="achievement-item">
-                    <h4>🎓 Academic Excellence</h4>
-                    <p>Graduated with 3.68/4.0 CGPA from Sylhet Engineering College</p>
-                </div>
-                <div class="achievement-item">
-                    <h4>💻 Learnathon Program Graduate</h4>
-                    <p>Completed 4-month intensive .NET development training with certification</p>
-                </div>
-                <div class="achievement-item">
-                    <h4>⭐ Codeforces Specialist</h4>
-                    <p>Achieved Specialist rating (1476) with 1600+ problems solved</p>
-                </div>
-                <div class="achievement-item">
-                    <h4>🥇 DUET IUPC 2025</h4>
-                    <p>Secured Rank 89 in competitive programming contest</p>
-                </div>
-                <div class="achievement-item">
-                    <h4>🏆 MU IUPC 2024</h4>
-                    <p>Achieved Rank 14 in Sylhet Division programming competition</p>
-                </div>
-                <div class="achievement-item">
-                    <h4>📊 NCPC 2024</h4>
-                    <p>Participated with Rank 97 in National Programming Contest</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Education -->
-        <div class="section">
-            <h2>🎓 Education</h2>
-            <div
-                style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 25px; border-radius: 15px; border-left: 5px solid #667eea;">
-                <h3 style="color: #2c3e50; margin-bottom: 10px;">Bachelor of Science in Computer Science & Engineering
-                </h3>
-                <p><strong>Sylhet Engineering College</strong> • Jan 2020 - July 2025</p>
-                <p><strong>CGPA:</strong> 3.68/4.0</p>
-                <p style="margin-top: 10px; color: #666;">Focused on software engineering, algorithms, data structures,
-                    web development, and machine learning. Strong foundation in computer science principles and
-                    practical application development.</p>
-            </div>
-        </div>
-
-        <!-- Why Hire Me -->
-        <div class="section">
-            <h2>✨ Why Hire Me</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-                <div
-                    style="background: linear-gradient(135deg, #74b9ff, #0984e3); color: white; padding: 20px; border-radius: 15px;">
-                    <h4>🎯 Industry-Ready Skills</h4>
-                    <p>4 months of hands-on .NET development experience with clean architecture and modern development
-                        practices.</p>
-                </div>
-                <div
-                    style="background: linear-gradient(135deg, #55a3ff, #003d82); color: white; padding: 20px; border-radius: 15px;">
-                    <h4>🧠 Strong Problem-Solving</h4>
-                    <p>1800+ algorithmic problems solved demonstrate exceptional logical thinking and optimization
-                        abilities.</p>
-                </div>
-                <div
-                    style="background: linear-gradient(135deg, #fd79a8, #e84393); color: white; padding: 20px; border-radius: 15px;">
-                    <h4>🤝 Team Player</h4>
-                    <p>Proven team collaboration experience through group projects and Git-based development workflows.
-                    </p>
-                </div>
-                <div
-                    style="background: linear-gradient(135deg, #fdcb6e, #e17055); color: white; padding: 20px; border-radius: 15px;">
-                    <h4>📈 Quick Learner</h4>
-                    <p>Rapid skill acquisition from competitive programming to web development, adapting to new
-                        technologies efficiently.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Call to Action -->
-        <div class="cta-section">
-            <h2>🚀 Ready to Contribute to Your Team!</h2>
-            <p style="font-size: 1.1rem; margin: 20px 0;">
-                I'm excited to bring my technical skills, problem-solving expertise, and fresh perspective to your
-                development team. Currently seeking internship opportunities to grow and contribute to innovative
-                projects.
-            </p>
-            <div style="margin-top: 20px;">
-                <a href="mailto:afsartanvir805@gmail.com" class="cta-button">Get In Touch</a>
-            </div>
-        </div>
-    </div>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Afsar Tanvir",
+        "jobTitle": "Full Stack Developer",
+        "worksFor": { "@type": "Organization", "name": "AppifyLab", "url": "https://www.appifylab.com/" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Sylhet Engineering College" },
+        "url": "https://afsartanvir.github.io/Portfolio/",
+        "sameAs": [
+          "https://github.com/AfsarTanvir",
+          "https://www.linkedin.com/in/afsar-tanvir-81ab17270/",
+          "https://codeforces.com/profile/Tanvir2000"
+        ]
+      }
+    </script>
 
     <script>
-        // Add smooth scrolling animation
-        document.addEventListener('DOMContentLoaded', function () {
-            const cards = document.querySelectorAll('.stat-card, .project-card, .achievement-item, .experience-card');
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            cards.forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
-            });
-        });
+      // Apply the saved or system theme before first paint to avoid a flash.
+      try {
+        var saved = localStorage.getItem('theme')
+        var theme = saved || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+        document.documentElement.dataset.theme = theme
+      } catch (e) {}
     </script>
-</body>
-
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <main style="font-family: system-ui, sans-serif; max-width: 40rem; margin: 4rem auto; padding: 0 1rem">
+        <h1>Afsar Tanvir</h1>
+        <p>
+          Backend-focused full-stack engineer at AppifyLab, builder of developer tools, Codeforces Specialist, and MSc
+          Computer Science applicant. Contact: afsartanvir805@gmail.com ·
+          <a href="https://github.com/AfsarTanvir">GitHub</a> ·
+          <a href="https://www.linkedin.com/in/afsar-tanvir-81ab17270/">LinkedIn</a>
+        </p>
+      </main>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
