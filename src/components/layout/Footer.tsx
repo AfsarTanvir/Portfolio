@@ -1,30 +1,35 @@
-import { Link } from 'react-router';
+import { Link, useLocation } from 'react-router';
 import { ArrowUpRight } from 'lucide-react';
 import { profile, socials } from '../../data/profile';
 import { SocialIcon } from '../ui/Icons';
 import { navItems } from './Header';
 
 export function Footer() {
+  // The Contact page already shows the email address, so the footer skips that block there.
+  const onContact = useLocation().pathname.replace(/\/$/, '') === '/contact';
+
   return (
     <footer className="relative z-10 mt-32 border-t border-line">
       <div className="container-page py-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-xl">
-            <p className="eyebrow">Contact</p>
-            <a
-              href={`mailto:${profile.email}`}
-              className="group mt-3 inline-flex items-center gap-3 display text-5xl sm:text-6xl"
-            >
-              <span className="link-underline">Send me an email</span>
-              <ArrowUpRight className="size-8 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
-            </a>
-            <p className="mt-4 text-muted">
-              Email is the easiest way to reach me:{' '}
-              <a href={`mailto:${profile.email}`} className="prose-link">
-                {profile.email}
+          {!onContact && (
+            <div className="max-w-xl">
+              <p className="eyebrow">Contact</p>
+              <a
+                href={`mailto:${profile.email}`}
+                className="group mt-3 inline-flex items-center gap-3 display text-5xl sm:text-6xl"
+              >
+                <span className="link-underline">Send me an email</span>
+                <ArrowUpRight className="size-8 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
               </a>
-            </p>
-          </div>
+              <p className="mt-4 text-muted">
+                Email is the easiest way to reach me:{' '}
+                <a href={`mailto:${profile.email}`} className="prose-link">
+                  {profile.email}
+                </a>
+              </p>
+            </div>
+          )}
           <ul className="flex flex-wrap gap-2">
             {socials.map((s) => (
               <li key={s.key}>
