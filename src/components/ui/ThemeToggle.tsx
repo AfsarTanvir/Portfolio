@@ -17,7 +17,7 @@ export function ThemeToggle() {
     document.documentElement.dataset.theme = next;
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute('content', next === 'dark' ? '#12110f' : '#f3f0e8');
+      ?.setAttribute('content', next === 'dark' ? '#12110f' : '#ffffff');
     try {
       localStorage.setItem('theme', next);
     } catch {

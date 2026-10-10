@@ -23,7 +23,7 @@ export function ProjectVisual({ kind, className }: { kind: VisualKey; className?
       aria-hidden
       className={cn(
         'relative overflow-hidden rounded-xl border border-line bg-bg-soft',
-        'bg-[radial-gradient(120%_80%_at_100%_0%,var(--accent-soft),transparent_60%)]',
+        'bg-[radial-gradient(120%_80%_at_100%_0%,var(--visual-glow),transparent_60%)]',
         className
       )}
     >

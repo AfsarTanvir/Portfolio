@@ -1,24 +1,28 @@
 @import 'tailwindcss';
 
 /* ---------- Design tokens ----------
-   Paper and ink, with a red-pen accent used sparingly (links, marks, notes). */
+   Light: white background, black text, neutral greys. Dark: warm charcoal.
+   One red accent in both, used sparingly (links, marks, notes). */
 :root,
 :root[data-theme='light'] {
-  color-scheme: light;
-  --bg: #f3f0e8;
-  --bg-soft: #ebe7dc;
-  --surface: #faf8f3;
-  --surface-2: #efebe1;
-  --line: rgb(28 25 20 / 0.12);
-  --line-strong: rgb(28 25 20 / 0.24);
-  --text: #1c1914;
-  --muted: #5a554b;
-  --faint: #8a8476;
+  /* "only light": stops browser "night mode" features from repainting the
+     light theme dark when the visitor has chosen it. */
+  color-scheme: only light;
+  --bg: #ffffff;
+  --bg-soft: #f4f4f5;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --line: rgb(0 0 0 / 0.09);
+  --line-strong: rgb(0 0 0 / 0.2);
+  --text: #0a0a0a;
+  --muted: #3f3f46;
+  --faint: #71717a;
   --accent: #c2410c;
-  --accent-soft: rgb(194 65 12 / 0.1);
-  --accent-ink: #fff7ed;
-  --shadow: 0 1px 2px rgb(28 25 20 / 0.06), 0 8px 24px -12px rgb(28 25 20 / 0.18);
-  --grain-opacity: 0.045;
+  --accent-soft: rgb(194 65 12 / 0.08);
+  --accent-ink: #ffffff;
+  --visual-glow: transparent;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.05), 0 8px 24px -12px rgb(0 0 0 / 0.16);
+  --grain-opacity: 0;
 }
 
 :root[data-theme='dark'] {
@@ -35,6 +39,7 @@
   --accent: #f4895f;
   --accent-soft: rgb(244 137 95 / 0.12);
   --accent-ink: #1f0d05;
+  --visual-glow: var(--accent-soft);
   --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 10px 30px -12px rgb(0 0 0 / 0.6);
   --grain-opacity: 0.06;
 }
