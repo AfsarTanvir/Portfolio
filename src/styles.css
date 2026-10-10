@@ -186,11 +186,10 @@
 
 /* Inline text link inside prose. */
 @utility prose-link {
+  /* No underline: links stand out by colour and weight, and turn red on hover. */
   color: var(--text);
-  text-decoration: underline;
-  text-decoration-color: var(--accent);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
+  font-weight: 500;
+  text-decoration: none;
   transition: color 0.2s ease;
   &:hover {
     color: var(--accent);
