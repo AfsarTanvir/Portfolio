@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { ArrowUpRight, Check, Copy, FileText } from 'lucide-react';
 import { profile, socials } from '../data/profile';
@@ -6,6 +6,7 @@ import { PageHero } from '../components/ui/Section';
 import { Reveal } from '../components/ui/Reveal';
 import { SocialIcon } from '../components/ui/Icons';
 import { asset } from '../lib/utils';
+import { LiveClock } from '../components/ui/LiveClock';
 
 const topics = [
   {
@@ -24,7 +25,6 @@ const topics = [
 
 export function Contact() {
   const [copied, setCopied] = useState(false);
-  const time = useLocalTime('Asia/Dhaka');
 
   async function copyEmail() {
     try {
@@ -39,7 +39,10 @@ export function Contact() {
   return (
     <>
       <PageHero label="Contact" title="Get in" italic="touch">
-        <p>The best way to reach me is by email. It is currently {time} in Bangladesh.</p>
+        <p>
+          The best way to reach me is by email. It is currently <LiveClock timeZone="Asia/Dhaka" />{' '}
+          in Bangladesh.
+        </p>
       </PageHero>
 
       <section className="container-page">
@@ -161,17 +164,4 @@ export function Contact() {
       </section>
     </>
   );
-}
-
-function useLocalTime(timeZone: string) {
-  const format = () =>
-    new Intl.DateTimeFormat('en-GB', { timeZone, hour: '2-digit', minute: '2-digit' }).format(
-      new Date()
-    );
-  const [time, setTime] = useState(format);
-  useEffect(() => {
-    const id = setInterval(() => setTime(format()), 30_000);
-    return () => clearInterval(id);
-  }, [timeZone]);
-  return time;
 }
