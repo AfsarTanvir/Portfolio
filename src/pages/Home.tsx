@@ -222,8 +222,8 @@ function Hero() {
           <img
             src={asset(profile.photo)}
             alt={`Portrait of ${profile.name}`}
-            width={461}
-            height={579}
+            width={720}
+            height={864}
             fetchPriority="high"
             className="aspect-[5/6] w-full object-cover object-top"
           />
