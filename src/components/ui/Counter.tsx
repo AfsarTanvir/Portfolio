@@ -18,6 +18,8 @@ export function Counter({
     n.toLocaleString('en-US', {
       minimumFractionDigits: decimals,
       maximumFractionDigits: decimals,
+      // 1476 and 1800+, not 1,476: four-digit figures read better without a separator.
+      useGrouping: Math.abs(n) >= 10000,
     }) + suffix;
 
   useEffect(() => {

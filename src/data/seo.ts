@@ -3,33 +3,31 @@ import { projects } from './projects.ts';
 export type RouteMeta = { path: string; title: string; description: string };
 
 export const homeDescription =
-  'Software engineer at AppifyLab in Bangladesh. I work mostly on the backend, build small tools for developers, and spent university doing competitive programming.';
+  'Software engineer at AppifyLab in Bangladesh, working mainly on backend systems and developer tools. Codeforces Specialist with a B.Sc. in Computer Science and Engineering.';
 
 const pages: RouteMeta[] = [
   { path: '', title: 'Afsar Tanvir · Software engineer', description: homeDescription },
   {
     path: 'about',
     title: 'About · Afsar Tanvir',
-    description:
-      'How I got into programming, how I like to work, and a timeline of the last few years.',
+    description: 'My background, how I work, and a timeline of my studies, work and contests.',
   },
   {
     path: 'experience',
     title: 'Experience · Afsar Tanvir',
     description:
-      'My work at AppifyLab and in the Learnathon .NET program, my skills, and my résumé.',
+      'My work at AppifyLab and in the Learnathon programme, along with my technical skills and CV.',
   },
   {
     path: 'projects',
     title: 'Projects · Afsar Tanvir',
     description:
-      'MockFlow, local-scheduler, Audio Visualizer and other things I’ve built, with notes on how they work.',
+      'MockFlow, local-scheduler, Audio Visualizer and other projects, with notes on how each one works.',
   },
   {
     path: 'academics',
     title: 'Academics · Afsar Tanvir',
-    description:
-      'My degree, what I want to study next, my competitive programming record, and my academic CV.',
+    description: 'My degree, research interests, competitive programming record and academic CV.',
   },
   {
     path: 'contact',

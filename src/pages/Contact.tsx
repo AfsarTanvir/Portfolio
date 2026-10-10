@@ -9,16 +9,16 @@ import { asset } from '../lib/utils';
 
 const topics = [
   {
-    title: 'Backend work',
-    body: 'APIs, caching, database design, and what I’ve learned working on an app with many tenants.',
+    title: 'Backend development',
+    body: 'APIs, caching, database design, and lessons from building multi-tenant applications.',
   },
   {
     title: 'Study and research',
-    body: 'Distributed systems, data-heavy systems, software engineering, and ideas for a dissertation.',
+    body: 'Distributed systems, data-intensive systems, software engineering and dissertation ideas.',
   },
   {
     title: 'Developer tools',
-    body: 'Mock servers, schedulers and testing. Happy to swap notes or help out.',
+    body: 'Mock servers, job schedulers and testing tools.',
   },
 ];
 
@@ -38,8 +38,8 @@ export function Contact() {
 
   return (
     <>
-      <PageHero label="Contact" title="Say" italic="hi" note="no forms here, just email">
-        <p>Email is the fastest way to reach me. It’s {time} in Bangladesh right now.</p>
+      <PageHero label="Contact" title="Get in" italic="touch">
+        <p>The best way to reach me is by email. It is currently {time} in Bangladesh.</p>
       </PageHero>
 
       <section className="container-page">
@@ -70,7 +70,7 @@ export function Contact() {
                   {copied ? <Check size={16} className="text-accent" /> : <Copy size={16} />}
                 </motion.span>
               </AnimatePresence>
-              <span aria-live="polite">{copied ? 'Copied!' : 'Copy'}</span>
+              <span aria-live="polite">{copied ? 'Copied' : 'Copy'}</span>
             </button>
           </div>
         </Reveal>
@@ -111,11 +111,11 @@ export function Contact() {
               <p className="eyebrow">CVs</p>
               <div className="mt-5 space-y-3">
                 {[
-                  { href: profile.cv.resume, label: 'Résumé', note: 'One page, PDF' },
+                  { href: profile.cv.resume, label: 'CV', note: 'One page (PDF)' },
                   {
                     href: profile.cv.academic,
                     label: 'Academic CV',
-                    note: 'For universities, PDF',
+                    note: 'For university applications (PDF)',
                   },
                 ].map((d) => (
                   <a
@@ -145,7 +145,7 @@ export function Contact() {
 
         <div className="mt-24">
           <Reveal>
-            <p className="eyebrow">Things I like talking about</p>
+            <p className="eyebrow">Topics I enjoy discussing</p>
           </Reveal>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {topics.map((o, i) => (

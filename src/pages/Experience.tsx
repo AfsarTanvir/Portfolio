@@ -15,14 +15,15 @@ export function Experience() {
 
   return (
     <>
-      <PageHero label="Experience" title="Where I’ve" italic="worked" note="the résumé is shorter">
+      <PageHero label="Experience" title="Work" italic="experience">
         <p>
-          I’ve been at AppifyLab since September 2025. Before that I did the Learnathon program,
-          where three of us built a .NET project with mentors reviewing our code.
+          I have been working at AppifyLab since September 2025. Before that, I took part in the
+          Learnathon programme, where I built a .NET project with two teammates under the guidance
+          of mentors.
         </p>
         <div className="mt-6">
           <ButtonLink href={profile.cv.resume}>
-            <FileText size={16} /> Résumé (PDF)
+            <FileText size={16} /> Download CV (PDF)
           </ButtonLink>
         </div>
       </PageHero>
@@ -114,7 +115,7 @@ export function Experience() {
       </section>
 
       <section className="container-page mt-32">
-        <SectionHeading index="01" label="Outside work" title="The programming" italic="club" />
+        <SectionHeading index="01" label="Leadership" title="Programming" italic="club" />
         {leadership.map((l) => (
           <Reveal key={l.org}>
             <div className="flex flex-col gap-3 border-y border-line py-7 sm:flex-row sm:items-start sm:justify-between">
@@ -131,7 +132,7 @@ export function Experience() {
       </section>
 
       <section className="container-page mt-32">
-        <SectionHeading index="02" label="Skills" title="What I work" italic="with" />
+        <SectionHeading index="02" label="Skills" title="Technical" italic="skills" />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((g, i) => (
             <Reveal key={g.group} delay={i * 0.05}>

@@ -10,12 +10,12 @@ export function Footer() {
       <div className="container-page py-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
-            <p className="hand -rotate-2 text-2xl">thanks for reading this far</p>
+            <p className="eyebrow">Contact</p>
             <a
               href={`mailto:${profile.email}`}
               className="group mt-3 inline-flex items-center gap-3 display text-5xl sm:text-6xl"
             >
-              <span className="link-underline">Let’s talk</span>
+              <span className="link-underline">Send me an email</span>
               <ArrowUpRight className="size-8 text-accent transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
             </a>
             <p className="mt-4 text-muted">

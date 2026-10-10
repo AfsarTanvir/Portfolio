@@ -1,22 +1,22 @@
 export const studyGoal =
-  'I want to do a master’s in Computer Science, in distributed systems, data-intensive systems or software engineering. I’m looking for a programme with a real dissertation or research project, not only coursework.';
+  'I plan to pursue a master’s degree in Computer Science, focusing on distributed systems, data-intensive systems or software engineering. I am looking for a programme that includes a substantial dissertation or research project.';
 
-/** Shown on /academics under "Why a master’s". Edit freely; it can grow into a personal statement. */
+/** Shown on /academics under "Why a master’s degree". Edit freely; it can grow into a personal statement. */
 export const motivation = [
-  'At work I keep running into problems I only touched on at university: caching, consistency, permissions across tenants, and what happens when something fails halfway through.',
-  'Building a scheduler from scratch made it obvious how much I still don’t know about these things. I can make them work, but I want to understand them properly. That’s what I want a master’s for, and I’d like to spend my dissertation on one of them.',
+  'In my work, I regularly deal with problems that I only studied briefly at university. Examples include caching, consistency, permissions across tenants, and failures in the middle of an operation.',
+  'Building a job scheduler from scratch showed me how much more there is to learn. I can build systems that work, but I want to understand the theory behind them properly. A master’s degree would give me that foundation, and I would like my dissertation to focus on one of these areas.',
 ];
 
 export const education = {
-  degree: 'B.Sc. in Computer Science & Engineering',
-  institution: 'Sylhet Engineering College',
+  degree: 'B.Sc. in Computer Science and Engineering',
+  institution: 'Sylhet Engineering College (SEC)',
   // VERIFY: the college is affiliated with Shahjalal University of Science and Technology (SUST).
   affiliation: 'Affiliated with Shahjalal University of Science and Technology',
   place: 'Sylhet, Bangladesh',
-  period: 'Jan 2020 to Jul 2025',
+  period: 'Jan 2020 – Jul 2025',
   cgpa: 3.68,
   scale: 4.0,
-  note: 'Most of my time went into algorithms and data structures, software engineering, databases, web development and a bit of machine learning.',
+  note: 'My main areas of study were algorithms and data structures, software engineering, databases, web development and machine learning.',
 };
 
 export type Interest = {
@@ -30,9 +30,9 @@ export const interests: Interest[] = [
   {
     title: 'Distributed systems',
     summary:
-      'What happens when things fail: crashed processes, sleeping machines, retries, and jobs that might run twice.',
+      'How systems behave when something goes wrong, such as a crashed process, a machine that goes to sleep, a retried request, or a job that might run twice.',
     question:
-      'How much does “run exactly once” really cost a scheduler, and when is “at most once” good enough?',
+      'How much does an ‘exactly-once’ guarantee cost in a job scheduler, and when is ‘at-most-once’ good enough?',
     evidence: [
       { label: 'local-scheduler', href: '/projects/local-scheduler' },
       { label: 'My work on EzyCommunity', href: '/experience' },
@@ -40,12 +40,11 @@ export const interests: Interest[] = [
   },
   {
     title: 'Data-intensive systems',
-    summary:
-      'Databases and caches, and the places where speed and correctness pull in different directions.',
+    summary: 'Databases and caching, especially the trade-offs between speed and correctness.',
     question:
-      'In an app with many tenants, when does a cache stop being worth it, and how do you decide what to invalidate?',
+      'In a multi-tenant application, when does a cache stop being worth its complexity, and how should cache invalidation be designed?',
     evidence: [
-      { label: 'MockFlow’s caching', href: '/projects/mockflow' },
+      { label: 'MockFlow’s caching layer', href: '/projects/mockflow' },
       {
         label: 'My knowledge base',
         href: 'https://github.com/AfsarTanvir/engineering-knowledge-base',
@@ -54,8 +53,9 @@ export const interests: Interest[] = [
   },
   {
     title: 'Software engineering',
-    summary: 'Testing, API contracts, and tools that stop teams from waiting on each other.',
-    question: 'How do you keep a mock API honest when the real API keeps changing?',
+    summary:
+      'Testing, API contracts, and tools that help teams work without waiting for each other.',
+    question: 'How can a mock API stay accurate while the real API keeps changing?',
     evidence: [
       { label: 'MockFlow', href: '/projects/mockflow' },
       { label: 'TaskForge.NET', href: '/projects/taskforge-net' },
@@ -64,12 +64,18 @@ export const interests: Interest[] = [
 ];
 
 export const earlierExploration = {
-  title: 'Before all this: a bit of NLP',
-  body: 'My first ML project was an LSTM that predicts the next word. It’s where I learned the basic loop of cleaning data, training and measuring.',
+  title: 'Earlier work in NLP',
+  body: 'My first natural language processing project was an LSTM model that predicts the next word. It taught me the basic workflow of preparing data, training a model and evaluating it.',
   href: '/projects/next-word-predictor',
 };
 
 export const contests: { name: string; result: string; year: string; href?: string }[] = [
+  {
+    name: 'DUET IUPC',
+    result: 'Ranked 89th',
+    year: '2025',
+    href: 'https://toph.co/c/duet-inter-university-iupc-2025/standings',
+  },
   {
     name: 'MU IUPC, Sylhet Division',
     result: 'Ranked 14th',
@@ -77,17 +83,11 @@ export const contests: { name: string; result: string; year: string; href?: stri
     href: 'https://toph.co/c/inter-university-sylhet-division-2024/standings',
   },
   {
-    // The 2023 contest was held in March 2024 (delayed by COVID).
-    name: 'NCPC 2023, National Collegiate Programming Contest (held at JU)',
+    // The 2023 contest was held in March 2024 (delayed by COVID-19).
+    name: 'National Collegiate Programming Contest (NCPC) 2023, held at Jahangirnagar University',
     result: 'Ranked 97th',
     year: '2024',
     href: 'https://bapsoj.org/contests/ncpc-onsite-2023-hosted-by-ju/standings',
-  },
-  {
-    name: 'DUET IUPC',
-    result: 'Ranked 89th',
-    year: '2025',
-    href: 'https://toph.co/c/duet-inter-university-iupc-2025/standings',
   },
 ];
 
@@ -96,26 +96,26 @@ export const ratings = [
     judge: 'Codeforces',
     handle: 'Tanvir2000',
     value: '1476',
-    detail: 'Specialist (max) · 80 rated contests',
+    detail: 'Highest rank: Specialist · 80 rated contests',
     href: 'https://codeforces.com/profile/Tanvir2000',
   },
   {
     judge: 'CodeChef',
     handle: 'afsar_tanvir',
     value: '1744',
-    detail: '3★ (max) · 33 rated contests',
+    detail: 'Highest rank: 3★ · 33 rated contests',
     href: 'https://www.codechef.com/users/afsar_tanvir',
   },
-  { judge: 'All judges', handle: '', value: '1800+', detail: 'problems solved', href: '' },
+  { judge: 'All online judges', handle: '', value: '1800+', detail: 'problems solved', href: '' },
 ];
 
 export const leadership = [
   {
     role: 'Coordinator',
     org: 'SEC Programming Club',
-    period: '2024 to 2025',
+    period: '2024 – 2025',
     detail:
-      'I set up the internal selection contests, ran warm-up sessions before big contests, and handled team registration for inter-university contests.',
+      'I organised internal selection contests, ran warm-up sessions before major events, and managed team registrations for inter-university contests.',
   },
 ];
 

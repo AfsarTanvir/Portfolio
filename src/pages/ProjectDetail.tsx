@@ -53,12 +53,9 @@ export function ProjectDetail() {
             </p>
           </div>
           <dl data-animate style={stagger(4)} className="grid grid-cols-2 gap-x-6 gap-y-5 text-sm">
-            <Meta label="When" value={project.period} />
-            <Meta
-              label="Status"
-              value={project.status === 'In progress' ? 'Still working on it' : 'Done'}
-            />
-            <Meta label="Who" value={project.role} wide />
+            <Meta label="Timeline" value={project.period} />
+            <Meta label="Status" value={project.status ?? 'Completed'} />
+            <Meta label="Role" value={project.role} wide />
             <div className="col-span-2 flex flex-wrap gap-2 pt-1">
               {project.repo && (
                 <a
@@ -122,7 +119,7 @@ export function ProjectDetail() {
       <div className="container-page mt-24 grid gap-16 lg:grid-cols-[14rem_1fr] lg:gap-20">
         <aside className="hidden lg:block">
           <div className="sticky top-28">
-            <p className="eyebrow">Built with</p>
+            <p className="eyebrow">Technologies</p>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {project.stack.map((s) => (
                 <Tag key={s}>{s}</Tag>
@@ -132,7 +129,7 @@ export function ProjectDetail() {
         </aside>
 
         <div className="min-w-0 space-y-20">
-          <Block title="Why I built it">
+          <Block title={project.team ? 'Why we built it' : 'Why I built it'}>
             <p className="max-w-2xl text-lg leading-relaxed text-muted">{project.problem}</p>
           </Block>
 
@@ -142,7 +139,7 @@ export function ProjectDetail() {
             </Block>
           )}
 
-          <Block title="What it does">
+          <Block title="Features">
             <ol className="max-w-2xl space-y-5">
               {project.highlights.map((h, i) => (
                 <Reveal as="li" key={h} delay={i * 0.04} className="flex gap-5">
@@ -156,7 +153,7 @@ export function ProjectDetail() {
           </Block>
 
           {project.decisions && (
-            <Block title="A few decisions">
+            <Block title="Key decisions">
               <div className="grid gap-4 md:grid-cols-2">
                 {project.decisions.map((d, i) => (
                   <Reveal key={d.title} delay={i * 0.06}>
@@ -171,7 +168,7 @@ export function ProjectDetail() {
           )}
 
           <div className="lg:hidden">
-            <Block title="Built with">
+            <Block title="Technologies">
               <div className="flex flex-wrap gap-1.5">
                 {project.stack.map((s) => (
                   <Tag key={s}>{s}</Tag>

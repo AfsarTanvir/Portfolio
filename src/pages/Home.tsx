@@ -5,7 +5,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { now, profile, stats } from '../data/profile';
 import { experience } from '../data/experience';
 import { projects } from '../data/projects';
-import { education, leadership } from '../data/academics';
+import { leadership } from '../data/academics';
 import { ProjectCard } from '../components/ProjectCard';
 import { Counter } from '../components/ui/Counter';
 import { Reveal } from '../components/ui/Reveal';
@@ -53,9 +53,9 @@ export function Home() {
         <SectionHeading
           index="01"
           label="Projects"
-          title="Some things I’ve"
-          italic="built"
-          description="Mostly tools for other developers. Each one has its own page explaining how it works and why I made the choices I did."
+          title="Selected"
+          italic="projects"
+          description="Most of these are tools for developers. Each project has its own page that explains how it works and why I built it that way."
           action={
             <ButtonLink href="/projects" variant="ghost">
               All projects
@@ -77,10 +77,10 @@ export function Home() {
         <SectionHeading
           className="lg:sticky lg:top-28 lg:self-start"
           index="02"
-          label="Work"
-          title="Where I’ve"
-          italic="worked"
-          description="Two places so far, plus a year coordinating my university’s programming club."
+          label="Experience"
+          title="Work"
+          italic="experience"
+          description="My work experience and my role in the university programming club."
         />
         <ol className="dim-siblings flex flex-col border-t border-line">
           {experience.map((e) => (
@@ -94,7 +94,7 @@ export function Home() {
                 </div>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{e.summary}</p>
                 <span className="mt-3 inline-flex items-center gap-1 text-sm text-text group-hover:text-accent">
-                  Read more
+                  View details
                   <ArrowRight
                     size={14}
                     className="transition-transform group-hover:translate-x-0.5"
@@ -121,9 +121,15 @@ export function Home() {
       <section className="container-page mt-32">
         <div className="grid gap-10 border-t border-line pt-12 lg:grid-cols-[1fr_1.6fr]">
           <div>
-            <SectionHeading index="03" label="Now" title="What I’m up to" className="mb-0" />
+            <SectionHeading
+              index="03"
+              label="Now"
+              title="What I am"
+              italic="working on"
+              className="mb-0"
+            />
             <Reveal delay={0.2}>
-              <p className="hand mt-4 -rotate-2 text-xl">updated {now.updated}</p>
+              <p className="hand mt-4 -rotate-2 text-xl">Last updated: {now.updated}</p>
             </Reveal>
           </div>
           <ul className="flex flex-col">
@@ -158,7 +164,7 @@ function Hero() {
     >
       <div>
         <p data-animate className="font-mono text-xs text-faint">
-          {profile.status} · {profile.location}
+          {profile.status}
         </p>
 
         <h1 className="mt-6 display text-[clamp(3.6rem,11vw,7.8rem)]">
@@ -171,12 +177,14 @@ function Hero() {
           style={stagger(3)}
           className="mt-6 max-w-xl text-xl leading-snug sm:text-2xl"
         >
-          I write <Underline delay={1.1}>backend</Underline> code for a living, and I build small
-          tools for other developers when I have time.
+          I am a software engineer who works mainly on{' '}
+          <Underline delay={1.1}>backend systems</Underline>. In my free time, I build tools for
+          other developers.
         </p>
         <p data-animate style={stagger(4)} className="mt-5 max-w-xl leading-relaxed text-muted">
-          Right now I’m at AppifyLab, working on EzyCommunity, a platform where agencies run their
-          own online communities. Before that I spent most of university on competitive programming.
+          I currently work at AppifyLab, where I help build EzyCommunity, a platform that agencies
+          use to run their online communities. I studied Computer Science and Engineering at Sylhet
+          Engineering College (SEC), where I was also active in competitive programming.
         </p>
 
         <div
@@ -186,15 +194,15 @@ function Hero() {
         >
           <Magnetic>
             <ButtonLink href="/projects">
-              See my projects
+              View projects
               <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
             </ButtonLink>
           </Magnetic>
           <ButtonLink href="/academics" variant="ghost">
-            Academic page
+            Academic background
           </ButtonLink>
           <ButtonLink href={profile.cv.resume} variant="quiet">
-            Résumé (PDF) <ArrowUpRight size={15} />
+            CV (PDF) <ArrowUpRight size={15} />
           </ButtonLink>
         </div>
       </div>
@@ -221,28 +229,6 @@ function Hero() {
           />
           <p className="hand absolute inset-x-0 bottom-3 text-center text-2xl">
             Moulvibazar, Bangladesh
-          </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: -8, rotate: 0 }}
-          animate={{ opacity: 1, y: 0, rotate: 4 }}
-          transition={{ delay: 0.9, duration: 0.5 }}
-          className="absolute -top-5 -right-6 bg-surface px-3 py-2 shadow-[var(--shadow)] ring-1 ring-line sm:-right-10"
-        >
-          <p className="font-mono text-[0.7rem] text-faint">Codeforces</p>
-          <p className="text-sm font-semibold">
-            Specialist <span className="text-accent">1476</span>
-          </p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 8, rotate: 0 }}
-          animate={{ opacity: 1, y: 0, rotate: -5 }}
-          transition={{ delay: 1.05, duration: 0.5 }}
-          className="absolute bottom-24 -left-8 bg-surface px-3 py-2 shadow-[var(--shadow)] ring-1 ring-line sm:-left-14"
-        >
-          <p className="font-mono text-[0.7rem] text-faint">B.Sc. CSE, 2025</p>
-          <p className="text-sm font-semibold">
-            CGPA <span className="text-accent">{education.cgpa.toFixed(2)}</span>
           </p>
         </motion.div>
       </motion.figure>
@@ -278,21 +264,21 @@ function Paths() {
   const paths = [
     {
       kicker: 'Work',
-      title: 'Here for my work?',
-      body: 'See what I do at AppifyLab, the projects I’ve built, and my one-page résumé.',
+      title: 'Professional work',
+      body: 'My experience at AppifyLab, the projects I have built and my one-page CV.',
       links: [
         { href: '/experience', label: 'Experience' },
         { href: '/projects', label: 'Projects' },
-        { href: profile.cv.resume, label: 'Résumé' },
+        { href: profile.cv.resume, label: 'CV' },
       ],
     },
     {
       kicker: 'Study',
-      title: 'Here from a university?',
-      body: 'My degree and grades, what I want to study next, my contest record, and an academic CV.',
+      title: 'Academic background',
+      body: 'My degree and grades, research interests, competitive programming record and academic CV.',
       links: [
         { href: '/academics', label: 'Academics' },
-        { href: '/academics#interests', label: 'Interests' },
+        { href: '/academics#interests', label: 'Research interests' },
         { href: profile.cv.academic, label: 'Academic CV' },
       ],
     },

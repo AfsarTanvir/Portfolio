@@ -40,8 +40,8 @@ export const ratingSeries: RatingSeries[] = [
     ],
     peakTitle: 'Specialist',
     lowWord: 'low',
-    note: 'I dropped to 632 in November 2022. It took two more years to reach Specialist.',
-    annotation: 'the low point',
+    note: 'My rating dropped to 632 in November 2022. Two years later, I reached Specialist.',
+    annotation: 'lowest point',
   },
   {
     key: 'codechef',
@@ -57,7 +57,7 @@ export const ratingSeries: RatingSeries[] = [
     ],
     peakTitle: '3★',
     lowWord: 'start',
-    note: 'My best result here was 99th place in Starters 122 (Division 3).',
+    note: 'My best result was 99th place in Starters 122 (Division 3).',
   },
 ];
 

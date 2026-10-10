@@ -51,7 +51,7 @@ export function RatingFlip({ side, onSide }: { side: number; onSide: (side: numb
             size={14}
             className="transition-transform duration-500 group-hover:rotate-180"
           />
-          <span className="hidden sm:inline">flip it, or drag the card</span>
+          <span className="hidden sm:inline">Flip or drag the card to see the other chart</span>
           <span className="sm:hidden">Flip</span>
         </button>
       </div>

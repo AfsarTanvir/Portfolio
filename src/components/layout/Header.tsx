@@ -15,8 +15,8 @@ export const navItems = [
 ];
 
 const cvLinks = [
-  { href: profile.cv.resume, label: 'Résumé', note: 'One page' },
-  { href: profile.cv.academic, label: 'Academic CV', note: 'For universities' },
+  { href: profile.cv.resume, label: 'CV', note: 'One page' },
+  { href: profile.cv.academic, label: 'Academic CV', note: 'For university applications' },
 ];
 
 export function Header() {

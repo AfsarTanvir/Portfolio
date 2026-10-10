@@ -25,7 +25,7 @@ export function Academics() {
 
   return (
     <>
-      <PageHero label="Academics" title="Studies, and" italic="what’s next">
+      <PageHero label="Academics" title="Academic" italic="background">
         <p>{studyGoal}</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <ButtonLink href={profile.cv.academic}>
@@ -56,7 +56,7 @@ export function Academics() {
         </Reveal>
         <Reveal delay={0.08}>
           <div className="h-full border-l-2 border-accent py-2 pl-7 sm:pl-9">
-            <p className="eyebrow">Why a master’s</p>
+            <p className="eyebrow">Why a master’s degree</p>
             <div className="mt-4 space-y-4 text-lg leading-relaxed text-text">
               {motivation.map((para) => (
                 <p key={para}>{para}</p>
@@ -71,9 +71,9 @@ export function Academics() {
         <SectionHeading
           index="01"
           label="Interests"
-          title="What I’d like to"
-          italic="study"
-          description="Each of these comes out of something I’ve actually built or worked on."
+          title="Research"
+          italic="interests"
+          description="Each of these interests comes from my work experience or from a project I have built."
         />
         <div className="grid gap-6 lg:grid-cols-3">
           {interests.map((it, i) => (
@@ -130,7 +130,7 @@ export function Academics() {
           label="Contests"
           title="Competitive"
           italic="programming"
-          description="This is where I learned to think about correctness and running time. Both charts use my real contest history."
+          description="Competitive programming is where I learned to reason about correctness and efficiency. The charts below show my rating history on Codeforces and CodeChef."
         />
         <div className="grid gap-6 lg:grid-cols-[1fr_2fr] lg:items-end">
           <div className="grid border-t border-line">
@@ -220,7 +220,7 @@ export function Academics() {
 
       {/* Club */}
       <section className="container-page mt-32">
-        <SectionHeading index="03" label="Leadership" title="The programming" italic="club" />
+        <SectionHeading index="03" label="Leadership" title="Programming" italic="club" />
         {leadership.map((l) => (
           <Reveal key={l.org}>
             <div className="flex flex-col gap-3 border-y border-line py-7 sm:flex-row sm:items-start sm:justify-between">

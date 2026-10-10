@@ -8,20 +8,20 @@ import { asset, cn } from '../lib/utils';
 
 const habits = [
   {
-    title: 'Check the edge cases first',
-    body: 'An old contest habit. Before I write anything, I ask what happens with empty input, two requests at the same time, or a user from the wrong team.',
+    title: 'Think about edge cases first',
+    body: 'Before I write code, I list the edge cases, such as empty input, two requests arriving at the same time, or a user without the right permissions.',
   },
   {
-    title: 'Test the real thing',
-    body: 'Unit tests are good, but I also like tests that start the actual program and try to break it: restart it, time it out, kill it halfway.',
+    title: 'Test the real program',
+    body: 'As well as unit tests, I write end-to-end tests that run the actual program and try to break it: they restart it, force timeouts and stop it halfway through.',
   },
   {
-    title: 'Don’t break what already works',
-    body: 'When I change a database, I add the new column next to the old setup first. Nobody should notice the switch.',
+    title: 'Make changes safely',
+    body: 'When I change a database schema, I first add the new structure alongside the old one, so that existing features keep working during the migration.',
   },
   {
     title: 'Write things down',
-    body: 'I keep notes, decision records and a public knowledge base. If I can’t explain something simply, I probably don’t understand it yet.',
+    body: 'I keep notes, decision records and a public knowledge base. Explaining a topic in writing helps me check whether I really understand it.',
   },
 ];
 
@@ -33,7 +33,7 @@ export function About() {
 
   return (
     <>
-      <PageHero label="About" title="Hi, I’m" italic="Afsar." />
+      <PageHero label="About" title="About" italic="me" />
 
       <section className="container-page grid gap-12 lg:grid-cols-[18rem_1fr] lg:gap-20">
         <Reveal className="mx-auto w-full max-w-[16rem] lg:sticky lg:top-28 lg:mx-0 lg:self-start">
@@ -46,7 +46,6 @@ export function About() {
               loading="lazy"
               className="aspect-[5/6] w-full object-cover object-top"
             />
-            <p className="hand mt-3 text-center text-xl">that’s me</p>
           </div>
         </Reveal>
 
@@ -54,24 +53,25 @@ export function About() {
           <Reveal>
             <p>
               <span className="text-text">
-                I live in Moulvibazar, in the north-east of Bangladesh.
+                I am a software engineer from Moulvibazar, Bangladesh.
               </span>{' '}
-              I studied Computer Science and Engineering at Sylhet Engineering College from 2020 to
-              2025.
+              I completed my B.Sc. in Computer Science and Engineering at Sylhet Engineering College
+              (SEC) in 2025.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              I made my Codeforces account a few weeks after starting university, and competitive
-              programming took up most of my free time after that. It didn’t go smoothly. In 2022 my
-              rating fell to 632, and it took me two more years to reach Specialist. In my last year
-              I was the coordinator of the college programming club.
+              I started competitive programming soon after joining university, and it became a big
+              part of my student life. My progress was not always steady: my Codeforces rating
+              dropped to 632 in 2022, but I kept practising and reached Specialist in 2024. In my
+              final year, I served as the coordinator of the SEC Programming Club.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              Contests taught me to think before I type. Learnathon taught me to work in a shared
-              codebase, with pull requests and code review. Since September 2025 I’ve been at{' '}
+              Competitive programming trained me to think carefully before writing code, and the
+              Learnathon programme showed me how a team works with pull requests and code reviews.
+              Since September 2025, I have been working at{' '}
               <a
                 className="prose-link"
                 href="https://www.appifylab.com/"
@@ -79,23 +79,23 @@ export function About() {
                 rel="noopener noreferrer"
               >
                 AppifyLab
-              </a>
-              , working on EzyCommunity.
+              </a>{' '}
+              on EzyCommunity.
             </p>
           </Reveal>
           <Reveal>
             <p>
-              Work keeps pulling me towards the parts users never see: caching, permissions, keeping
-              one customer’s data away from another’s, and what happens when a job crashes halfway.
-              My side projects are mostly me trying to understand those things better. It’s also why
-              I want to do a master’s.
+              At work, I am most interested in the parts of a system that users do not see, such as
+              caching, permissions, keeping each customer’s data separate, and handling failures. I
+              build side projects to understand these topics better, and I plan to study them in
+              more depth during a master’s degree.
             </p>
           </Reveal>
         </div>
       </section>
 
       <section className="container-page mt-32">
-        <SectionHeading index="01" label="How I work" title="A few habits" italic="I try to keep" />
+        <SectionHeading index="01" label="Approach" title="How I" italic="work" />
         <ol className="grid gap-x-12 border-t border-line sm:grid-cols-2">
           {habits.map((h, i) => (
             <Reveal
@@ -116,9 +116,9 @@ export function About() {
         <SectionHeading
           index="02"
           label="Timeline"
-          title="How I got"
-          italic="here"
-          description="Filter it if you only care about one part."
+          title="Key"
+          italic="milestones"
+          description="You can filter the timeline by category."
         />
         <LayoutGroup>
           <div role="tablist" aria-label="Filter timeline" className="mb-10 flex flex-wrap gap-2">
@@ -180,7 +180,7 @@ export function About() {
       </section>
 
       <section className="container-page mt-32">
-        <SectionHeading index="03" label="Tools" title="Languages and" italic="tools" />
+        <SectionHeading index="03" label="Skills" title="Technical" italic="skills" />
         <div className="grid gap-x-10 gap-y-8 border-t border-line pt-8 sm:grid-cols-2 lg:grid-cols-5">
           {skills.map((g, i) => (
             <Reveal key={g.group} delay={i * 0.05}>

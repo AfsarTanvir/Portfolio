@@ -19,10 +19,11 @@ export function Projects() {
 
   return (
     <>
-      <PageHero label="Projects" title="Things I’ve" italic="built">
+      <PageHero label="Projects" title="My" italic="projects">
         <p>
-          The bigger ones each have their own page: why I built it, how it works, and a few
-          decisions I made along the way. Smaller practice repos are listed at the bottom.
+          {' '}
+          Each of my main projects has its own page that explains why I built it and how it works.
+          Smaller practice projects are listed at the end of this page.
         </p>
       </PageHero>
 
@@ -78,8 +79,8 @@ export function Projects() {
       <section className="container-page mt-32">
         <SectionHeading
           label="Archive"
-          title="Smaller"
-          italic="repos"
+          title="Other"
+          italic="repositories"
           description="Practice projects and experiments, mostly from when I was learning .NET and React."
         />
         <Reveal>
@@ -88,7 +89,7 @@ export function Projects() {
               <tr>
                 <th className="py-3 pr-4 font-normal">Year</th>
                 <th className="py-3 pr-4 font-normal">Project</th>
-                <th className="hidden py-3 pr-4 font-normal md:table-cell">About</th>
+                <th className="hidden py-3 pr-4 font-normal md:table-cell">Description</th>
                 <th className="hidden py-3 pr-4 font-normal sm:table-cell">Built with</th>
                 <th className="py-3 font-normal">
                   <span className="sr-only">Link</span>
