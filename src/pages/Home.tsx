@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, type ReactNode } from 'react';
 import { Link } from 'react-router';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
@@ -151,6 +151,15 @@ export function Home() {
   );
 }
 
+/** Inline text link that opens in a new tab. */
+function ExternalLink({ href, children }: { href: string; children: ReactNode }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="prose-link">
+      {children}
+    </a>
+  );
+}
+
 function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
@@ -182,9 +191,17 @@ function Hero() {
           other developers.
         </p>
         <p data-animate style={stagger(4)} className="mt-5 max-w-xl leading-relaxed text-muted">
-          I currently work at AppifyLab, where I help build EzyCommunity, a platform that agencies
-          use to run their online communities. I studied Computer Science and Engineering at Sylhet
-          Engineering College (SEC), where I was also active in competitive programming.
+          I currently work at{' '}
+          <ExternalLink href="https://www.appifylab.com/">AppifyLab</ExternalLink>, where I help
+          build <ExternalLink href="https://www.ezycommunity.com/">EzyCommunity</ExternalLink>, a
+          platform that agencies use to run their online communities. I studied Computer Science and
+          Engineering at{' '}
+          <ExternalLink href="https://sec.ac.bd/">Sylhet Engineering College (SEC)</ExternalLink>,
+          which is affiliated with{' '}
+          <ExternalLink href="https://www.sust.edu/">
+            Shahjalal University of Science and Technology (SUST)
+          </ExternalLink>
+          . During my studies, I was also active in competitive programming.
         </p>
 
         <div
