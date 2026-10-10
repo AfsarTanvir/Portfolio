@@ -119,6 +119,13 @@ export const journey: { date: string; title: string; detail: string; tag: Journe
     tag: 'Contests',
   },
   {
+    date: 'Mar 2024',
+    title: '97th at NCPC 2023',
+    detail:
+      'The national collegiate programming contest, held at Jahangirnagar University. The 2023 contest ran late because of COVID.',
+    tag: 'Contests',
+  },
+  {
     date: 'Feb 2020',
     title: 'Made a Codeforces account',
     detail: 'A few weeks after starting university.',

@@ -77,8 +77,8 @@ export const contests: { name: string; result: string; year: string; href?: stri
     href: 'https://toph.co/c/inter-university-sylhet-division-2024/standings',
   },
   {
-    // VERIFY year: the standings URL names the 2023 edition (held onsite at JU).
-    name: 'National Collegiate Programming Contest (NCPC), onsite at JU',
+    // The 2023 contest was held in March 2024 (delayed by COVID).
+    name: 'NCPC 2023, National Collegiate Programming Contest (held at JU)',
     result: 'Ranked 97th',
     year: '2024',
     href: 'https://bapsoj.org/contests/ncpc-onsite-2023-hosted-by-ju/standings',
