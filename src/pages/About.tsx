@@ -148,7 +148,7 @@ export function About() {
           </div>
 
           <motion.ol layout className="relative ml-2 border-l border-line-strong">
-            <AnimatePresence mode="popLayout" initial={false}>
+            <AnimatePresence mode="popLayout">
               {items.map((j) => (
                 <motion.li
                   layout

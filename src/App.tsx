@@ -33,9 +33,10 @@ export function App() {
       </a>
       <ScrollProgress />
       <Header />
+      {/* No initial={false} here: Motion passes it down to every motion component on the
+          page, which would block all entrance and looping animations on the first load. */}
       <AnimatePresence
         mode="wait"
-        initial={false}
         onExitComplete={() => window.scrollTo({ top: 0, behavior: 'instant' })}
       >
         <motion.main
