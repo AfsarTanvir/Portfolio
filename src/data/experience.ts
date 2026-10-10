@@ -2,12 +2,14 @@ export type Experience = {
   role: string;
   org: string;
   orgUrl?: string;
+  /** Square logo in /public (shown on a white tile). */
+  logo?: string;
   period: string;
   location?: string;
   summary: string;
   highlights: string[];
   stack: string[];
-  links?: { label: string; href: string }[];
+  links?: { label: string; href: string; logo?: string }[];
 };
 
 export const experience: Experience[] = [
@@ -15,6 +17,7 @@ export const experience: Experience[] = [
     role: 'Full Stack Developer',
     org: 'AppifyLab',
     orgUrl: 'https://www.appifylab.com/',
+    logo: 'images/logos/appifylab.webp',
     period: 'Sep 2025 – present',
     location: 'Bangladesh',
     summary:
@@ -26,11 +29,19 @@ export const experience: Experience[] = [
       'Built the settings pages for the website builder (fonts, colours, custom CSS and JavaScript) and contributed to the Stripe checkout for paid channels.',
     ],
     stack: ['AdonisJS', 'TypeScript', 'Next.js', 'React', 'MySQL', 'MongoDB', 'Redis', 'Stripe'],
-    links: [{ label: 'EzyCommunity', href: 'https://www.ezycommunity.com/' }],
+    links: [
+      {
+        label: 'EzyCommunity',
+        href: 'https://www.ezycommunity.com/',
+        logo: 'images/logos/ezycommunity.webp',
+      },
+    ],
   },
   {
     role: '.NET Developer Trainee',
     org: 'Learnathon by Geeky Solutions',
+    orgUrl: 'https://learnathon.geeky.solutions/',
+    logo: 'images/logos/learnathon.webp',
     period: 'Dec 2024 – Apr 2025',
     summary:
       'Learnathon is a mentored training programme in which small teams build a complete project. Our team of three, “Brainstormers”, built TaskForge.NET.',

@@ -13,6 +13,7 @@ import { SectionHeading } from '../components/ui/Section';
 import { ButtonLink, SmartLink } from '../components/ui/SmartLink';
 import { Underline } from '../components/ui/HandDrawn';
 import { Magnetic } from '../components/ui/Pointer';
+import { OrgLogo } from '../components/ui/OrgLogo';
 import { asset, stagger } from '../lib/utils';
 
 export function Home() {
@@ -85,33 +86,39 @@ export function Home() {
         <ol className="dim-siblings flex flex-col border-t border-line">
           {experience.map((e) => (
             <Reveal as="li" key={e.org} className="border-b border-line">
-              <Link to="/experience" className="group block py-6">
-                <div className="flex flex-wrap items-baseline justify-between gap-2">
-                  <h3 className="text-lg font-semibold tracking-tight">
-                    {e.role} <span className="font-normal text-muted">at {e.org}</span>
-                  </h3>
-                  <span className="font-mono text-xs text-faint">{e.period}</span>
+              <Link to="/experience" className="group flex gap-4 py-6">
+                <OrgLogo src={e.logo} name={e.org} size={44} />
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="text-lg font-semibold tracking-tight">
+                      {e.role} <span className="font-normal text-muted">at {e.org}</span>
+                    </h3>
+                    <span className="font-mono text-xs text-faint">{e.period}</span>
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{e.summary}</p>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm text-text group-hover:text-accent">
+                    View details
+                    <ArrowRight
+                      size={14}
+                      className="transition-transform group-hover:translate-x-0.5"
+                    />
+                  </span>
                 </div>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{e.summary}</p>
-                <span className="mt-3 inline-flex items-center gap-1 text-sm text-text group-hover:text-accent">
-                  View details
-                  <ArrowRight
-                    size={14}
-                    className="transition-transform group-hover:translate-x-0.5"
-                  />
-                </span>
               </Link>
             </Reveal>
           ))}
           <Reveal as="li" className="border-b border-line">
-            <Link to="/academics" className="group block py-6">
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <h3 className="text-lg font-semibold tracking-tight">
-                  {club.role} <span className="font-normal text-muted">of the {club.org}</span>
-                </h3>
-                <span className="font-mono text-xs text-faint">{club.period}</span>
+            <Link to="/academics" className="group flex gap-4 py-6">
+              <OrgLogo name={club.org} initials="SEC" size={44} />
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h3 className="text-lg font-semibold tracking-tight">
+                    {club.role} <span className="font-normal text-muted">of the {club.org}</span>
+                  </h3>
+                  <span className="font-mono text-xs text-faint">{club.period}</span>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted">{club.detail}</p>
               </div>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{club.detail}</p>
             </Link>
           </Reveal>
         </ol>

@@ -7,6 +7,7 @@ import { profile, skills } from '../data/profile';
 import { PageHero, SectionHeading, Tag } from '../components/ui/Section';
 import { Reveal } from '../components/ui/Reveal';
 import { ButtonLink } from '../components/ui/SmartLink';
+import { OrgLogo } from '../components/ui/OrgLogo';
 
 export function Experience() {
   const listRef = useRef<HTMLOListElement>(null);
@@ -57,21 +58,27 @@ export function Experience() {
                 <span className="size-[7px] rounded-full bg-accent" />
               </span>
               <Reveal className="md:pl-10">
-                <h2 className="text-2xl font-semibold tracking-tight">{e.role}</h2>
-                <p className="mt-1 text-lg text-muted">
-                  {e.orgUrl ? (
-                    <a
-                      href={e.orgUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="prose-link"
-                    >
-                      {e.org}
-                    </a>
-                  ) : (
-                    <span className="text-text">{e.org}</span>
-                  )}
-                </p>
+                {' '}
+                <div className="flex items-center gap-4">
+                  <OrgLogo src={e.logo} name={e.org} size={52} />
+                  <div>
+                    <h2 className="text-2xl font-semibold tracking-tight">{e.role}</h2>
+                    <p className="mt-0.5 text-lg text-muted">
+                      {e.orgUrl ? (
+                        <a
+                          href={e.orgUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="prose-link"
+                        >
+                          {e.org}
+                        </a>
+                      ) : (
+                        <span className="text-text">{e.org}</span>
+                      )}
+                    </p>
+                  </div>
+                </div>
                 <p className="mt-4 max-w-2xl leading-relaxed text-muted">{e.summary}</p>
                 <ul className="mt-5 max-w-2xl space-y-3">
                   {e.highlights.map((h) => (
@@ -97,8 +104,11 @@ export function Experience() {
                         href={l.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group inline-flex items-center gap-1 text-text hover:text-accent"
+                        className="group inline-flex items-center gap-1.5 text-text hover:text-accent"
                       >
+                        {l.logo && (
+                          <OrgLogo src={l.logo} name={l.label} size={22} className="rounded-md" />
+                        )}
                         {l.label}
                         <ArrowUpRight
                           size={14}
