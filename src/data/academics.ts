@@ -10,7 +10,6 @@ export const motivation = [
 export const education = {
   degree: 'B.Sc. in Computer Science and Engineering',
   institution: 'Sylhet Engineering College (SEC)',
-  // VERIFY: the college is affiliated with Shahjalal University of Science and Technology (SUST).
   affiliation: 'Affiliated with Shahjalal University of Science and Technology',
   place: 'Sylhet, Bangladesh',
   period: 'Jan 2020 – Jul 2025',
